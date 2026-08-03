@@ -1450,22 +1450,23 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     #verification-quiz .quiz-score span{color:var(--muted);font-size:.72rem}
     #verification-quiz .quiz-sample-notice{margin:0;padding:.72rem .8rem;border:1px solid var(--border);border-left:3px solid var(--primary);border-radius:4px;background:color-mix(in srgb,var(--primary) 7%,var(--card));color:var(--foreground);font-size:.82rem}
     #verification-quiz .quiz-filters,#verification-quiz .quiz-progress,#verification-quiz .quiz-card{border:1px solid var(--border);border-radius:4px;background:var(--card);box-shadow:var(--shadow)}
-    #verification-quiz .quiz-filters{display:flex;align-items:end;gap:.8rem;padding:.75rem .8rem}
-    #verification-quiz .quiz-filter{display:grid;gap:.4rem;color:var(--muted);font-size:.78rem;font-weight:600}
-    #verification-quiz .quiz-tag-list{display:flex;flex-wrap:wrap;gap:.35rem}
-    #verification-quiz .quiz-filter-tag{min-height:32px;padding:.32rem .62rem;border:1px solid var(--border);border-radius:999px;background:var(--secondary);color:var(--foreground);font:inherit;cursor:pointer}
-    #verification-quiz .quiz-filter-tag:hover{border-color:color-mix(in srgb,var(--primary) 65%,var(--border));background:color-mix(in srgb,var(--primary) 8%,var(--card))}
-    #verification-quiz .quiz-filter-tag[aria-pressed="true"]{border-color:var(--primary);background:var(--primary);color:var(--primary-foreground);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--primary) 70%,var(--foreground))}
+    #verification-quiz .quiz-filters{display:flex;align-items:end;gap:.6rem;padding:.75rem .8rem}
+    #verification-quiz .quiz-filter{display:grid;gap:.28rem;min-width:170px;color:var(--muted);font-size:.78rem;font-weight:600}
+    #verification-quiz select{min-height:38px;padding:.45rem 2rem .45rem .65rem;border:1px solid var(--border);border-radius:3px;background:var(--input);color:var(--foreground)}
     #verification-quiz .quiz-filter-summary{margin-left:auto;padding-bottom:.55rem;color:var(--muted);font-size:.78rem}
-    #verification-quiz .quiz-progress{padding:.75rem .8rem}
+    #verification-quiz .quiz-progress{padding:.65rem .8rem}
     #verification-quiz .quiz-progress-heading{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;margin-bottom:.55rem}
     #verification-quiz .quiz-progress-heading h3{margin:0;font-size:.86rem;color:var(--foreground)}
     #verification-quiz .quiz-progress-heading span{color:var(--muted);font-size:.75rem}
-    #verification-quiz .quiz-progress-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.4rem}
+    #verification-quiz .quiz-progress details{margin-top:.15rem}
+    #verification-quiz .quiz-progress summary{width:max-content;color:var(--primary);font-size:.78rem;font-weight:650;cursor:pointer}
+    #verification-quiz .quiz-progress-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.35rem;margin-top:.55rem}
     #verification-quiz .quiz-progress-item{display:flex;align-items:center;justify-content:space-between;gap:.5rem;min-width:0;padding:.42rem .5rem;border:1px solid var(--border);border-radius:3px;background:var(--secondary);color:var(--foreground);font:inherit;text-align:left;cursor:pointer}
     #verification-quiz .quiz-progress-item:hover{border-color:color-mix(in srgb,var(--primary) 65%,var(--border));background:color-mix(in srgb,var(--primary) 8%,var(--card))}
     #verification-quiz .quiz-progress-item strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.76rem}
     #verification-quiz .quiz-progress-item span{flex:none;color:var(--muted);font-size:.72rem;white-space:nowrap}
+    #verification-quiz .quiz-progress-item[data-complete="true"]{border-color:color-mix(in srgb,#d19b24 55%,var(--border));background:color-mix(in srgb,#ffe7a0 18%,var(--card))}
+    #verification-quiz .quiz-progress-item[data-complete="true"] span{color:color-mix(in srgb,#a46d00 78%,var(--foreground));font-weight:700}
     #verification-quiz .quiz-card{padding:1rem}
     #verification-quiz .quiz-meta{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;margin-bottom:.75rem;color:var(--muted);font-size:.78rem}
     #verification-quiz .quiz-chip{padding:.12rem .5rem;border:1px solid color-mix(in srgb,var(--primary) 38%,var(--border));border-radius:999px;background:color-mix(in srgb,var(--primary) 8%,var(--card));color:color-mix(in srgb,var(--primary) 72%,var(--foreground));font-weight:600}
@@ -1485,9 +1486,10 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     #verification-quiz .quiz-result{margin-top:1rem;padding:.85rem 1rem;border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:3px;background:color-mix(in srgb,var(--secondary) 45%,var(--card));color:var(--foreground)}
     #verification-quiz .quiz-result[data-correct="true"]{border-left-color:light-dark(#4bb98f,#67e8c2)}
     #verification-quiz .quiz-result[data-correct="false"]{border-left-color:light-dark(#dd8189,#ff9cad)}
-    #verification-quiz .quiz-perfect{margin:.85rem 0 0;padding:.7rem .8rem;border:1px solid color-mix(in srgb,var(--primary) 52%,var(--border));border-left:4px solid var(--primary);border-radius:3px;background:color-mix(in srgb,var(--primary) 8%,var(--card));color:var(--foreground)}
-    #verification-quiz .quiz-perfect strong{display:block;color:var(--primary);font-size:.95rem}
-    #verification-quiz .quiz-perfect span{display:block;margin-top:.18rem;color:var(--muted);font-size:.8rem;line-height:1.5}
+    #verification-quiz .quiz-perfect{position:relative;overflow:hidden;margin:.85rem 0 0;padding:.85rem 1rem;border:1px solid color-mix(in srgb,#d19b24 55%,var(--border));border-radius:4px;background:linear-gradient(115deg,color-mix(in srgb,#ffe7a0 35%,var(--card)),color-mix(in srgb,var(--primary) 10%,var(--card)));color:var(--foreground)}
+    #verification-quiz .quiz-perfect::after{content:'✦  ✦  ✦';position:absolute;right:.65rem;top:.4rem;color:#c68d14;font-size:1.15rem;letter-spacing:.28rem;opacity:.65}
+    #verification-quiz .quiz-perfect strong{display:block;color:color-mix(in srgb,#a46d00 80%,var(--foreground));font-size:1rem}
+    #verification-quiz .quiz-perfect span{display:block;margin-top:.18rem;color:var(--foreground);font-size:.8rem;line-height:1.5}
     #verification-quiz .quiz-verdict{margin:0 0 .45rem;font-size:1rem;font-weight:700}
     #verification-quiz .quiz-verdict[data-correct="true"]{color:light-dark(#1d6e52,#9af4d7)}
     #verification-quiz .quiz-verdict[data-correct="false"]{color:light-dark(#96323c,#ffb2bf)}
@@ -1512,13 +1514,13 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     <div class="quiz-score" aria-label="成績"><div><b id="quizCorrectCount">0</b><span>正解</span></div><div><b id="quizAnsweredCount">0</b><span>回答</span></div></div>
   </section>
   <section class="quiz-filters" aria-label="問題を絞り込み">
-    <div class="quiz-filter"><span>カテゴリー</span><div id="quizGenreTags" class="quiz-tag-list" role="group" aria-label="カテゴリーを選択"></div></div>
-    <div class="quiz-filter"><span>難易度</span><div id="quizDifficultyTags" class="quiz-tag-list" role="group" aria-label="難易度を選択"></div></div>
+    <label class="quiz-filter"><span>カテゴリー</span><select id="quizGenre"><option value="">すべて</option></select></label>
+    <label class="quiz-filter"><span>難易度</span><select id="quizDifficulty"><option value="">すべて</option></select></label>
     <span id="quizFilterSummary" class="quiz-filter-summary" aria-live="polite"></span>
   </section>
   <section class="quiz-progress" aria-labelledby="quizProgressHeading">
     <div class="quiz-progress-heading"><h3 id="quizProgressHeading">カテゴリー別の進捗</h3><span id="quizProgressSummary" aria-live="polite"></span></div>
-    <div id="quizCategoryProgress" class="quiz-progress-grid"></div>
+    <details><summary>カテゴリー別の進捗を見る</summary><div id="quizCategoryProgress" class="quiz-progress-grid"></div></details>
   </section>
   <section id="quizCard" class="quiz-card" aria-live="polite"></section>
 
@@ -1528,20 +1530,18 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     const root=document.getElementById('verification-quiz');
     if(!root)return;
     const byId=id=>root.querySelector(`#${id}`);
-    const genreTags=byId('quizGenreTags'),difficultyTags=byId('quizDifficultyTags'),categoryProgress=byId('quizCategoryProgress'),card=byId('quizCard');
-    let questions=[],index=0,answered=false,correctCount=0,answeredCount=0,selectedGenre='',selectedDifficulty='';
+    const genre=byId('quizGenre'),difficulty=byId('quizDifficulty'),categoryProgress=byId('quizCategoryProgress'),card=byId('quizCard');
+    let questions=[],index=0,answered=false,correctCount=0,answeredCount=0;
     const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
     const optionLabel=value=>String.fromCharCode(65+value);
     const progressKey='fleet-lab-kancolle-quiz-category-progress-v1';
     let answerHistory={};
     try{const stored=JSON.parse(localStorage.getItem(progressKey)||'{}');if(stored&&typeof stored==='object')answerHistory=stored;}catch(_){answerHistory={};}
     const saveProgress=()=>{try{localStorage.setItem(progressKey,JSON.stringify(answerHistory));}catch(_){}};
-    function renderTags(container,values,selected,setSelected){
-      container.innerHTML=['すべて',...values].map(value=>`<button class="quiz-filter-tag" type="button" data-value="${escapeHtml(value==='すべて'?'':value)}" aria-pressed="${String((value==='すべて'?'':value)===selected)}">${escapeHtml(value)}</button>`).join('');
-      container.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{setSelected(button.dataset.value);applyFilters();}));
-    }
+    const fillSelect=(select,values)=>values.forEach(value=>{const option=document.createElement('option');option.value=value;option.textContent=value;select.append(option);});
     const genres=[...new Set(allQuestions.map(item=>item.genre))].sort((a,b)=>a.localeCompare(b,'ja'));
     const difficulties=['初級','中級','上級'].filter(value=>allQuestions.some(item=>item.difficulty===value));
+    fillSelect(genre,genres);fillSelect(difficulty,difficulties);
 
     function categoryProgressFor(genre){
       const items=allQuestions.filter(item=>item.genre===genre);
@@ -1551,9 +1551,9 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     }
     function renderCategoryProgress(){
       let totalCorrect=0,totalAnswered=0;
-      categoryProgress.innerHTML=genres.map(value=>{const progress=categoryProgressFor(value);totalCorrect+=progress.correct;totalAnswered+=progress.answered;return `<button class="quiz-progress-item" type="button" data-genre-progress="${escapeHtml(value)}" aria-label="${escapeHtml(value)}を表示"><strong>${escapeHtml(value)}</strong><span>${progress.correct}/${progress.total} 正解・${progress.answered}回答</span></button>`;}).join('');
+      categoryProgress.innerHTML=genres.map(value=>{const progress=categoryProgressFor(value),complete=progress.total>0&&progress.correct===progress.total;totalCorrect+=progress.correct;totalAnswered+=progress.answered;return `<button class="quiz-progress-item" type="button" data-complete="${complete}" data-genre-progress="${escapeHtml(value)}" aria-label="${escapeHtml(value)}を表示"><strong>${escapeHtml(value)}</strong><span>${complete?'制覇！':`${progress.correct}/${progress.total} 正解・${progress.answered}回答`}</span></button>`;}).join('');
       byId('quizProgressSummary').textContent=`全体 ${totalCorrect}/${allQuestions.length} 正解・${totalAnswered}回答`;
-      categoryProgress.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{selectedGenre=button.dataset.genreProgress;applyFilters();genreTags.scrollIntoView({block:'nearest',behavior:'smooth'});}));
+      categoryProgress.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{genre.value=button.dataset.genreProgress;applyFilters();genre.scrollIntoView({block:'nearest',behavior:'smooth'});}));
     }
 
     function updateScore(){byId('quizCorrectCount').textContent=correctCount;byId('quizAnsweredCount').textContent=answeredCount;}
@@ -1576,13 +1576,14 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
       result.hidden=false;
       result.dataset.correct=String(isCorrect);
       const isPerfectRun=index===questions.length-1&&correctCount===questions.length;
-      const perfectHtml=isPerfectRun?'<aside class="quiz-perfect" aria-label="全問正解"><strong>全問正解！ 艦これクイズ制覇</strong><span>この問題セットをすべて正解した。次は別のカテゴリーにも挑戦しよう。</span></aside>':'';
+      const perfectHtml=isPerfectRun?'<aside class="quiz-perfect" aria-label="全問正解"><strong>🏅 全問正解！ 艦これクイズ制覇</strong><span>この問題セットをすべて正解した。次は別のカテゴリーにも挑戦しよう。</span></aside>':'';
       result.innerHTML=`<p class="quiz-verdict" data-correct="${isCorrect}">${isCorrect?'正解です':'不正解です'} — 正解は ${optionLabel(item.correct_index)}</p><p class="quiz-explanation">${escapeHtml(item.explanation)}</p>${perfectHtml}<section class="quiz-sources"><h4>出典と根拠</h4>${item.sources.map(sourceHtml).join('')}</section><p class="quiz-review">公開確認: ${escapeHtml(review.reviewed_by)} / ${escapeHtml(review.reviewed_on)}</p><div class="quiz-actions"><button id="quizNext" class="btn primary" type="button">${index===questions.length-1?'もう一度':'次の問題'}</button></div>`;
       byId('quizNext').focus();
     }
     function next(){if(index===questions.length-1){index=0;correctCount=0;answeredCount=0;updateScore();}else index++;render();card.focus({preventScroll:true});}
-    function applyFilters(){questions=allQuestions.filter(item=>(!selectedGenre||item.genre===selectedGenre)&&(!selectedDifficulty||item.difficulty===selectedDifficulty));index=0;correctCount=0;answeredCount=0;renderTags(genreTags,genres,selectedGenre,value=>selectedGenre=value);renderTags(difficultyTags,difficulties,selectedDifficulty,value=>selectedDifficulty=value);renderCategoryProgress();updateScore();render();}
+    function applyFilters(){questions=allQuestions.filter(item=>(!genre.value||item.genre===genre.value)&&(!difficulty.value||item.difficulty===difficulty.value));index=0;correctCount=0;answeredCount=0;renderCategoryProgress();updateScore();render();}
     card.addEventListener('click',event=>{const choice=event.target.closest('[data-choice]');if(choice){answer(Number(choice.dataset.choice));return;}if(event.target.closest('#quizNext'))next();});
+    genre.addEventListener('change',applyFilters);difficulty.addEventListener('change',applyFilters);
     applyFilters();
   })();
   </script>
