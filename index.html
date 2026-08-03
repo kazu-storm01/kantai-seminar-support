@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,">
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgZGF0YS1mbGVldC1sYWItbWFyaz0idHJ1ZSI+DQogIDx0aXRsZT5GbGVldCBMYWI8L3RpdGxlPg0KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIyOSIgZmlsbD0iIzA3MTUyMiIgc3Ryb2tlPSIjNGY3Yzk0IiBzdHJva2Utd2lkdGg9IjIiLz4NCiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGY3Yzk0IiBzdHJva2UtbGluZWNhcD0icm91bmQiPg0KICAgIDxwYXRoIGQ9Ik0xNCAyOWEyMCAyMCAwIDAgMSAzNiAwIiBzdHJva2Utd2lkdGg9IjIuNSIvPg0KICAgIDxwYXRoIGQ9Ik0yMSAyOWExMyAxMyAwIDAgMSAyMiAwIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9Ii44Ii8+DQogICAgPHBhdGggZD0iTTEzIDM4aDM4TTE3IDQ1aDMwIiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iLjU1Ii8+DQogIDwvZz4NCiAgPHBhdGggZD0iTTMyIDIxIDQ2IDQzIDMyIDUzIDE4IDQzWiIgZmlsbD0iIzE3Mzg0YiIgc3Ryb2tlPSIjYzllZmZiIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMiLz4NCiAgPHBhdGggZD0iTTMyIDI1djIzTTIzIDQzaDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NWE5YzQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4NCiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmZlZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiI+DQogICAgPHBhdGggZD0iTTQ5IDEwdjNNNDkgMTl2M000MyAxNmgzTTUyIDE2aDMiLz4NCiAgPC9nPg0KICA8Y2lyY2xlIGN4PSI0OSIgY3k9IjE2IiByPSIzLjUiIGZpbGw9IiM1MmQ5ZmYiLz4NCjwvc3ZnPg==">
 <title>Fleet Lab</title>
 <style>
 :root{color-scheme:light dark;--navy:#263d48;--navy-dark:#192c35;--steel:#667980;--steel-light:#d5dcda;--brass:#b29a67;--paper:#f1f1ec;--white:#fbfcfa;--ink:#26343a;--muted:#6b777b;--line:#cbd2d0;--new:#426e59;--changed:#9a793f;--shadow:0 2px 8px #182a3218;--background:light-dark(#f1f1ec,#15242b);--foreground:light-dark(#26343a,#f2f5f3);--card:light-dark(#fbfcfa,#20343d);--card-foreground:var(--foreground);--primary:light-dark(#315d70,#8db9c9);--primary-foreground:light-dark(#fff,#10242d);--secondary:light-dark(#eef1ef,#2a414b);--secondary-foreground:var(--foreground);--accent:light-dark(#e3d7b7,#665b3d);--border:light-dark(#cbd2d0,#47606a);--input:light-dark(#fff,#1b2e36);--ring:#b29a67;--viz-series-2:light-dark(#b98152,#d9a474)}
@@ -350,10 +350,27 @@ body[data-active-scope="kanmusu"] #kcnav-drop-lab .btn-danger:not(:disabled):hov
 body[data-active-scope="kanmusu"] ::-webkit-scrollbar-track{background:#dcecf5}
 body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;border-color:#dcecf5}
 /* ワードマーク */
+.crest{display:block;flex:0 0 auto;width:36px;height:36px;border:0;border-radius:50%;background:transparent;box-shadow:0 0 20px #75d7ff2e}
+.crest::before{content:none}
+.crest svg{display:block;width:100%;height:100%}
 .brand h1{font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;font-weight:600;font-size:18px;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 0 20px color-mix(in srgb,var(--scope-glow) 22%,transparent)}
-@media(max-width:480px){.brand h1{font-size:16px;letter-spacing:.14em}}
+@media(max-width:480px){.crest{width:32px;height:32px}.brand h1{font-size:16px;letter-spacing:.14em}}
 </style></head><body data-active-scope="kanmusu">
-<header class="topbar"><div class="brand"><span class="crest" aria-hidden="true">艦</span><div><h1>Fleet Lab</h1><p>プライベート艦影ライブラリ</p></div></div><div class="summary" aria-label="集計"><span><b>862</b>艦娘</span><span><b>889</b>深海棲艦</span><span><b id="cachedSummary">0</b>保存済み</span></div></header>
+<header class="topbar"><div class="brand"><span class="crest" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" data-fleet-lab-mark="true">
+  <title>Fleet Lab</title>
+  <circle cx="32" cy="32" r="29" fill="#071522" stroke="#4f7c94" stroke-width="2"/>
+  <g fill="none" stroke="#4f7c94" stroke-linecap="round">
+    <path d="M14 29a20 20 0 0 1 36 0" stroke-width="2.5"/>
+    <path d="M21 29a13 13 0 0 1 22 0" stroke-width="2" opacity=".8"/>
+    <path d="M13 38h38M17 45h30" stroke-width="1.5" opacity=".55"/>
+  </g>
+  <path d="M32 21 46 43 32 53 18 43Z" fill="#17384b" stroke="#c9effb" stroke-linejoin="round" stroke-width="3"/>
+  <path d="M32 25v23M23 43h18" fill="none" stroke="#65a9c4" stroke-linecap="round" stroke-width="2.5"/>
+  <g fill="none" stroke="#bfefff" stroke-linecap="round" stroke-width="2">
+    <path d="M49 10v3M49 19v3M43 16h3M52 16h3"/>
+  </g>
+  <circle cx="49" cy="16" r="3.5" fill="#52d9ff"/>
+</svg></span><div><h1>Fleet Lab</h1><p>プライベート艦影ライブラリ</p></div></div><div class="summary" aria-label="集計"><span><b>862</b>艦娘</span><span><b>889</b>深海棲艦</span><span><b id="cachedSummary">0</b>保存済み</span></div></header>
 <nav class="site-nav" role="tablist" aria-label="機能"><button class="site-tab" type="button" role="tab" data-view="assets" aria-selected="true" aria-controls="assetView">艦影索引</button><button class="site-tab" type="button" role="tab" data-view="drop-lab" aria-selected="false" aria-controls="dropLabView">Drop Lab</button><button class="site-tab" type="button" role="tab" data-view="verification-quiz" aria-selected="false" aria-controls="verificationQuizView">艦これクイズ</button><button id="acquireTab" class="site-tab" type="button" role="tab" data-view="acquire" aria-selected="false" aria-controls="acquireView" hidden>画像取得管理</button></nav>
 <section id="assetView" class="support-view" role="tabpanel">
 <p class="view-intro">ローカルに保存した画像だけを、安全に検索・閲覧できます。</p>
