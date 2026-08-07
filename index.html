@@ -2,359 +2,534 @@
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="application-name" content="Fleet Lab"><meta name="description" content="Fleet Archive、Drop Lab、Tactics Labを統合した個人用支援ツール"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgZGF0YS1mbGVldC1sYWItbWFyaz0idHJ1ZSI+DQogIDx0aXRsZT5GbGVldCBMYWI8L3RpdGxlPg0KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIyOSIgZmlsbD0iIzA3MTUyMiIgc3Ryb2tlPSIjNGY3Yzk0IiBzdHJva2Utd2lkdGg9IjIiLz4NCiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGY3Yzk0IiBzdHJva2UtbGluZWNhcD0icm91bmQiPg0KICAgIDxwYXRoIGQ9Ik0xNCAyOWEyMCAyMCAwIDAgMSAzNiAwIiBzdHJva2Utd2lkdGg9IjIuNSIvPg0KICAgIDxwYXRoIGQ9Ik0yMSAyOWExMyAxMyAwIDAgMSAyMiAwIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9Ii44Ii8+DQogICAgPHBhdGggZD0iTTEzIDM4aDM4TTE3IDQ1aDMwIiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iLjU1Ii8+DQogIDwvZz4NCiAgPHBhdGggZD0iTTMyIDIxIDQ2IDQzIDMyIDUzIDE4IDQzWiIgZmlsbD0iIzE3Mzg0YiIgc3Ryb2tlPSIjYzllZmZiIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMiLz4NCiAgPHBhdGggZD0iTTMyIDI1djIzTTIzIDQzaDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NWE5YzQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4NCiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmZlZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiI+DQogICAgPHBhdGggZD0iTTQ5IDEwdjNNNDkgMTl2M000MyAxNmgzTTUyIDE2aDMiLz4NCiAgPC9nPg0KICA8Y2lyY2xlIGN4PSI0OSIgY3k9IjE2IiByPSIzLjUiIGZpbGw9IiM1MmQ5ZmYiLz4NCjwvc3ZnPg==">
 <title>Fleet Archive | Fleet Lab</title>
 <style>
-:root{color-scheme:light dark;--navy:#263d48;--navy-dark:#192c35;--steel:#667980;--steel-light:#d5dcda;--brass:#b29a67;--paper:#f1f1ec;--white:#fbfcfa;--ink:#26343a;--muted:#6b777b;--line:#cbd2d0;--new:#426e59;--changed:#9a793f;--shadow:0 2px 8px #182a3218;--background:light-dark(#f1f1ec,#15242b);--foreground:light-dark(#26343a,#f2f5f3);--card:light-dark(#fbfcfa,#20343d);--card-foreground:var(--foreground);--primary:light-dark(#315d70,#8db9c9);--primary-foreground:light-dark(#fff,#10242d);--secondary:light-dark(#eef1ef,#2a414b);--secondary-foreground:var(--foreground);--accent:light-dark(#e3d7b7,#665b3d);--border:light-dark(#cbd2d0,#47606a);--input:light-dark(#fff,#1b2e36);--ring:#b29a67;--viz-series-2:light-dark(#b98152,#d9a474)}
-*{box-sizing:border-box}body{margin:0;background:var(--background);color:var(--foreground);font-family:"Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;line-height:1.45}button,input,select,textarea{font:inherit}[hidden]{display:none!important}.topbar{background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:#fff;border-bottom:3px solid var(--brass);padding:15px clamp(14px,4vw,38px);display:flex;align-items:center;gap:20px;justify-content:space-between}.brand{display:flex;align-items:center;gap:11px}.crest{width:38px;height:38px;border:1px solid #d9c898;border-radius:50%;display:grid;place-items:center;color:#e5d7ac;font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-weight:700}.brand h1{margin:0;font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:25px;letter-spacing:.1em;font-weight:600}.brand p{margin:1px 0 0;color:#cbd5d7;font-size:11px;letter-spacing:.12em}.summary{display:flex;gap:18px;color:#cbd5d7;font-size:11px}.summary b{display:block;color:#fff;font-size:17px;font-weight:600}.summary span:last-child b{color:#e2d19d}.site-nav{position:sticky;top:0;z-index:10;display:flex;justify-content:center;gap:4px;background:#192c35f2;border-bottom:1px solid #4e626a;padding:7px 12px;backdrop-filter:blur(8px)}.site-tab{min-width:140px;border:1px solid transparent;background:transparent;color:#ccd7d9;padding:8px 16px;cursor:pointer}.site-tab:hover{background:#ffffff0d;color:#fff}.site-tab[aria-selected="true"]{background:#f1f1ec;color:var(--navy-dark);border-color:var(--brass);font-weight:700}.support-view{max-width:1280px;margin:auto;padding:20px clamp(10px,3vw,28px) 34px}.support-view.drop-lab-view{max-width:900px}.view-intro{margin:0 0 12px;color:var(--muted);font-size:12px}.fleet-tabs{display:flex;margin-bottom:8px;border-bottom:1px solid var(--steel)}.fleet-tab{border:0;border-bottom:3px solid transparent;background:transparent;color:var(--muted);padding:8px 18px 7px;cursor:pointer;font-weight:600}.fleet-tab:hover{color:var(--navy)}.fleet-tab[aria-selected="true"]{border-bottom-color:var(--brass);color:var(--navy-dark);background:#ffffff80}.fleet-tab small{margin-left:5px;font-weight:400;color:var(--muted)}.search-panel{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--line);border-left:4px solid var(--brass);padding:10px;box-shadow:var(--shadow)}.search-field{position:relative;flex:1;min-width:220px}.search-field:before{content:"⌕";position:absolute;left:12px;top:7px;color:var(--steel);font-size:20px}.search-field input{width:100%;height:40px;padding:8px 12px 8px 38px;border:1px solid #aeb9b7;background:#fff;color:var(--ink);border-radius:2px}.search-panel select{height:40px;min-width:150px;padding:7px 30px 7px 10px;border:1px solid #aeb9b7;background:#fff;color:var(--ink);border-radius:2px}.search-field input:focus,.search-panel select:focus{outline:2px solid #b29a6755;border-color:var(--brass)}.btn{min-height:34px;border:1px solid #89999d;background:var(--secondary);color:var(--secondary-foreground);border-radius:3px;padding:5px 10px;cursor:pointer;text-decoration:none}.btn:hover{filter:brightness(.97)}.btn.primary,.btn.btn-primary{background:var(--navy);border-color:var(--navy);color:#fff}.btn.primary:hover,.btn.btn-primary:hover{background:#314e5b}.btn.btn-ghost{background:transparent}.btn:disabled{opacity:.4;cursor:default}.clear{height:40px}.count{white-space:nowrap;margin-left:auto;color:var(--muted);font-size:12px}.connection{margin:9px 2px 14px;color:var(--muted);font-size:11px}.table-wrap{overflow:auto;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow)}#assetView table{width:100%;border-collapse:collapse;min-width:760px}#assetView th,#assetView td{border-bottom:1px solid #dfe4e2;padding:9px 12px;text-align:left;font-size:13px;vertical-align:middle}#assetView th{background:var(--steel);color:#fff;white-space:nowrap;font-size:12px;font-weight:600}#assetView th button{border:0;background:none;color:inherit;padding:0;cursor:pointer;font-weight:inherit}#assetView th button:hover{color:#fff1c8}#assetView tbody tr:hover{background:#eef1ef}#assetView tbody tr[data-change="added"]{box-shadow:inset 3px 0 var(--new)}#assetView tbody tr[data-change="changed"]{box-shadow:inset 3px 0 var(--changed)}#assetView td.id{width:90px;font-family:Consolas,monospace;color:#44565d}#assetView td.name{min-width:290px}#assetView td.name strong{font-size:14px;font-weight:600}#assetView td.name small{display:block;margin-top:2px;color:#879195;font:10px Consolas,monospace;word-break:break-all}.update{display:inline-block;margin-left:7px;padding:1px 5px;border:1px solid currentColor;font-size:9px;font-weight:400;vertical-align:2px}.update.added{color:var(--new)}.update.changed{color:var(--changed)}.type{color:#40545b;font:11px Consolas,monospace}.actions{white-space:nowrap}.actions .btn{margin-right:4px;font-size:11px}.pagination{display:flex;justify-content:center;align-items:center;gap:9px;margin-top:13px;color:var(--muted);font-size:12px}.page-jump{display:flex;align-items:center;gap:6px}.page-jump select{width:min(410px,58vw);min-height:40px;padding:6px 30px 6px 10px;border:1px solid var(--border);border-radius:5px;background:var(--input);color:var(--foreground)}.page-total{white-space:nowrap}.empty{text-align:center;padding:42px;color:var(--muted)}.modal[hidden],.toast[hidden]{display:none}.modal{position:fixed;inset:0;z-index:20;background:#101c21d9;display:grid;place-items:center;padding:16px}.modal-card{width:min(960px,96vw);max-height:92vh;background:var(--white);border:1px solid var(--brass);overflow:auto;box-shadow:0 18px 60px #0009}.modal-head{position:sticky;top:0;background:var(--navy);color:#fff;display:flex;align-items:center;gap:8px;padding:9px 11px;z-index:1}.modal-head strong{flex:1;font-weight:500}.modal-head .btn{border-color:#9fb0b5}.modal-body{padding:14px;text-align:center}.modal-body img{max-width:100%;max-height:74vh;object-fit:contain}.modal-url{display:block;text-align:left;word-break:break-all;font-size:10px;color:var(--muted);margin-top:8px}.toast{position:fixed;right:16px;bottom:16px;background:var(--navy);border-left:3px solid var(--brass);color:#fff;padding:9px 13px;box-shadow:var(--shadow);z-index:30;font-size:12px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-#kcnav-drop-lab .card{background:var(--card);color:var(--card-foreground);border:1px solid var(--border);border-radius:4px;padding:1rem;box-shadow:var(--shadow)}#kcnav-drop-lab .form-control,#kcnav-drop-lab .form-select{width:100%;border:1px solid var(--border);border-radius:3px;background:var(--input);color:var(--foreground);padding:.5rem .65rem}#kcnav-drop-lab textarea.form-control{min-height:120px;resize:vertical}#kcnav-drop-lab details{border-color:var(--border)}#kcnav-drop-lab summary{cursor:pointer;font-weight:600}#kcnav-drop-lab .table-wrap{background:var(--card);border-color:var(--border)}#kcnav-drop-lab table{width:100%;border-collapse:collapse;min-width:520px}#kcnav-drop-lab th,#kcnav-drop-lab td{padding:.55rem .65rem;border-bottom:1px solid var(--border);text-align:left}#kcnav-drop-lab th{font-size:.78rem;color:var(--muted-foreground)}#kcnav-drop-lab dialog{color:var(--foreground)}#kcnav-drop-lab input[type="checkbox"]{accent-color:var(--primary)}
-@media(max-width:720px){.topbar{align-items:flex-start}.summary{gap:10px}.summary span:first-child{display:none}.search-panel{flex-wrap:wrap}.search-field{flex-basis:100%}.search-panel select{flex:1}.count{order:5;width:100%;margin:0}.brand h1{font-size:21px}.connection{padding:0 3px}}
-@media(max-width:430px){.topbar{padding:12px}.crest{width:34px;height:34px}.brand p{display:none}.summary span:nth-child(2){display:none}.site-tab{min-width:0;flex:1;padding:8px}.support-view{padding:13px 7px 28px}.search-panel{padding:7px}.search-panel select{min-width:120px}.actions .btn{padding:4px 7px}#assetView td.name{min-width:230px}}
+/* ============================================================================
+   Fleet Lab — Liquid Glass
+   ----------------------------------------------------------------------------
+   設計規則（この3つだけ守れば崩れない）
+     1. 色は必ずトークン経由。コンポーネント規則に生の色を書かない。
+     2. テーマ差分は body[data-active-scope] のトークン再定義だけ。
+        コンポーネント規則はテーマごとに複製しない。
+     3. 面はすべて .glass 系の共通規則で作る。個別に background を足さない。
+   ============================================================================ */
 
-/* Quiet space theme: restrained starlight, dark glass, and one cyan accent. */
+/* --- 1. 共通トークン ------------------------------------------------------ */
 :root{
-  color-scheme:dark;
-  --navy:#111a32;--navy-dark:#070b16;--steel:#1c2943;--steel-light:#283956;
-  --brass:#75d7ff;--paper:#060912;--white:#0d1424;--ink:#e9f2ff;--muted:#8190aa;
-  --line:#263551;--new:#67e8c2;--changed:#d7b8ff;--shadow:0 18px 45px #00000040;
-  --background:#060912;--foreground:#e9f2ff;--card:#0d1424;--card-foreground:#e9f2ff;
-  --primary:#75d7ff;--primary-foreground:#06111b;--secondary:#121d31;--secondary-foreground:#dceaff;
-  --accent:#302557;--border:#263551;--input:#09101e;--ring:#75d7ff;--viz-series-2:#b99cff;
-}
-html{background:#060912}
-body{min-height:100vh;background:#060912;color:var(--foreground)}
-body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
-  radial-gradient(circle at 9% 18%,#dff7ff 0 1px,transparent 1.5px),
-  radial-gradient(circle at 24% 66%,#ffffffcc 0 1px,transparent 1.4px),
-  radial-gradient(circle at 48% 12%,#9fdfffaa 0 1px,transparent 1.5px),
-  radial-gradient(circle at 72% 38%,#ffffff99 0 1px,transparent 1.4px),
-  radial-gradient(circle at 91% 72%,#b8aaffbb 0 1px,transparent 1.5px);
-  background-size:190px 190px,260px 260px,330px 330px,410px 410px,520px 520px;opacity:.55}
-body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
-  radial-gradient(ellipse at 8% 0%,#1b5f8428 0,transparent 42%),
-  radial-gradient(ellipse at 95% 25%,#55378b20 0,transparent 40%),
-  linear-gradient(180deg,#080d1b00,#03050c 88%)}
-.topbar{background:#080e1de8;border-bottom:1px solid #26435e;padding-block:17px;box-shadow:0 10px 35px #0005}
-.crest{position:relative;border-color:#75d7ff;color:#dff7ff;box-shadow:0 0 18px #75d7ff38;background:#0a1326}
-.crest::before{content:"";position:absolute;width:52px;height:18px;border:1px solid #75d7ff55;border-radius:50%;transform:rotate(-24deg)}
-.brand h1{font-family:"Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;font-weight:500;letter-spacing:.1em;text-shadow:0 0 22px #75d7ff22}
-.brand p{color:#7890ad}.summary{color:#73839e}.summary b{color:#dbeaff;font-weight:500}.summary span:last-child b{color:#b99cff}
-.site-nav{background:#080e1de6;border-bottom:1px solid #202e48;padding:8px 12px;box-shadow:0 9px 28px #0004}
-.site-tab{border-radius:5px;color:#7f8da7;letter-spacing:.04em;transition:color .16s,border-color .16s,background .16s}
-.site-tab:hover{background:#15223a;color:#dceaff}
-.site-tab[aria-selected="true"]{background:#13233a;color:#e9f7ff;border-color:#4aaed7;box-shadow:inset 0 0 22px #60d4ff12,0 0 16px #60d4ff0d}
-.support-view{position:relative}.view-intro,.connection,.count{color:#7888a3}
-.fleet-tabs{border-bottom-color:#24324d}.fleet-tab{color:#7585a0}.fleet-tab:hover{color:#d8ebff}
-.fleet-tab[aria-selected="true"]{border-bottom-color:#75d7ff;color:#eaf7ff;background:#75d7ff0a}
-.fleet-tab small{color:#71819a}
-.search-panel{background:#0c1424d9;border:1px solid #273754;border-left:1px solid #273754;border-radius:7px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}
-.search-field::before{color:#75d7ff}.search-field input,.search-panel select{background:#080f1d;color:#e9f2ff;border-color:#2a3a57;border-radius:5px}
-.search-field input::placeholder{color:#697892}.search-field input:focus,.search-panel select:focus{outline:2px solid #75d7ff35;border-color:#5fc6ee}
-.btn{background:#111c30;color:#d9e8fa;border-color:#31415d;border-radius:5px;transition:background .15s,border-color .15s,color .15s}
-.btn:hover{background:#192842;border-color:#4f6688;filter:none}.btn.primary,.btn.btn-primary{background:#17334a;border-color:#56bee7;color:#eaf9ff}
-.btn.primary:hover,.btn.btn-primary:hover{background:#1d435e}.btn.btn-ghost{background:transparent}
-.table-wrap{background:#0b1221db;border-color:#263551;border-radius:7px;box-shadow:var(--shadow);backdrop-filter:blur(12px)}
-#assetView th{background:#151f35;color:#9cacc5;border-bottom-color:#32425e}
-#assetView th button:hover{color:#75d7ff}
-#assetView td{border-bottom-color:#1d2940;color:#dbe6f6}
-#assetView tbody tr:hover{background:#132139}
-#assetView td.id{color:#7edbff}#assetView td.name small{color:#61718d}.type{color:#9bb0cc}
-.update.added{color:#67e8c2}.update.changed{color:#d7b8ff}
-.asset-state{display:inline-block;padding:4px 8px;border:1px solid #34445f;border-radius:999px;color:#7f90aa;font-size:10px;white-space:nowrap}.asset-state.ready{border-color:#3ea7ce;color:#9ce5ff;background:#48cfff0b}
-.asset-result-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:9px 2px 14px}.asset-result-bar .connection{margin:0;max-width:670px}.asset-result-actions,.asset-library-tools{display:flex;align-items:center;gap:6px}.asset-library-tools{margin:0 2px 12px;padding:9px 10px;border:1px solid #253651;border-radius:7px;background:#0b1323}.asset-library-tools p{flex:1;margin:0;color:#7e90aa;font-size:11px;line-height:1.6}.asset-library-status{color:#8ea2bd;font-size:10px;white-space:nowrap}.asset-scan-progress{width:100%;height:4px;margin-top:2px;accent-color:#55c9f2}.display-switch{display:flex;gap:3px;padding:3px;border:1px solid #273754;border-radius:7px;background:#0b1323}.display-switch button{min-height:30px;border:1px solid transparent;border-radius:4px;background:transparent;color:#7f90aa;padding:4px 11px;cursor:pointer}.display-switch button[aria-pressed="true"]{border-color:#4aaed7;background:#17334a;color:#eaf9ff}.asset-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:12px}.asset-card{min-width:0;overflow:hidden;border:1px solid #263651;border-radius:8px;background:#0b1323;box-shadow:0 10px 26px #0003;transition:transform .16s,border-color .16s,box-shadow .16s}.asset-card:hover{transform:translateY(-2px);border-color:#3f6f91;box-shadow:0 14px 34px #0005}.asset-card[data-change="added"]{border-color:#2c8c77}.asset-card[data-change="changed"]{border-color:#7558a4}.asset-card-visual{position:relative;width:100%;aspect-ratio:4/5;border:0;border-bottom:1px solid #1e2c43;background:radial-gradient(circle at 50% 45%,#173a55 0,transparent 48%),linear-gradient(145deg,#07101f,#11182a);display:grid;place-items:center;overflow:hidden;color:#73849e}.asset-card-visual.preview{padding:0;cursor:pointer}.asset-card-visual img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .2s}.asset-card:hover .asset-card-visual img{transform:scale(1.025)}.asset-placeholder{display:grid;place-items:center;gap:7px;padding:16px;text-align:center;color:#6f809b;font-size:11px}.asset-placeholder::before{content:"艦";display:grid;place-items:center;width:52px;height:52px;border:1px solid #334660;border-radius:50%;color:#4f6582;font-size:22px}.asset-card-body{display:grid;gap:7px;padding:10px}.asset-card-title{display:flex;align-items:baseline;gap:7px;min-width:0}.asset-card-title b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#e5f1ff;font-size:13px;font-weight:600}.asset-card-id{color:#6fd6ff;font:10px Consolas,monospace}.asset-card-meta{display:flex;align-items:center;justify-content:space-between;gap:7px;color:#8394ae;font-size:10px}.asset-card-actions{display:flex;gap:5px}.asset-card-actions .btn{flex:1;min-height:29px;padding:3px 6px;text-align:center;font-size:10px}.asset-gallery-empty{grid-column:1/-1;display:grid;place-items:center;min-height:260px;padding:32px;border:1px dashed #2b3d58;border-radius:8px;background:#0a1120a6;color:#7889a3;text-align:center;line-height:1.8}.site-footer{max-width:1280px;margin:0 auto;padding:0 28px 28px;color:#62738c;font-size:10px;line-height:1.7;text-align:center}
-.acquire-layout{display:grid;gap:14px}.acquire-panel{background:#0b1323;border:1px solid #263651;border-radius:8px;padding:16px;box-shadow:0 10px 28px #0003}.acquire-controls{display:grid;grid-template-columns:1fr 1fr 140px auto;gap:10px;align-items:end}.acquire-field{display:grid;gap:5px}.acquire-field span{color:#8798b3;font-size:11px}.acquire-field select{height:40px;padding:7px 10px;border:1px solid #344862;border-radius:5px;background:#080f1d;color:#e9f2ff}.acquire-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.acquire-metric{display:grid;gap:2px;padding:12px;border:1px solid #283b57;border-radius:6px;background:#0d1728;color:#8495af;font-size:11px}.acquire-metric b{color:#e8f4ff;font-size:21px;font-weight:600}.acquire-job{display:grid;gap:8px}.acquire-job progress{width:100%;height:10px;accent-color:#55c9f2}.acquire-message{min-height:1.4em;color:#a9bad1;font-size:12px}.acquire-plan{overflow:auto;border:1px solid #263651;border-radius:7px}.acquire-plan table{width:100%;border-collapse:collapse;min-width:620px}.acquire-plan th,.acquire-plan td{padding:9px 11px;border-bottom:1px solid #1e2c43;text-align:left;font-size:12px}.acquire-plan th{color:#90a5c1;background:#0d1728}.acquire-plan td{color:#c9d6e8}.acquire-note{margin:0;color:#8192ab;font-size:11px;line-height:1.7}
-@media(max-width:720px){.acquire-controls{grid-template-columns:1fr 1fr}.acquire-controls .btn{grid-column:1/-1}.acquire-metrics{grid-template-columns:1fr 1fr}.asset-result-bar,.asset-library-tools{align-items:flex-start;flex-direction:column}.asset-result-actions{width:100%;justify-content:space-between}.asset-library-tools .btn{width:100%}.asset-gallery{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px}.asset-card-body{padding:8px}}
-.asset-library-tools{flex-wrap:wrap}
-.pagination{color:#74849f}
-.modal{background:#02040bd9;backdrop-filter:blur(8px)}.modal-card{background:#0b1221;border-color:#4daed5;border-radius:8px}
-.modal-head{background:#0d1930;border-bottom:1px solid #304360}.modal-url{color:#74849f}
-.toast{background:#101d32;border-left-color:#75d7ff}
-#kcnav-drop-lab{--muted-foreground:#8a9ab5;--border:#293953;--kdl-rare:#8fdcff}
-#kcnav-drop-lab .card{background:#0c1424d9;border-color:#293953;box-shadow:var(--shadow);backdrop-filter:blur(12px)}
-#kcnav-drop-lab .form-control,#kcnav-drop-lab .form-select{background:#080f1d;color:#e9f2ff;border-color:#2a3a57}
-#kcnav-drop-lab .mode-switch{background:#0b1323;border-color:#263651;border-radius:7px}
-#kcnav-drop-lab .mode-switch .btn[aria-selected="true"]{background:#17334a;color:#eaf9ff;border-color:#56bee7}
-#kcnav-drop-lab .hero-statement{border-left-color:#75d7ff;background:#0d1729;color:#e4f1ff}
-#kcnav-drop-lab .drop-stage{border-color:#2c4160;background:
-  radial-gradient(circle at 50% 46%,#3ea9d32c 0,transparent 35%),
-  radial-gradient(circle at 18% 12%,#b7edff 0 1px,transparent 1.5px),
-  radial-gradient(circle at 83% 28%,#ffffffb0 0 1px,transparent 1.5px),
-  linear-gradient(145deg,#07101f,#10182c 60%,#151237)}
-#kcnav-drop-lab .drop-card{background:#0a1324e8;border-color:#38506f}
-#kcnav-drop-lab .probability-details,#kcnav-drop-lab .tools-panel{border-color:#24334d}
-#kcnav-drop-lab .metric,#kcnav-drop-lab .quick-status,#kcnav-drop-lab .luck-summary{background:#0d1728;border-color:#253651}
+  --r:14px;            /* 面の角丸 */
+  --r-sm:9px;          /* 入力・小要素 */
+  --r-pill:999px;
+  --blur:20px;         /* 面のすりガラス */
+  --blur-bar:28px;     /* 固定バーのすりガラス */
+  --dur:.2s;
+  --ease:cubic-bezier(.22,.68,.36,1);
+  --gutter:clamp(12px,3vw,26px);
+  --shell:1240px;
+  --shell-narrow:900px;
+  --tap:40px;          /* 最小タップ高 */
 
-/* Usability pass: readable hierarchy, visible state, and resilient small screens. */
-:root{--muted:#9aaac2}
-button,input,select,textarea{font-size:16px}
-button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #75d7ff66;outline-offset:2px}
-.view-intro{font-size:14px;color:#a7b6cb}
-.site-tab{min-height:42px;font-size:15px}
-.fleet-tab{min-height:42px}
-.search-panel{gap:10px}.search-field input,.search-panel select{min-height:44px;height:44px}.clear{height:44px}.btn{min-height:40px}
-.count,.connection{font-size:13px}.asset-library-tools p{font-size:13px}.asset-library-status{font-size:12px}
-.asset-result-bar{margin-block:12px 16px}.asset-gallery-empty{font-size:14px}.asset-card-actions .btn{min-height:36px;font-size:12px}
-.asset-result-actions{flex-wrap:wrap;justify-content:flex-end}
-.group-badge{display:inline-flex;align-items:center;padding:2px 7px;border:1px solid #3b6481;border-radius:999px;background:#10263a;color:#9de5ff;font-size:10px;white-space:nowrap}
-.group-modal-card{width:min(1120px,96vw)}.group-modal-body{padding:16px}.group-summary{margin:0 0 14px;color:#9aacc5;font-size:13px}
-.group-section{margin-top:18px}.group-section:first-child{margin-top:0}.group-section h3{display:flex;align-items:center;gap:8px;margin:0 0 9px;color:#e9f4ff;font-size:16px}.group-section h3 small{color:#91a4bf;font-size:12px;font-weight:400}
-.group-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
-.group-member{min-width:0;overflow:hidden;border:1px solid #293a57;border-radius:7px;background:#091221}.group-member.is-match{border-color:#75d7ff;box-shadow:0 0 0 2px #75d7ff30}
-.group-pair-visuals{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#22314b}.group-pair-visuals.single{grid-template-columns:minmax(0,240px);justify-content:center}.group-pair-visuals.single .group-member-visual{aspect-ratio:327/450}.group-pair-panel{min-width:0;background:#091221}.group-pair-label{display:block;padding:5px 8px;border-bottom:1px solid #22314b;color:#afc0d7;font-size:11px;font-weight:600}.group-member-visual{width:100%;aspect-ratio:4/5;border:0;background:radial-gradient(circle at 50% 45%,#173a55 0,transparent 48%),linear-gradient(145deg,#07101f,#11182a);display:grid;place-items:center;overflow:hidden;color:#72839e}
-.group-member-visual.member-preview{padding:0;cursor:pointer}.group-member-visual img{width:100%;height:100%;object-fit:contain}.group-member-body{display:grid;gap:6px;padding:9px}.group-member-title{display:flex;align-items:baseline;gap:6px;min-width:0}.group-member-title b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.group-member-meta{display:flex;justify-content:space-between;gap:6px;color:#8496b0;font-size:10px}.group-member-actions{display:grid;gap:5px}#previewModal{z-index:26}
-.group-modal-card{width:min(1180px,98vw)}.group-modal-body{padding:14px}.group-summary{margin-bottom:10px}.group-grid{grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:12px}.group-member-body{gap:8px}.group-pair-label{font-size:12px}.group-member-visual.member-preview{position:relative}.group-member-visual.member-preview::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,#0a1424 20%,#13263a 45%,#0a1424 70%)}.group-member-visual.member-preview img{position:relative;z-index:1;background:radial-gradient(circle at 50% 45%,#173a55 0,transparent 48%),linear-gradient(145deg,#07101f,#11182a)}.group-pair-panel .asset-placeholder{color:#4f6079}.group-pair-panel .asset-placeholder::before{opacity:.35}.variant-badges{display:flex;align-items:center;gap:5px;min-height:23px;flex-wrap:wrap}.variant-badge{display:inline-flex;align-items:center;min-height:22px;padding:2px 7px;border:1px solid #344a68;border-radius:999px;background:#101b2d;color:#9fb1ca;font-size:10px}.variant-badge.current{border-color:#2583aa;background:#0b2b40;color:#aee9ff}.variant-badge.card{border-color:#a98c4b;background:#332916;color:#f4dda5}.variant-badge.history{border-color:#66548d;background:#211a35;color:#d5c5fa}.variant-badge.broken{border-color:#9a6551;background:#38221c;color:#f4c9b8}.matched-image-id{margin-left:auto;color:#7cbdda;font:10px Consolas,monospace}.preview-modal-card{width:min(1080px,98vw)}.preview-modal-card .modal-head{gap:6px}.preview-counter{min-width:54px;color:#9eb0c7;text-align:center;font-size:11px;font-variant-numeric:tabular-nums}.preview-body{display:grid;place-items:center;min-height:min(72vh,760px)}.preview-body img{max-height:72vh}.preview-details{margin:0 14px 14px;border-top:1px solid #233552;color:#8093ad;font-size:11px}.preview-details summary{width:max-content;padding:8px 0;cursor:pointer}.preview-detail-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding-bottom:10px}.preview-detail-actions .modal-url{flex:1 1 100%;margin:0}
-@media(max-width:720px){.group-grid{grid-template-columns:1fr}.group-modal-body{padding:9px}.group-pair-visuals.single{grid-template-columns:minmax(0,180px)}.preview-modal-card .modal-head strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.preview-modal-card .modal-head .btn{min-width:48px;padding-inline:7px}.preview-counter{display:none}}
-.acquire-layout{grid-template-columns:minmax(0,1fr);min-width:0}.acquire-layout>*{min-width:0}
-.acquire-controls>*{min-width:0}.acquire-field span{font-size:13px}.acquire-field select{width:100%;min-width:0;height:44px}
-.acquire-metric{font-size:12px}.acquire-metric b{font-size:24px}.acquire-note{font-size:13px;color:#9aaac2}
+  /* 環境光は2枚を透明度でクロスフェードする。
+     グラデーションは transition が効かないため、色だけの補間では切り替わらない。 */
+  --amb-kanmusu:
+    radial-gradient(58% 44% at 88% -12%,#ffe6a4 0,transparent 56%),
+    radial-gradient(48% 40% at 2% 4%,#a6e6ff 0,transparent 62%),
+    radial-gradient(72% 52% at 52% 114%,#1f7cb4 0,transparent 74%),
+    linear-gradient(180deg,#cdeafd 0%,#a4d6f1 44%,#79bde3 100%);
+  --amb-abyssal:
+    radial-gradient(62% 50% at 80% -8%,#8a1233 0,transparent 60%),
+    radial-gradient(56% 46% at 6% 14%,#3d1057 0,transparent 56%),
+    radial-gradient(85% 62% at 50% 112%,#25091a 0,transparent 70%),
+    linear-gradient(180deg,#100614 0%,#09040d 55%,#050208 100%);
+}
+
+/* --- 2. テーマ: 艦娘＝陽の差す海（ライトガラス） -------------------------- */
+body{
+  color-scheme:light;
+  --fg:#0a2c40;
+  --muted:#3f6579;
+  --accent:#0a76b2;
+  --accent-ink:#ffffff;
+  --accent-glow:#48b6e8;
+  --bg:#a4d6f1;
+
+  --glass:rgba(255,255,255,.52);          /* 主要な面（下端） */
+  --glass-hi:rgba(255,255,255,.78);       /* 主要な面（上端）＝艶 */
+  --glass-2:rgba(9,66,102,.07);           /* 面の中の面（入れ子） */
+  --glass-bar:rgba(255,255,255,.66);      /* 固定バー */
+  --glass-line:rgba(10,66,102,.2);        /* 面の輪郭 */
+  --glass-edge:rgba(255,255,255,.95);     /* 上端のハイライト */
+  --glass-well:rgba(9,66,102,.06);        /* 画像の下地 */
+  --field:rgba(255,255,255,.8);
+  --field-line:rgba(10,66,102,.24);
+  --shadow:0 14px 36px rgba(8,52,82,.2);
+  --shadow-lift:0 22px 48px rgba(8,52,82,.28);
+  --accent-shadow:rgba(10,118,178,.34);
+
+  --ok:#1d7a5f;
+  --warn:#8a6420;
+  --danger:#b23a3a;
+
+  background:var(--bg);
+  color:var(--fg);
+}
+
+/* --- 3. テーマ: 深海棲艦＝深紅の深海（ダークガラス） ---------------------- */
+body[data-active-scope="abyssal"]{
+  color-scheme:dark;
+  --fg:#f5e8ee;
+  --muted:#a4909e;
+  --accent:#ff8ea0;
+  --accent-ink:#2b0710;
+  --accent-glow:#ff7d95;
+  --bg:#08040c;
+
+  --glass:rgba(255,255,255,.04);
+  --glass-hi:rgba(255,255,255,.1);
+  --glass-2:rgba(255,255,255,.05);
+  --glass-bar:rgba(16,7,20,.62);
+  --glass-line:rgba(255,255,255,.13);
+  --glass-edge:rgba(255,255,255,.16);
+  --glass-well:rgba(255,255,255,.03);
+  --field:rgba(255,255,255,.06);
+  --field-line:rgba(255,255,255,.16);
+  --shadow:0 16px 40px rgba(0,0,0,.5);
+  --shadow-lift:0 22px 52px rgba(0,0,0,.62);
+  --accent-shadow:rgba(255,142,160,.26);
+
+  --ok:#67e8c2;
+  --warn:#f0cd8a;
+  --danger:#ff9cad;
+}
+
+/* --- 4. 互換トークン ------------------------------------------------------
+   Drop Lab / Tactics Lab のCSSはこの名前を参照する。ここを面トークンへ
+   結び直すだけで、両画面はフラグメントに触れずガラス化される。            */
+body{
+  --background:var(--bg);
+  --foreground:var(--fg);
+  --card:var(--glass);
+  --card-foreground:var(--fg);
+  --popover:var(--glass-bar);
+  --primary:var(--accent);
+  --primary-foreground:var(--accent-ink);
+  --secondary:var(--glass-2);
+  --secondary-foreground:var(--fg);
+  --border:var(--glass-line);
+  --line:var(--glass-line);
+  --input:var(--field);
+  --ring:var(--accent);
+  --muted-foreground:var(--muted);
+  --destructive:var(--danger);
+  --new:var(--ok);
+  --changed:var(--warn);
+  --kdl-rare:var(--accent);
+  --viz-series-2:var(--accent-glow);
+}
+
+/* --- 5. 下地 -------------------------------------------------------------- */
+*{box-sizing:border-box}
+/* html はトークン（body定義）を参照できないため、行き過ぎスクロール用に実値を置く */
+html{background:#a4d6f1}
+html:has(body[data-active-scope="abyssal"]){background:#08040c}
+body{
+  margin:0;min-height:100vh;
+  font-family:"Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;
+  line-height:1.55;
+  transition:background-color .45s var(--ease),color .45s var(--ease);
+}
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;transition:opacity .5s var(--ease)}
+body::before{background:var(--amb-kanmusu);opacity:1}
+body::after{background:var(--amb-abyssal);opacity:0}
+body[data-active-scope="abyssal"]::before{opacity:0}
+body[data-active-scope="abyssal"]::after{opacity:1}
+button,input,select,textarea{font:inherit;font-size:16px}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* --- 6. ガラス面（唯一の面の定義） ---------------------------------------- */
+.glass,
+.archive-toolbar,.table-wrap,.asset-card,.asset-gallery-empty,.asset-library-tools,
+.acquire-panel,.acquire-metric,.acquire-plan,.archive-onboarding-card,
+.modal-card,.toast,.display-switch,.group-member,.asset-options[open],
+.local-app .asset-result-bar{
+  background:linear-gradient(180deg,var(--glass-hi),var(--glass));
+  border:1px solid var(--glass-line);
+  border-radius:var(--r);
+  box-shadow:var(--shadow),inset 0 1px 0 var(--glass-edge);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(150%);
+  backdrop-filter:blur(var(--blur)) saturate(150%);
+}
+/* 入れ子の面は影を持たない（重ねると濁るため） */
+.acquire-metric,.display-switch,.group-member,.asset-options[open]{
+  box-shadow:inset 0 1px 0 var(--glass-edge);
+}
+
+/* --- 7. 艦橋バー（ブランド＋機能メニューを1本に統合） --------------------- */
+.topbar{
+  position:sticky;top:0;z-index:12;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:9px var(--gutter);
+  background:linear-gradient(180deg,var(--glass-hi),var(--glass-bar));
+  border-bottom:1px solid var(--glass-line);
+  box-shadow:0 8px 30px var(--accent-shadow),inset 0 1px 0 var(--glass-edge);
+  -webkit-backdrop-filter:blur(var(--blur-bar)) saturate(170%);
+  backdrop-filter:blur(var(--blur-bar)) saturate(170%);
+  transition:background-color .45s var(--ease),border-color .45s var(--ease);
+}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.crest{flex:0 0 auto;width:32px;height:32px;filter:drop-shadow(0 0 12px var(--accent-shadow))}
+.crest svg{display:block;width:100%;height:100%}
+.brand h1{
+  margin:0;font-size:16px;font-weight:650;letter-spacing:.2em;text-transform:uppercase;
+  white-space:nowrap;color:var(--fg);
+}
+
+/* 機能メニュー: ガラスのセグメント */
+.site-nav{
+  display:flex;gap:3px;margin-left:auto;padding:3px;
+  border:1px solid var(--glass-line);border-radius:var(--r-pill);
+  background:var(--glass-2);
+}
+.site-tab{
+  min-height:34px;padding:0 15px;border:0;border-radius:var(--r-pill);
+  background:transparent;color:var(--muted);font-size:14px;white-space:nowrap;cursor:pointer;
+  transition:color var(--dur) var(--ease),background-color var(--dur) var(--ease);
+}
+.site-tab:hover{color:var(--fg)}
+.site-tab[aria-selected="true"]{
+  background:var(--accent);color:var(--accent-ink);font-weight:650;
+  box-shadow:0 4px 14px var(--accent-shadow);
+}
+/* 保存済み枚数: バー右端の控えめなチップ */
+.summary{
+  display:inline-flex;align-items:baseline;gap:4px;padding:4px 11px;
+  border:1px solid var(--glass-line);border-radius:var(--r-pill);
+  background:var(--glass-2);color:var(--muted);font-size:11px;white-space:nowrap;
+}
+.summary b{color:var(--fg);font-size:13px;font-weight:650;font-variant-numeric:tabular-nums}
+
+/* --- 8. ビュー -------------------------------------------------------------*/
+.support-view{position:relative;max-width:var(--shell);margin:auto;padding:18px var(--gutter) 36px}
+.support-view.drop-lab-view{max-width:var(--shell-narrow)}
+.view-intro{margin:0 0 12px;color:var(--muted);font-size:13px}
+.site-footer{max-width:var(--shell);margin:0 auto;padding:0 var(--gutter) 30px;color:var(--muted);font-size:10px;line-height:1.7;text-align:center;opacity:.75}
+
+/* --- 9. Fleet Archive 操作バー（区分切替＋検索を1枚のガラスに） ------------ */
+.archive-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px;margin-bottom:14px}
+.fleet-tabs{display:flex;gap:3px;padding:3px;border:1px solid var(--glass-line);border-radius:var(--r-pill);background:var(--glass-2)}
+.fleet-tab{
+  min-height:var(--tap);padding:0 17px;border:0;border-radius:var(--r-pill);
+  background:transparent;color:var(--muted);font-weight:600;cursor:pointer;white-space:nowrap;
+  transition:color var(--dur) var(--ease),background-color var(--dur) var(--ease);
+}
+.fleet-tab:hover{color:var(--fg)}
+.fleet-tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);box-shadow:0 4px 14px var(--accent-shadow)}
+.fleet-tab small{margin-left:6px;font-weight:400;font-size:11px;opacity:.8;font-variant-numeric:tabular-nums}
+
+.search-panel{display:flex;align-items:center;gap:8px;flex:1 1 320px;min-width:0}
+.search-field{position:relative;flex:1 1 200px;min-width:0}
+.search-field::before{content:"⌕";position:absolute;left:12px;top:50%;translate:0 -50%;color:var(--accent);font-size:19px;pointer-events:none}
+.search-field input{width:100%}
+input[type="search"],select,.acquire-field select,.page-jump select{
+  min-height:var(--tap);padding:8px 12px;
+  border:1px solid var(--field-line);border-radius:var(--r-sm);
+  background:var(--field);color:var(--fg);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.search-field input{padding-left:36px}
+select{padding-right:30px}
+input::placeholder{color:var(--muted);opacity:.85}
+input:focus,select:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-shadow)}
+.count{margin-left:auto;color:var(--muted);font-size:12px;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* --- 10. ボタン ----------------------------------------------------------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:var(--tap);padding:6px 14px;
+  border:1px solid var(--glass-line);border-radius:var(--r-sm);
+  background:var(--glass-2);color:var(--fg);
+  cursor:pointer;text-decoration:none;white-space:nowrap;
+  transition:background-color var(--dur) var(--ease),border-color var(--dur) var(--ease),transform var(--dur) var(--ease);
+}
+.btn:hover:not(:disabled){border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn:disabled{opacity:.42;cursor:default}
+.btn.primary,.btn.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:650;box-shadow:0 6px 18px var(--accent-shadow)}
+.btn.primary:hover:not(:disabled),.btn.btn-primary:hover:not(:disabled){background:color-mix(in srgb,var(--accent) 86%,var(--fg));border-color:transparent}
+.btn.btn-ghost{background:transparent}
+.clear{min-height:var(--tap)}
+
+/* --- 11. 副次操作（「その他」） -------------------------------------------- */
+.asset-options{margin:0 2px 12px;color:var(--muted);font-size:12px}
+.asset-options>summary{width:max-content;margin-left:auto;padding:4px 2px;cursor:pointer;list-style-position:inside}
+.asset-options>summary:hover{color:var(--fg)}
+.asset-options[open]{padding:4px}
+.asset-options-body{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;padding:10px}
+.option-toggle{display:inline-flex;align-items:center;gap:7px;min-height:var(--tap);color:var(--muted);font-size:13px;cursor:pointer;user-select:none}
+.option-toggle input{width:16px;height:16px;margin:0;accent-color:var(--accent);cursor:pointer}
+.connection{margin:0;flex:1 1 100%;color:var(--muted);font-size:12px;line-height:1.7}
+.asset-result-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.asset-library-tools{display:flex;align-items:center;gap:7px;flex-wrap:wrap;flex:1 1 100%;margin-top:6px;padding:10px}
+.asset-library-tools p{flex:1 1 100%;margin:0;color:var(--muted);font-size:12px;line-height:1.7}
+.asset-library-status{margin-right:auto;color:var(--muted);font-size:12px;white-space:nowrap}
+.asset-scan-progress{width:100%;height:4px;accent-color:var(--accent)}
+.display-switch{display:flex;gap:3px;padding:3px;border-radius:var(--r-pill)}
+.display-switch button{min-height:32px;padding:0 13px;border:0;border-radius:var(--r-pill);background:transparent;color:var(--muted);cursor:pointer;font-size:13px}
+.display-switch button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+
+/* --- 12. ギャラリー -------------------------------------------------------- */
+.asset-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:12px}
+.asset-card{min-width:0;overflow:hidden;transition:transform var(--dur) var(--ease),border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.asset-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow-lift),inset 0 1px 0 var(--glass-edge)}
+.asset-card[data-change="added"]{border-color:var(--ok)}
+.asset-card[data-change="changed"]{border-color:var(--warn)}
+.asset-card-visual{
+  position:relative;width:100%;aspect-ratio:4/5;border:0;border-bottom:1px solid var(--glass-line);
+  display:grid;place-items:center;overflow:hidden;color:var(--muted);
+  background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--accent-glow) 16%,transparent) 0,transparent 62%),var(--glass-well);
+}
+.asset-card-visual.preview{padding:0;cursor:pointer}
+.asset-card-visual img{display:block;width:100%;height:100%;object-fit:contain;transition:scale var(--dur) var(--ease)}
+.asset-card:hover .asset-card-visual img{scale:1.03}
+.asset-placeholder{display:grid;place-items:center;gap:7px;padding:16px;text-align:center;color:var(--muted);font-size:11px}
+.asset-placeholder::before{content:"艦";display:grid;place-items:center;width:50px;height:50px;border:1px solid var(--glass-line);border-radius:50%;font-size:21px;opacity:.6}
+.asset-card-body{display:grid;gap:6px;padding:9px 10px}
+.asset-card-title{display:flex;align-items:baseline;gap:7px;min-width:0}
+.asset-card-title b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:650}
+.asset-card-id{color:var(--accent);font:10px Consolas,monospace}
+.asset-card-meta{display:flex;align-items:center;justify-content:space-between;gap:7px;color:var(--muted);font-size:10px}
+.asset-card-actions{display:flex;gap:5px}
+.asset-card-actions .btn{flex:1;min-height:34px;padding:2px 6px;font-size:11px}
+.asset-card-actions.group-actions{display:none}
+.asset-gallery-empty{grid-column:1/-1;display:grid;place-items:center;min-height:240px;padding:32px;color:var(--muted);text-align:center;font-size:14px;line-height:1.9}
+.archive-empty-recovery{display:grid;justify-items:center;gap:14px}
+.archive-empty-recovery p{margin:0}
+.asset-state{display:inline-block;padding:3px 9px;border:1px solid var(--glass-line);border-radius:var(--r-pill);color:var(--muted);font-size:10px;white-space:nowrap}
+.asset-state.ready{border-color:var(--accent);color:var(--accent)}
+.type{color:var(--muted);font:11px Consolas,monospace}
+
+/* --- 13. 未接続の入口 ------------------------------------------------------ */
+.archive-onboarding{display:grid;place-items:center;min-height:min(440px,calc(100vh - 190px));padding:26px}
+.archive-onboarding-card{width:min(520px,100%);display:grid;justify-items:center;gap:14px;padding:34px 28px;text-align:center}
+.archive-onboarding-mark{
+  width:70px;height:70px;border:1px solid var(--glass-line);border-radius:50%;
+  background:repeating-radial-gradient(circle,transparent 0 11px,color-mix(in srgb,var(--accent) 24%,transparent) 12px 13px);
+  box-shadow:0 0 26px var(--accent-shadow);
+}
+.archive-onboarding-card h3{margin:0;font-size:21px}
+.archive-onboarding-card p{max-width:390px;margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.archive-onboarding-card .btn.primary{min-width:min(260px,100%);min-height:48px}
+
+/* --- 14. 一覧表 ------------------------------------------------------------ */
+.table-wrap{overflow:auto}
+#assetView table,.acquire-plan table{width:100%;border-collapse:collapse}
+#assetView table{min-width:760px}
+#assetView th,#assetView td,.acquire-plan th,.acquire-plan td{padding:10px 12px;border-bottom:1px solid var(--glass-line);text-align:left;font-size:13px;vertical-align:middle}
+#assetView th,.acquire-plan th{background:var(--glass-2);color:var(--muted);white-space:nowrap;font-size:12px;font-weight:650}
+#assetView th button{border:0;background:none;color:inherit;padding:0;cursor:pointer;font-weight:inherit}
+#assetView th button:hover{color:var(--accent)}
+#assetView tbody tr:hover{background:var(--glass-2)}
+#assetView tbody tr[data-change="added"]{box-shadow:inset 3px 0 var(--ok)}
+#assetView tbody tr[data-change="changed"]{box-shadow:inset 3px 0 var(--warn)}
+#assetView td.id{width:90px;font-family:Consolas,monospace;color:var(--accent)}
+#assetView td.name{min-width:290px}
+#assetView td.name strong{font-size:14px;font-weight:650}
+#assetView td.name small{display:block;margin-top:2px;color:var(--muted);font:10px Consolas,monospace;word-break:break-all}
+.update{display:inline-block;margin-left:7px;padding:1px 6px;border:1px solid currentColor;border-radius:var(--r-pill);font-size:9px;vertical-align:2px}
+.update.added{color:var(--ok)}
+.update.changed{color:var(--warn)}
+.actions{white-space:nowrap}
+.actions .btn{margin-right:4px;min-height:32px;font-size:11px}
+
+/* --- 15. ページ送り -------------------------------------------------------- */
+.pagination{display:flex;justify-content:center;align-items:center;gap:9px;margin-top:16px;color:var(--muted);font-size:12px}
+.page-jump{display:flex;align-items:center;gap:6px}
+.page-jump select{width:min(410px,58vw)}
+.page-total{white-space:nowrap}
+.empty{padding:42px;color:var(--muted);text-align:center}
+
+/* --- 16. モーダル ---------------------------------------------------------- */
+.modal{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.modal-card{width:min(960px,96vw);max-height:92vh;overflow:auto;box-shadow:var(--shadow-lift),inset 0 1px 0 var(--glass-edge)}
+.modal-head{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--glass-bar);border-bottom:1px solid var(--glass-line);-webkit-backdrop-filter:blur(var(--blur-bar));backdrop-filter:blur(var(--blur-bar))}
+.modal-head strong{flex:1;font-weight:650}
+.modal-body{padding:14px;text-align:center}
+.modal-body img{max-width:100%;max-height:74vh;object-fit:contain}
+.modal-url{display:block;margin-top:8px;text-align:left;word-break:break-all;color:var(--muted);font-size:10px}
+.preview-modal-card{width:min(1080px,98vw)}
+.preview-counter{min-width:54px;color:var(--muted);text-align:center;font-size:11px;font-variant-numeric:tabular-nums}
+.preview-body{display:grid;place-items:center;min-height:min(72vh,760px)}
+.preview-body img{max-height:72vh}
+.preview-details{margin:0 14px 14px;border-top:1px solid var(--glass-line);color:var(--muted);font-size:11px}
+.preview-details summary{width:max-content;padding:8px 0;cursor:pointer}
+.preview-detail-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding-bottom:10px}
+.preview-detail-actions .modal-url{flex:1 1 100%;margin:0}
+#previewModal{z-index:26}
+
+/* 艦の画像一覧 */
+.group-modal-card{width:min(1180px,98vw)}
+.group-modal-body{padding:14px}
+.group-summary{margin:0 0 12px;color:var(--muted);font-size:13px}
+.group-section{margin-top:18px}
+.group-section:first-child{margin-top:0}
+.group-section h3{display:flex;align-items:center;gap:8px;margin:0 0 9px;font-size:16px}
+.group-section h3 small{color:var(--muted);font-size:12px;font-weight:400}
+.group-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:12px}
+.group-member{min-width:0;overflow:hidden}
+.group-member.is-match{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-shadow)}
+.group-pair-visuals{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--glass-line)}
+.group-pair-visuals.single{grid-template-columns:minmax(0,240px);justify-content:center}
+.group-pair-visuals.single .group-member-visual{aspect-ratio:327/450}
+.group-pair-panel{min-width:0;background:var(--glass)}
+.group-pair-label{display:block;padding:5px 9px;border-bottom:1px solid var(--glass-line);color:var(--muted);font-size:12px;font-weight:650}
+.group-member-visual{width:100%;aspect-ratio:4/5;border:0;display:grid;place-items:center;overflow:hidden;color:var(--muted);background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--accent-glow) 16%,transparent) 0,transparent 62%),var(--glass-well)}
+.group-member-visual.member-preview{padding:0;cursor:pointer}
+.group-member-visual img{width:100%;height:100%;object-fit:contain}
+.group-member-body{display:grid;gap:7px;padding:9px}
+.group-member-title{display:flex;align-items:baseline;gap:6px;min-width:0}
+.group-member-title b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.group-member-meta{display:flex;justify-content:space-between;gap:6px;color:var(--muted);font-size:10px}
+.group-member-actions{display:grid;gap:5px}
+.group-badge,.variant-badge{display:inline-flex;align-items:center;min-height:22px;padding:2px 8px;border:1px solid var(--glass-line);border-radius:var(--r-pill);background:var(--glass-2);color:var(--muted);font-size:10px;white-space:nowrap}
+.group-badge,.variant-badge.current{border-color:var(--accent);color:var(--accent)}
+.variant-badge.card{border-color:var(--warn);color:var(--warn)}
+.variant-badge.history{border-color:var(--accent-glow);color:var(--accent-glow)}
+.variant-badge.broken{border-color:var(--danger);color:var(--danger)}
+.variant-badges{display:flex;align-items:center;gap:5px;min-height:23px;flex-wrap:wrap}
+.matched-image-id{margin-left:auto;color:var(--muted);font:10px Consolas,monospace}
+
+/* --- 17. 通知 -------------------------------------------------------------- */
+.toast{position:fixed;right:16px;bottom:16px;z-index:30;padding:10px 14px;border-left:3px solid var(--accent);font-size:12px}
+
+/* --- 18. 画像取得管理 ------------------------------------------------------ */
+.acquire-layout{display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+.acquire-layout>*{min-width:0}
+.acquire-panel{padding:16px}
+.acquire-controls{display:grid;grid-template-columns:1fr 1fr 150px auto;gap:10px;align-items:end}
+.acquire-controls>*{min-width:0}
+.acquire-field{display:grid;gap:5px}
+.acquire-field span{color:var(--muted);font-size:13px}
+.acquire-field select{width:100%}
+.acquire-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.acquire-metric{display:grid;gap:2px;padding:13px;color:var(--muted);font-size:12px}
+.acquire-metric b{color:var(--fg);font-size:24px;font-weight:650;font-variant-numeric:tabular-nums}
+.acquire-job{display:grid;gap:9px}
+.acquire-job[aria-busy="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent-shadow),var(--shadow)}
+.acquire-job progress{width:100%;height:12px}
+progress,.asset-scan-progress{appearance:none;-webkit-appearance:none;border:0;border-radius:var(--r-pill);background:var(--glass-2);overflow:hidden}
+progress::-webkit-progress-bar{background:var(--glass-2)}
+progress::-webkit-progress-value{background:var(--accent);border-radius:var(--r-pill)}
+progress::-moz-progress-bar{background:var(--accent);border-radius:var(--r-pill)}
 .acquire-status-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.acquire-status-actions{display:flex;align-items:center;gap:9px}
 .acquire-status-title{display:flex;align-items:center;gap:9px}
-.acquire-progress-text{color:#b8c8dc;font-variant-numeric:tabular-nums;font-size:13px;white-space:nowrap}
-.status-badge{display:inline-flex;align-items:center;min-height:26px;padding:3px 9px;border:1px solid #3b4b66;border-radius:999px;background:#111c30;color:#b8c8dc;font-size:12px;font-weight:600}
-.status-badge[data-state="running"]{border-color:#43bde9;color:#bcecff;background:#123047}
-.status-badge[data-state="pause"]{border-color:#caa45f;color:#ffe0a5;background:#382c18}
-.status-badge[data-state="complete"]{border-color:#4bc7a5;color:#bff8e8;background:#12362e}
-.status-badge[data-state="stopped"]{border-color:#e6a45f;color:#ffe0ad;background:#3b2b19}
-.status-badge[data-state="failed"]{border-color:#e27d86;color:#ffd0d4;background:#3b1d25}
-.acquire-job[aria-busy="true"]{border-color:#3c7ca0;box-shadow:0 0 0 1px #55c9f21f,0 10px 28px #0003}
-.acquire-job progress{height:14px}.acquire-message{font-size:14px;color:#d4e3f4}
-.local-app .asset-library-tools{display:none}.local-app .asset-result-bar{padding:10px 12px;border:1px solid #263651;border-radius:7px;background:#0b1323}
-.local-app .asset-result-bar .connection{color:#a7b6cb}
+.acquire-status-actions{display:flex;align-items:center;gap:9px}
+.acquire-progress-text{color:var(--muted);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.acquire-message{min-height:1.4em;color:var(--fg);font-size:14px}
+.acquire-note{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.acquire-plan{overflow:auto}
+.acquire-plan table{min-width:620px}
+.status-badge{display:inline-flex;align-items:center;min-height:26px;padding:3px 10px;border:1px solid var(--glass-line);border-radius:var(--r-pill);background:var(--glass-2);color:var(--muted);font-size:12px;font-weight:650}
+.status-badge[data-state="running"]{border-color:var(--accent);color:var(--accent)}
+.status-badge[data-state="pause"],.status-badge[data-state="stopped"]{border-color:var(--warn);color:var(--warn)}
+.status-badge[data-state="complete"]{border-color:var(--ok);color:var(--ok)}
+.status-badge[data-state="failed"]{border-color:var(--danger);color:var(--danger)}
+.local-app .asset-library-tools{display:none}
+.local-app .asset-result-bar{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:12px}
+
+/* --- 19. Drop Lab / Tactics Lab のガラス化 --------------------------------
+   フラグメントのCSSは後から読み込まれるため body 前置で特異度を上げる。
+   色はすでに互換トークン経由なので、ここでは面の質感だけ与える。        */
+body #kcnav-drop-lab .card,
+body #verification-quiz .quiz-card,
+body #verification-quiz .quiz-tools{
+  background:linear-gradient(180deg,var(--glass-hi),var(--glass));
+}
+body #kcnav-drop-lab .card,
+body #kcnav-drop-lab .drop-stage,
+body #kcnav-drop-lab .mode-switch,
+body #verification-quiz .quiz-card,
+body #verification-quiz .quiz-tools,
+body #verification-quiz .quiz-sample-notice{
+  border-radius:var(--r);
+  box-shadow:var(--shadow),inset 0 1px 0 var(--glass-edge);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(150%);
+  backdrop-filter:blur(var(--blur)) saturate(150%);
+}
+body #kcnav-drop-lab .metric,
+body #kcnav-drop-lab .quick-status,
+body #kcnav-drop-lab .luck-summary,
+body #kcnav-drop-lab .drop-card,
+body #verification-quiz .quiz-choice,
+body #verification-quiz .quiz-progress-item,
+body #verification-quiz .quiz-result,
+body #verification-quiz select{
+  border-radius:var(--r-sm);
+}
+body #kcnav-drop-lab .mode-switch{padding:4px;border-radius:var(--r-pill)}
+body #kcnav-drop-lab .mode-switch .btn{border-radius:var(--r-pill);background:transparent;color:var(--muted)}
+body #kcnav-drop-lab .mode-switch .btn:hover:not([aria-selected="true"]){color:var(--fg);background:var(--glass-2)}
+body #kcnav-drop-lab .mode-switch .btn[aria-selected="true"]{background:var(--accent);border-color:transparent;color:var(--accent-ink);box-shadow:0 4px 14px var(--accent-shadow)}
+body #kcnav-drop-lab .hero-statement{border-radius:var(--r-sm);border-left:3px solid var(--accent);background:var(--glass-2)}
+body #kcnav-drop-lab .drop-card{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+body #verification-quiz .quiz-choice:hover:not(:disabled){box-shadow:inset 3px 0 var(--accent)}
+
+/* --- 20. 画面幅 ------------------------------------------------------------ */
+@media(max-width:900px){
+  .acquire-controls{grid-template-columns:1fr 1fr}
+  .acquire-controls .btn{grid-column:1/-1}
+  .acquire-metrics{grid-template-columns:1fr 1fr}
+  .group-grid{grid-template-columns:1fr}
+}
 @media(max-width:720px){
-  .support-view{padding-inline:12px}.topbar{gap:10px}
-  .site-nav{justify-content:stretch}.site-tab{min-width:0;flex:1;padding-inline:7px;font-size:14px}
-  .search-panel{display:grid;grid-template-columns:1fr 1fr}.search-field{grid-column:1/-1;min-width:0}.search-panel select{min-width:0;width:100%}
-  .clear{width:100%}.count{order:initial;grid-column:1/-1}.search-panel #exportCsv{justify-self:start}
-  .asset-result-actions{align-items:center}.asset-library-tools p{font-size:12px}
-  .acquire-controls{grid-template-columns:1fr 1fr}.acquire-controls .btn{grid-column:1/-1;width:100%}
-  .acquire-message{font-size:13px}
+  .topbar{gap:9px;padding-block:8px}
+  .site-nav{order:3;flex:1 1 100%;margin-left:0;justify-content:stretch}
+  .site-tab{flex:1;padding-inline:6px;font-size:13px}
+  .summary{margin-left:auto}
+  .archive-toolbar{gap:8px}
+  .fleet-tabs{flex:1 1 100%}
+  .fleet-tab{flex:1;padding-inline:10px}
+  .search-panel{flex:1 1 100%;flex-wrap:wrap}
+  .search-field{flex:1 1 100%}
+  .search-panel select,.clear{flex:1}
+  .count{flex:1 1 100%;margin:0;text-align:right}
+  .asset-gallery{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px}
+  .asset-options-body{justify-content:stretch}
+  .asset-result-actions{width:100%;justify-content:space-between}
+  .asset-library-tools .btn{width:100%}
+  .group-modal-body{padding:9px}
+  .group-pair-visuals.single{grid-template-columns:minmax(0,180px)}
+  .preview-modal-card .modal-head strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .preview-counter{display:none}
 }
 @media(max-width:480px){
-  .topbar{align-items:center}.brand{min-width:0}.brand h1{font-size:19px;letter-spacing:.04em;white-space:nowrap}.summary{flex:0 0 auto}
-  .site-nav{gap:2px;padding-inline:6px}.site-tab{padding-inline:4px;font-size:13px;letter-spacing:0}
-  .support-view{padding:14px 7px 28px}.view-intro{font-size:13px}
-  .fleet-tab{flex:1;padding-inline:8px}
-  .acquire-controls{grid-template-columns:minmax(0,1fr)}.acquire-controls .btn{grid-column:auto}
-  .acquire-metrics{grid-template-columns:1fr 1fr}.acquire-metric{padding:10px}.acquire-metric b{font-size:21px}
-  .acquire-panel{padding:12px}.acquire-status-head{align-items:flex-start}.acquire-status-title{align-items:flex-start;flex-direction:column;gap:5px}
-  .asset-result-actions{align-items:stretch;flex-wrap:wrap}.asset-result-actions .asset-library-status{width:100%}.asset-result-actions .display-switch{flex:1}.asset-result-actions .display-switch button{flex:1;padding-inline:6px;white-space:nowrap}
-  .group-grid{grid-template-columns:1fr;gap:8px}.group-modal-body{padding:10px}
+  .brand h1{font-size:14px;letter-spacing:.14em}
+  .crest{width:28px;height:28px}
+  .support-view{padding-top:14px}
+  .fleet-tab small{display:none}
+  .acquire-controls{grid-template-columns:minmax(0,1fr)}
+  .acquire-controls .btn{grid-column:auto}
+  .acquire-panel{padding:13px}
+  .acquire-status-head{align-items:flex-start}
+  .acquire-status-title{align-items:flex-start;flex-direction:column;gap:5px}
+  .archive-onboarding{min-height:400px;padding:18px 20px}
+  .archive-onboarding-card{padding:26px 20px}
+  .display-switch{flex:1}
+  .display-switch button{flex:1;padding-inline:6px}
 }
-/* Minimal index: keep the gallery primary and move secondary controls out of the way. */
-.topbar{padding:10px clamp(14px,3vw,28px)}.crest{width:34px;height:34px}.crest::before{width:46px}.brand h1{font-size:21px;letter-spacing:.06em}.brand p,.summary{display:none}
-.site-nav{padding-block:5px}.site-tab{min-height:36px;min-width:120px;padding-block:6px;font-size:14px}
-#assetView{padding-top:10px}#assetView>.view-intro{display:none}
-.fleet-tabs{margin:0 0 7px}.fleet-tab{min-height:36px;padding:6px 16px}.fleet-tab small{display:none}
-.search-panel{padding:7px;gap:7px;box-shadow:none}.search-field input,.search-panel select{min-height:40px;height:40px}.clear{height:40px;min-height:40px}.count{font-size:11px}
-.asset-options{margin:6px 2px 10px;color:#8394ad;font-size:12px}.asset-options>summary{width:max-content;margin-left:auto;padding:5px 2px;cursor:pointer;color:#8394ad;list-style-position:inside}.asset-options>summary:hover{color:#c8d8ea}.asset-options-body{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap;padding:9px;border-top:1px solid #202f48}.asset-options-body>select{min-height:36px;padding:5px 28px 5px 9px;border:1px solid #2a3a57;border-radius:5px;background:#080f1d;color:#dce9f9}.asset-options .connection{flex:1 1 100%;margin:3px 0 0;font-size:11px}.asset-options .asset-library-tools{flex:1 1 100%;margin:5px 0 0}.asset-options .asset-library-status{margin-right:auto}
-.asset-card-body{gap:5px;padding:8px 9px}.asset-card-actions.group-actions{display:none}
-@media(max-width:720px){.topbar{padding-block:9px}.brand h1{font-size:19px}.site-nav{padding-inline:6px}.site-tab{min-width:0}.support-view{padding-top:8px}.search-panel{grid-template-columns:1fr auto}.search-panel .search-field{grid-column:1/-1}.search-panel #assetType{width:auto;min-width:130px}.search-panel .count{grid-column:1/-1}.asset-options-body{justify-content:stretch}.asset-options-body>select{flex:1}.asset-options .asset-result-actions{width:100%}}
-@media(max-width:480px){.brand h1{font-size:18px}.site-tab{font-size:12px}.fleet-tab{padding-inline:10px}.asset-options .display-switch{flex:1}.asset-options .display-switch button{flex:1;padding-inline:5px;white-space:nowrap}}
-::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:#070c17}::-webkit-scrollbar-thumb{background:#273a57;border:2px solid #070c17;border-radius:8px}
 
-/* 艦船区分の世界観 v2: 艦娘=淡青の星海 / 深海棲艦=深紅の深海 */
-body{--scope-accent:#75d7ff;--scope-accent-strong:#5fc6ee;--scope-glow:#60d4ff;--scope-text:#eaf7ff}
-body[data-active-scope="abyssal"]{--scope-accent:#ff8ea0;--scope-accent-strong:#f0718a;--scope-glow:#ff7d95;--scope-text:#ffedf0}
-.topbar{border-bottom:1px solid color-mix(in srgb,var(--scope-accent) 34%,#20334a);transition:border-color .35s}
-.crest{border-color:color-mix(in srgb,var(--scope-accent) 75%,#4a6a86);color:color-mix(in srgb,var(--scope-accent) 60%,#dff7ff);box-shadow:0 0 18px color-mix(in srgb,var(--scope-glow) 26%,transparent);transition:border-color .35s,box-shadow .35s,color .35s}
-.crest::before{border-color:color-mix(in srgb,var(--scope-accent) 36%,transparent)}
-/* 区分スイッチ: ピル型の世界切替 */
-#assetView .fleet-tabs{gap:9px;margin:2px 0 13px;border-bottom:0;flex-wrap:wrap}
-#assetView .fleet-tab{min-height:38px;padding:7px 20px;border:1px solid #263551;border-radius:999px;background:#0b132399;color:#7d8ca8;letter-spacing:.03em;transition:color .2s,border-color .2s,background .2s,box-shadow .2s}
-#assetView .fleet-tab:hover{color:#dceaff;border-color:#3b4f74}
-#assetView .fleet-tab[data-scope="kanmusu"]:hover{color:#c9ecff;border-color:#3d7fa1}
-#assetView .fleet-tab[data-scope="abyssal"]:hover{color:#ffb3c0;border-color:#7e3d50}
-#assetView .fleet-tab[data-scope="kanmusu"][aria-selected="true"]{border-color:#5fc6ee;background:linear-gradient(135deg,#0e2338,#123047);color:#eaf9ff;box-shadow:0 0 22px #60d4ff30,inset 0 0 16px #60d4ff12}
-#assetView .fleet-tab[data-scope="abyssal"][aria-selected="true"]{border-color:#f0718a;background:linear-gradient(135deg,#2b0f1c,#3a1424);color:#ffedf0;box-shadow:0 0 22px #ff7d9530,inset 0 0 16px #ff7d9512}
-#assetView .fleet-tab small{display:inline;margin-left:6px;font-size:11px;font-weight:400;color:#6c7d99;font-variant-numeric:tabular-nums}
-#assetView .fleet-tab[aria-selected="true"] small{color:color-mix(in srgb,var(--scope-accent) 62%,#93a5c0)}
-/* 検索・操作系 */
-#assetView .search-field::before{color:var(--scope-accent)}
-#assetView .search-field input:focus,#assetView .search-panel select:focus{outline-color:color-mix(in srgb,var(--scope-accent) 22%,transparent);border-color:var(--scope-accent-strong)}
-#assetView .btn.primary,#assetView .btn.btn-primary{background:color-mix(in srgb,var(--scope-accent) 15%,#0b1526);border-color:color-mix(in srgb,var(--scope-accent-strong) 62%,#31415d);color:var(--scope-text)}
-#assetView .btn.primary:hover,#assetView .btn.btn-primary:hover{background:color-mix(in srgb,var(--scope-accent) 24%,#0b1526)}
-#assetView td.id,#assetView .asset-card-id{color:var(--scope-accent)}
-#assetView th button:hover{color:var(--scope-accent)}
-#assetView .option-toggle{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 4px;color:#a7b6cb;font-size:13px;cursor:pointer;white-space:nowrap;user-select:none}
-#assetView .option-toggle input{width:16px;height:16px;margin:0;accent-color:var(--scope-accent);cursor:pointer}
-/* カード: スポットライトと光沢 */
-#assetView .asset-card{border-radius:10px;transition:transform .18s,border-color .25s,box-shadow .25s,background .35s}
-#assetView .asset-card-visual{background:radial-gradient(circle at 50% 42%,color-mix(in srgb,var(--scope-glow) 17%,#10273c) 0,transparent 56%),radial-gradient(circle at 16% 14%,#ffffff14 0 1px,transparent 2px),radial-gradient(circle at 84% 22%,#ffffff0e 0 1px,transparent 2px),radial-gradient(circle at 68% 78%,#ffffff0a 0 1px,transparent 2px),linear-gradient(150deg,#07101f,#101a30);transition:background .35s}
-#assetView .asset-card-visual::after{content:"";position:absolute;top:-40%;bottom:-40%;left:-70%;width:46%;background:linear-gradient(105deg,transparent,#ffffff10 42%,color-mix(in srgb,var(--scope-glow) 30%,transparent) 55%,transparent);transform:skewX(-18deg);opacity:0;pointer-events:none}
-#assetView .asset-card:hover .asset-card-visual::after{animation:kz-sheen .75s ease-out}
-@keyframes kz-sheen{0%{opacity:1;transform:skewX(-18deg) translateX(0)}100%{opacity:0;transform:skewX(-18deg) translateX(430%)}}
-#assetView .asset-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--scope-accent) 60%,#263651);box-shadow:0 18px 40px #0006,0 0 26px color-mix(in srgb,var(--scope-glow) 20%,transparent)}
-#assetView .asset-card-title b{font-size:14px;letter-spacing:.02em;text-shadow:0 0 16px color-mix(in srgb,var(--scope-glow) 30%,transparent)}
-#assetView .group-badge{border-color:color-mix(in srgb,var(--scope-accent) 38%,#243450);background:color-mix(in srgb,var(--scope-accent) 9%,#0b1424);color:color-mix(in srgb,var(--scope-accent) 66%,#dfe9ff)}
-#assetView .group-member.is-match{border-color:var(--scope-accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--scope-accent) 35%,transparent)}
-.modal-card{border-color:color-mix(in srgb,var(--scope-accent-strong) 78%,#31415d);box-shadow:0 18px 60px #000b,0 0 40px color-mix(in srgb,var(--scope-glow) 14%,transparent)}
-/* 環境光: 区分ごとにクロスフェード */
-#assetView::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:1;transition:opacity .45s ease;background:radial-gradient(ellipse at 50% -6%,#2a86c226 0,transparent 54%),radial-gradient(ellipse at 90% 32%,#4a9fd414 0,transparent 44%)}
-#assetView::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .45s ease;background:radial-gradient(ellipse at 50% -6%,#a1233f30 0,transparent 54%),radial-gradient(ellipse at 10% 38%,#5e163024 0,transparent 44%),linear-gradient(180deg,transparent 60%,#1204091f)}
-body[data-active-scope="abyssal"] #assetView::before{opacity:0}
-body[data-active-scope="abyssal"] #assetView::after{opacity:1}
-/* 深海側の面 */
-body[data-active-scope="abyssal"] #assetView .asset-card{background:#130d1a;border-color:#392339}
-body[data-active-scope="abyssal"] #assetView .asset-card-visual{background:radial-gradient(circle at 50% 42%,color-mix(in srgb,var(--scope-glow) 15%,#241020) 0,transparent 58%),radial-gradient(circle at 16% 14%,#ffd7de10 0 1px,transparent 2px),radial-gradient(circle at 84% 22%,#ffffff0a 0 1px,transparent 2px),linear-gradient(150deg,#0d0813,#1c0f22);border-bottom-color:#33202e}
-body[data-active-scope="abyssal"] #assetView .search-panel{border-color:#3a2740}
-body[data-active-scope="abyssal"] #assetView .table-wrap{background:#120c18db;border-color:#3a2740}
-body[data-active-scope="abyssal"] #assetView th{background:#241626;color:#c0a3b4;border-bottom-color:#4a2c44}
-body[data-active-scope="abyssal"] #assetView td{border-bottom-color:#2b1a2c}
-body[data-active-scope="abyssal"] #assetView tbody tr:hover{background:#251527}
-body[data-active-scope="abyssal"] .group-member{background:#130d1a;border-color:#392339}
-body[data-active-scope="abyssal"] .group-member-visual{background:
-  radial-gradient(circle at 50% 42%,#2d1322 0,transparent 58%),
-  linear-gradient(150deg,#0d0813,#1c0f22)}
-body[data-active-scope="abyssal"] .group-member-visual.member-preview::before{background:linear-gradient(110deg,#120b18 20%,#22142c 45%,#120b18 70%)}
-body[data-active-scope="abyssal"] .group-member-visual.member-preview img{background:
-  radial-gradient(circle at 50% 42%,#2d1322 0,transparent 58%),
-  linear-gradient(150deg,#0d0813,#1c0f22)}
-body[data-active-scope="abyssal"] .group-pair-visuals{background:#33202e}
-body[data-active-scope="abyssal"] .group-pair-label{background:#1a0f1f;border-bottom-color:#33202e;color:#c9adbc}
-body[data-active-scope="abyssal"] .modal-head{background:linear-gradient(135deg,#2a0f1b,#3d1526);border-bottom-color:#552f47}
-body[data-active-scope="abyssal"] .modal-card{background:#120c18}
-@media (prefers-reduced-motion:reduce){#assetView .asset-card:hover .asset-card-visual::after{animation:none}}
-@media(max-width:560px){#assetView .fleet-tab small{display:none}#assetView .fleet-tab{padding:7px 14px}}
-
-/* 明るい海テーマ: 艦娘は海上の明るい海、深海棲艦は深海のまま */
-body[data-active-scope="kanmusu"]{
-  color-scheme:light;
-  --scope-accent:#1179b0;--scope-accent-strong:#0c6595;--scope-glow:#48b6e8;--scope-text:#08324a;
-  --background:#e7f3fa;--foreground:#0f2f42;--card:#fff;--card-foreground:#0f2f42;
-  --primary:#1179b0;--primary-foreground:#fff;--secondary:#eef7fc;--secondary-foreground:#0f2f42;
-  --accent:#d9ecf7;--border:#c2dcea;--input:#fff;--muted:#4f7085;--line:#c2dcea;
-  --shadow:0 8px 22px #10405815;--new:#1d7a5f;--changed:#8a6420;
-  background:#e7f3fa;color:#0f2f42}
-html:has(body[data-active-scope="kanmusu"]){background:#dcf0fa}
-/* 海面と陽の光 */
-body[data-active-scope="kanmusu"]::before{opacity:1;background-size:auto;background:
-  radial-gradient(ellipse at 86% -10%,#fff5d4 0,transparent 42%),
-  radial-gradient(ellipse at 8% 2%,#ffffff 0,transparent 38%),
-  linear-gradient(180deg,#f5fcff,#ddf1fb 44%,#c5e4f4)}
-body[data-active-scope="kanmusu"]::after{opacity:.55;background:
-  radial-gradient(circle at 12% 22%,#ffffff 0 1.2px,transparent 2px),
-  radial-gradient(circle at 34% 62%,#ffffffcc 0 1px,transparent 1.8px),
-  radial-gradient(circle at 57% 15%,#eafaff 0 1.2px,transparent 2px),
-  radial-gradient(circle at 79% 45%,#ffffffbb 0 1px,transparent 1.8px),
-  radial-gradient(circle at 93% 76%,#ffffff 0 1.2px,transparent 2px);
-  background-size:150px 150px,205px 205px,275px 275px,335px 335px,425px 425px}
-/* 艦橋（トップバー）と機能メニュー */
-body[data-active-scope="kanmusu"] .topbar{background:linear-gradient(135deg,#0d4a70,#1c7cad);border-bottom:2px solid #7fd0f2;box-shadow:0 8px 24px #10405826}
-body[data-active-scope="kanmusu"] .crest{border-color:#a8e2fb;color:#eaf9ff;background:#0e567f;box-shadow:0 0 18px #7fd0f240}
-body[data-active-scope="kanmusu"] .site-nav{background:#ffffffe8;border-bottom:1px solid #c2dcea;box-shadow:0 6px 18px #10405812}
-body[data-active-scope="kanmusu"] .site-tab{color:#42667b}
-body[data-active-scope="kanmusu"] .site-tab:hover{background:#e3f1f9;color:#0f2f42}
-body[data-active-scope="kanmusu"] .site-tab[aria-selected="true"]{background:#0f4c74;border-color:#0f4c74;color:#fff;box-shadow:0 3px 12px #0f4c7433}
-/* 区分スイッチ */
-body[data-active-scope="kanmusu"] #assetView .fleet-tab{background:#ffffffd9;border-color:#bcd8e8;color:#42667b}
-body[data-active-scope="kanmusu"] #assetView .fleet-tab:hover{background:#eef7fc;color:#0f2f42;border-color:#8fbdd6}
-body[data-active-scope="kanmusu"] #assetView .fleet-tab[data-scope="kanmusu"][aria-selected="true"]{background:linear-gradient(135deg,#e9f7ff,#cfe9f8);border-color:#1179b0;color:#08324a;box-shadow:0 3px 14px #1179b02e,inset 0 0 12px #ffffff}
-body[data-active-scope="kanmusu"] #assetView .fleet-tab small{color:#5e7f92}
-body[data-active-scope="kanmusu"] #assetView .fleet-tab[aria-selected="true"] small{color:#0c6595}
-/* 検索と操作 */
-body[data-active-scope="kanmusu"] #assetView .search-panel{background:#fff;border-color:#c2dcea;box-shadow:var(--shadow)}
-body[data-active-scope="kanmusu"] #assetView .search-field input,body[data-active-scope="kanmusu"] #assetView .search-panel select{background:#fff;color:#0f2f42;border-color:#b6d3e4}
-body[data-active-scope="kanmusu"] #assetView .search-field input::placeholder{color:#7b94a5}
-body[data-active-scope="kanmusu"] .btn{background:#f2f9fd;border-color:#b9d5e5;color:#14435c}
-body[data-active-scope="kanmusu"] .btn:hover{background:#e4f2fa;border-color:#8fbdd6}
-body[data-active-scope="kanmusu"] #assetView .btn.primary,body[data-active-scope="kanmusu"] #assetView .btn.btn-primary{background:#1179b0;border-color:#0c6595;color:#fff}
-body[data-active-scope="kanmusu"] #assetView .btn.primary:hover,body[data-active-scope="kanmusu"] #assetView .btn.btn-primary:hover{background:#0e6b9d}
-body[data-active-scope="kanmusu"] #assetView .asset-options,body[data-active-scope="kanmusu"] #assetView .asset-options>summary{color:#42667b}
-body[data-active-scope="kanmusu"] #assetView .option-toggle{color:#42667b}
-body[data-active-scope="kanmusu"] .display-switch{background:#f2f9fd;border-color:#c2dcea}
-body[data-active-scope="kanmusu"] .display-switch button{color:#4f7085}
-body[data-active-scope="kanmusu"] .display-switch button[aria-pressed="true"]{background:#1179b0;border-color:#0c6595;color:#fff}
-/* 艦影カード */
-body[data-active-scope="kanmusu"] #assetView .asset-card{background:#fff;border-color:#c8dfec;box-shadow:0 6px 16px #10405814}
-body[data-active-scope="kanmusu"] #assetView .asset-card-visual{border-bottom-color:#dcecf5;background:
-  radial-gradient(circle at 50% 38%,#ffffff 0,#eaf7ff 42%,transparent 72%),
-  linear-gradient(165deg,#f9fdff,#d9eef9)}
-body[data-active-scope="kanmusu"] #assetView .asset-card:hover{border-color:#1179b0;box-shadow:0 14px 30px #1040581f,0 0 20px #48b6e826}
-body[data-active-scope="kanmusu"] #assetView .asset-card-title b{color:#0e3346;text-shadow:none}
-body[data-active-scope="kanmusu"] #assetView .asset-card-meta{color:#4f7085}
-body[data-active-scope="kanmusu"] #assetView .type{color:#3f6579}
-body[data-active-scope="kanmusu"] .asset-state{background:#f4fafd;border-color:#bcd8e8;color:#4f7085}
-body[data-active-scope="kanmusu"] .asset-gallery-empty{background:#ffffffcc;border-color:#a9cfe3;color:#4f7085}
-/* 一覧表 */
-body[data-active-scope="kanmusu"] #assetView .table-wrap{background:#fff;border-color:#c2dcea;backdrop-filter:none}
-body[data-active-scope="kanmusu"] #assetView th{background:#e2f0f8;color:#14435c;border-bottom-color:#bcd8e8}
-body[data-active-scope="kanmusu"] #assetView td{color:#173a4d;border-bottom-color:#dbe9f1}
-body[data-active-scope="kanmusu"] #assetView tbody tr:hover{background:#f0f8fd}
-body[data-active-scope="kanmusu"] .update.added{color:#1d7a5f}
-body[data-active-scope="kanmusu"] .update.changed{color:#8a6420}
-/* 周辺の文字 */
-body[data-active-scope="kanmusu"] .view-intro,body[data-active-scope="kanmusu"] .count,body[data-active-scope="kanmusu"] .connection,body[data-active-scope="kanmusu"] .pagination{color:#4f7085}
-body[data-active-scope="kanmusu"] .site-footer{color:#5b7c8d}
-body[data-active-scope="kanmusu"] #assetView::before{background:radial-gradient(ellipse at 50% -8%,#ffffff8c 0,transparent 52%),radial-gradient(ellipse at 92% 30%,#fff6dc4d 0,transparent 42%)}
-/* モーダル */
-body[data-active-scope="kanmusu"] .modal{background:#0b304596;backdrop-filter:blur(6px)}
-body[data-active-scope="kanmusu"] .modal-card{background:#fff;border-color:#0f4c74;box-shadow:0 18px 50px #0b30454d,0 0 30px #48b6e81f}
-body[data-active-scope="kanmusu"] .modal-head{background:linear-gradient(135deg,#0d4a70,#1c7cad);border-bottom-color:#0c3d5e}
-body[data-active-scope="kanmusu"] .modal-url,body[data-active-scope="kanmusu"] .group-summary,body[data-active-scope="kanmusu"] .preview-counter{color:#4f7085}
-body[data-active-scope="kanmusu"] .group-section h3{color:#14435c}
-body[data-active-scope="kanmusu"] #assetView .group-badge,body[data-active-scope="kanmusu"] .group-badge{background:#e8f5fc;border-color:#a9d3e8;color:#0c5c86}
-body[data-active-scope="kanmusu"] .group-member{background:#fbfeff;border-color:#c8dfec}
-body[data-active-scope="kanmusu"] .group-pair-visuals{background:#dbe9f1}
-body[data-active-scope="kanmusu"] .group-member-visual{color:#4f7085;background:
-  radial-gradient(circle at 50% 40%,#ffffff 0,#eaf7ff 44%,transparent 74%),
-  linear-gradient(160deg,#f9fdff,#dcf0fa)}
-body[data-active-scope="kanmusu"] .group-member-visual.member-preview::before{background:linear-gradient(110deg,#f4fbff 20%,#e4f3fc 45%,#f4fbff 70%)}
-body[data-active-scope="kanmusu"] .group-member-visual.member-preview img{background:
-  radial-gradient(circle at 50% 40%,#ffffff 0,#eaf7ff 44%,transparent 74%),
-  linear-gradient(160deg,#f9fdff,#dcf0fa)}
-body[data-active-scope="kanmusu"] .group-pair-label{background:#eef7fc;border-bottom-color:#c8dfec;color:#2c536a}
-body[data-active-scope="kanmusu"] .variant-badge{background:#f2f9fd;border-color:#bcd8e8;color:#42667b}
-body[data-active-scope="kanmusu"] .variant-badge.current{background:#e3f2fb;border-color:#3aa0cf;color:#0c5c86}
-body[data-active-scope="kanmusu"] .variant-badge.card{background:#fbf3e0;border-color:#c9a45f;color:#7a5a17}
-body[data-active-scope="kanmusu"] .asset-placeholder{color:#5c7d90}
-body[data-active-scope="kanmusu"] .toast{background:#0f4c74;border-left-color:#7fd0f2;color:#fff}
-/* 画像取得管理 */
-body[data-active-scope="kanmusu"] .acquire-panel{background:#fff;border-color:#c2dcea;box-shadow:var(--shadow)}
-body[data-active-scope="kanmusu"] .acquire-metric{background:#f4fafd;border-color:#c8dfec;color:#4f7085}
-body[data-active-scope="kanmusu"] .acquire-metric b{color:#0f2f42}
-body[data-active-scope="kanmusu"] .acquire-note{color:#4f7085}
-body[data-active-scope="kanmusu"] .acquire-field span{color:#42667b}
-body[data-active-scope="kanmusu"] .acquire-field select{background:#fff;color:#0f2f42;border-color:#b6d3e4}
-body[data-active-scope="kanmusu"] .acquire-plan{border-color:#c2dcea}
-body[data-active-scope="kanmusu"] .acquire-plan th{background:#e2f0f8;color:#14435c}
-body[data-active-scope="kanmusu"] .acquire-plan td{color:#173a4d;border-bottom-color:#dbe9f1}
-body[data-active-scope="kanmusu"] .acquire-plan th,body[data-active-scope="kanmusu"] .acquire-plan td{border-bottom-color:#dbe9f1}
-body[data-active-scope="kanmusu"] .empty{color:#4f7085}
-body[data-active-scope="kanmusu"] .acquire-message{color:#173a4d}
-body[data-active-scope="kanmusu"] .acquire-progress-text{color:#2c536a}
-body[data-active-scope="kanmusu"] .acquire-job progress{accent-color:#1179b0}
-body[data-active-scope="kanmusu"] .acquire-job progress::-webkit-progress-bar{background:#e2f0f8;border-radius:999px}
-body[data-active-scope="kanmusu"] .acquire-job progress::-webkit-progress-value{background:#1179b0;border-radius:999px}
-body[data-active-scope="kanmusu"] .status-badge{background:#f2f9fd;border-color:#bcd8e8;color:#42667b}
-body[data-active-scope="kanmusu"] .status-badge[data-state="running"]{background:#e3f2fb;border-color:#3aa0cf;color:#0c5c86}
-body[data-active-scope="kanmusu"] .status-badge[data-state="pause"]{background:#fdf4e3;border-color:#c9a45f;color:#7a5a17}
-body[data-active-scope="kanmusu"] .status-badge[data-state="complete"]{background:#e6f7f0;border-color:#4bb98f;color:#1d6e52}
-body[data-active-scope="kanmusu"] .status-badge[data-state="stopped"]{background:#fdf1e3;border-color:#d79a55;color:#8a5a1d}
-body[data-active-scope="kanmusu"] .status-badge[data-state="failed"]{background:#fdeced;border-color:#dd8189;color:#96323c}
-body[data-active-scope="kanmusu"] .local-app .asset-result-bar{background:#fff;border-color:#c2dcea}
-body[data-active-scope="kanmusu"] .local-app .asset-result-bar .connection{color:#4f7085}
-body[data-active-scope="kanmusu"] .asset-library-status{color:#4f7085}
-/* Drop Lab */
-body[data-active-scope="kanmusu"] #kcnav-drop-lab{--muted-foreground:#4f7085;--border:#c2dcea;--kdl-rare:#0c6595}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .card{background:#fff;border-color:#c2dcea;box-shadow:var(--shadow);backdrop-filter:none}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .form-control,body[data-active-scope="kanmusu"] #kcnav-drop-lab .form-select{background:#fff;color:#0f2f42;border-color:#b6d3e4}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .mode-switch{background:#eef7fc;border-color:#c2dcea}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .mode-switch .btn[aria-selected="true"]{background:#1179b0;border-color:#0c6595;color:#fff}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .hero-statement{background:#eef7fc;border-left-color:#1179b0;color:#123c52}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .drop-stage{border-color:#bcd8e8;background:
-  radial-gradient(circle at 50% 46%,#ffffff 0,transparent 36%),
-  linear-gradient(160deg,#ebf8ff,#d2e9f7 58%,#bfdff2)}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .drop-card{background:#ffffffee;border-color:#bcd8e8}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .metric,body[data-active-scope="kanmusu"] #kcnav-drop-lab .quick-status,body[data-active-scope="kanmusu"] #kcnav-drop-lab .luck-summary{background:#f4fafd;border-color:#c8dfec}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .probability-details,body[data-active-scope="kanmusu"] #kcnav-drop-lab .tools-panel{border-color:#c8dfec}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .btn-danger{background:#fdecea;border-color:#d08d88;color:#8d2420}
-body[data-active-scope="kanmusu"] #kcnav-drop-lab .btn-danger:not(:disabled):hover{background:#fbdcd8;border-color:#b8564f;color:#6d1a17}
-body[data-active-scope="kanmusu"] ::-webkit-scrollbar-track{background:#dcecf5}
-body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;border-color:#dcecf5}
-/* ワードマーク */
-.crest{display:block;flex:0 0 auto;width:36px;height:36px;border:0;border-radius:50%;background:transparent;box-shadow:0 0 20px #75d7ff2e}
-.crest::before{content:none}
-.crest svg{display:block;width:100%;height:100%}
-.brand h1{font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;font-weight:600;font-size:18px;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 0 20px color-mix(in srgb,var(--scope-glow) 22%,transparent)}
-@media(max-width:480px){.crest{width:32px;height:32px}.brand h1{font-size:16px;letter-spacing:.14em}}
+/* --- 21. 環境への配慮 ------------------------------------------------------ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  /* すりガラス非対応環境では不透明な面へ落とす */
+  body{--glass:color-mix(in srgb,var(--bg) 22%,#ffffff);--glass-bar:var(--glass)}
+  body[data-active-scope="abyssal"]{--glass:color-mix(in srgb,var(--bg) 82%,#ffffff);--glass-bar:var(--glass)}
+}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--glass-line);border-radius:var(--r-pill)}
+::-webkit-scrollbar-thumb:hover{background:var(--muted)}
 </style></head><body data-active-scope="kanmusu">
 <header class="topbar"><div class="brand"><span class="crest" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" data-fleet-lab-mark="true">
   <title>Fleet Lab</title>
@@ -370,17 +545,17 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     <path d="M49 10v3M49 19v3M43 16h3M52 16h3"/>
   </g>
   <circle cx="49" cy="16" r="3.5" fill="#52d9ff"/>
-</svg></span><div><h1>Fleet Lab</h1><p>プライベート艦影ライブラリ</p></div></div><div class="summary" aria-label="集計"><span><b>862</b>艦娘</span><span><b>889</b>深海棲艦</span><span><b id="cachedSummary">0</b>保存済み</span></div></header>
-<nav class="site-nav" role="tablist" aria-label="機能"><button class="site-tab" type="button" role="tab" data-view="assets" aria-selected="true" aria-controls="assetView">Fleet Archive</button><button class="site-tab" type="button" role="tab" data-view="drop-lab" aria-selected="false" aria-controls="dropLabView">Drop Lab</button><button class="site-tab" type="button" role="tab" data-view="verification-quiz" aria-selected="false" aria-controls="verificationQuizView">Tactics Lab</button><button id="acquireTab" class="site-tab" type="button" role="tab" data-view="acquire" aria-selected="false" aria-controls="acquireView" hidden>画像取得管理</button></nav>
+</svg></span><h1>Fleet Lab</h1></div><nav class="site-nav" role="tablist" aria-label="機能"><button class="site-tab" type="button" role="tab" data-view="assets" aria-selected="true" aria-controls="assetView">Fleet Archive</button><button class="site-tab" type="button" role="tab" data-view="drop-lab" aria-selected="false" aria-controls="dropLabView">Drop Lab</button><button class="site-tab" type="button" role="tab" data-view="verification-quiz" aria-selected="false" aria-controls="verificationQuizView">Tactics Lab</button><button id="acquireTab" class="site-tab" type="button" role="tab" data-view="acquire" aria-selected="false" aria-controls="acquireView" hidden>画像取得管理</button></nav><span class="summary" aria-label="保存済み画像"><b id="cachedSummary">0</b>枚</span></header>
 <section id="assetView" class="support-view" role="tabpanel">
 <h2 class="sr-only">Fleet Archive</h2>
-<p class="view-intro">ローカルに保存した画像だけを、安全に検索・閲覧できます。</p>
-<nav class="fleet-tabs" aria-label="艦船区分"><button class="fleet-tab" type="button" data-scope="kanmusu" aria-selected="true">艦娘 <small id="kanmusuScopeCount">862</small></button><button class="fleet-tab" type="button" data-scope="abyssal" aria-selected="false">深海棲艦 <small id="abyssalScopeCount">889</small></button></nav>
-<section class="search-panel" aria-label="艦を検索"><label class="search-field"><span class="sr-only">IDまたは艦名</span><input id="q" type="search" inputmode="search" autocomplete="off" placeholder="艦名 または ID"></label><select id="shipTypeFilter" aria-label="艦種"><option value="">すべての艦種</option></select><select id="assetType" hidden aria-hidden="true" tabindex="-1"><option value=""></option></select><button id="reset" class="btn clear" type="button">クリア</button><span id="count" class="count" aria-live="polite"></span></section>
+<section id="archiveOnboarding" class="archive-onboarding" aria-labelledby="archiveOnboardingTitle" hidden><div class="archive-onboarding-card"><span class="archive-onboarding-mark" aria-hidden="true"></span><h3 id="archiveOnboardingTitle">画像フォルダーを接続</h3><p>保存済みの艦娘画像を読み取り専用で開きます。</p><button id="archiveConnect" class="btn primary" type="button">画像フォルダーを接続</button></div></section>
+<div id="archiveLibrary">
+<div class="archive-toolbar"><nav class="fleet-tabs" aria-label="艦船区分"><button class="fleet-tab" type="button" data-scope="kanmusu" aria-selected="true">艦娘 <small id="kanmusuScopeCount">862</small></button><button class="fleet-tab" type="button" data-scope="abyssal" aria-selected="false">深海棲艦 <small id="abyssalScopeCount">889</small></button></nav><section class="search-panel" aria-label="艦を検索"><label class="search-field"><span class="sr-only">IDまたは艦名</span><input id="q" type="search" inputmode="search" autocomplete="off" placeholder="艦名 または ID"></label><select id="shipTypeFilter" aria-label="艦種"><option value="">すべての艦種</option></select><button id="reset" class="btn clear" type="button">クリア</button><span id="count" class="count" aria-live="polite"></span></section></div>
 <details class="asset-options"><summary>その他</summary><div class="asset-options-body"><select id="assetAvailability" aria-label="保存状態"><option value="available">保存済みのみ</option><option value="">すべて</option></select><label class="option-toggle" title="限定グラ配信期間中でも、保存済みの過去版があれば表紙に使います"><input type="checkbox" id="preferSavedCover"> 表紙に過去版を優先</label><div class="asset-result-actions"><span id="directoryStatus" class="asset-library-status">画像フォルダー未接続</span><div class="display-switch" role="group" aria-label="表示形式"><button type="button" data-display="gallery" aria-pressed="true">画像</button><button type="button" data-display="table" aria-pressed="false">一覧</button></div><button id="exportCsv" class="btn" type="button">CSV</button></div><p id="viewSafety" class="connection">「現在使用中」は最新APIが指定する画像です。季節限定期間は限定柄の場合があります。図鑑由来の別グラは、意味を断定せず別に保持します。</p><div class="asset-library-tools"><p><code>private-assets/images</code> を読み取り専用で接続します。初回だけ索引を作り、次回からすぐ表示します。画像本体はブラウザへコピーせず、表示中の分だけ元フォルダーから読みます。</p><button id="directoryConnect" class="btn primary" type="button">画像フォルダーを接続</button><input id="directoryFallbackInput" type="file" accept="image/png,.png" multiple webkitdirectory directory hidden><button id="directoryRefresh" class="btn" type="button" hidden>画像を更新</button><button id="directoryDisconnect" class="btn" type="button" disabled>接続を解除</button><progress id="directoryProgress" class="asset-scan-progress" aria-label="画像フォルダー確認状況" hidden></progress></div></div></details>
 <div id="assetGallery" class="asset-gallery"></div>
 <div id="assetTableWrap" class="table-wrap" hidden><table><thead><tr><th>ID</th><th>艦名・ファイル</th><th>収録画像</th><th>操作</th></tr></thead><tbody id="rows"></tbody></table></div>
-<nav class="pagination" aria-label="ページ操作"><button id="prev" class="btn" type="button">前へ</button><label class="page-jump"><span class="sr-only">移動先ページ</span><select id="pageSelect" aria-label="移動先ページ"></select></label><span id="pageInfo" class="page-total"></span><button id="next" class="btn" type="button">次へ</button></nav>
+<nav id="assetPagination" class="pagination" aria-label="ページ操作"><button id="prev" class="btn" type="button">前へ</button><label class="page-jump"><span class="sr-only">移動先ページ</span><select id="pageSelect" aria-label="移動先ページ"></select></label><span id="pageInfo" class="page-total"></span><button id="next" class="btn" type="button">次へ</button></nav>
+</div>
 </section>
 <script src="viewer_data.js?v=7cf5d1778695ffc4"></script>
 <section id="dropLabView" class="support-view drop-lab-view" role="tabpanel" hidden>
@@ -483,12 +658,12 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     #kcnav-drop-lab .encounter-message .drop-note { margin-left: auto; }
     #kcnav-drop-lab .encounter-message.priority { border-top-color: #f4d37b; box-shadow: 0 -8px 28px rgba(244,211,123,.2); }
     #kcnav-drop-lab .encounter-message.rare { border-top-color: var(--kdl-rare); box-shadow: 0 -6px 22px rgba(91,157,194,.18); }
-    #kcnav-drop-lab .drop-stage.is-idle { min-height: 160px; }
+    #kcnav-drop-lab .drop-stage.is-idle { min-height: 96px; }
     #kcnav-drop-lab .drop-stage.is-idle .drop-card, #kcnav-drop-lab .drop-stage.is-idle .stage-status { display: none; }
     #kcnav-drop-lab .drop-stage.is-idle .encounter-message { inset: auto; width: fit-content; text-align: center; display: block; padding: .5rem .8rem; border: 0; background: transparent; backdrop-filter: none; }
     #kcnav-drop-lab .drop-stage.is-idle .encounter-message .drop-label, #kcnav-drop-lab .drop-stage.is-idle .encounter-message .drop-note { display: none; }
     #kcnav-drop-lab .drop-stage.is-idle .encounter-message .drop-name { font-size: 1rem; color: color-mix(in srgb, var(--foreground) 82%, transparent); }
-    #kcnav-drop-lab .quick-controls { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: .5rem; align-items: start; }
+    #kcnav-drop-lab .quick-controls { display: grid; grid-template-columns: 1.35fr 1fr auto; gap: .5rem; align-items: start; }
     #kcnav-drop-lab .custom-run { position: relative; border-top: 0; padding-top: 0; }
     #kcnav-drop-lab .custom-run > summary { list-style: none; font-weight: 400; }
     #kcnav-drop-lab .custom-run > summary::-webkit-details-marker { display: none; }
@@ -588,8 +763,8 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     @keyframes kdl-priority-flash { 0% { opacity: 0; transform: scale(.2) rotate(-12deg); } 16% { opacity: 1; } 38% { opacity: .35; } 52% { opacity: .85; } 100% { opacity: 0; transform: scale(1.18) rotate(10deg); } }
     @keyframes kdl-ring { 0% { opacity: 0; transform: translate(-50%,-50%) scale(.25); } 24% { opacity: .9; } 100% { opacity: 0; transform: translate(-50%,-50%) scale(4.8); } }
     @keyframes kdl-spark { 0% { opacity: 0; transform: translate(-50%,-50%) rotate(45deg) scale(.2); } 20% { opacity: 1; } 72% { opacity: .8; } 100% { opacity: 0; transform: translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) rotate(225deg) scale(1.35); } }
-    @media (max-width: 650px) { #kcnav-drop-lab .drop-stage { min-height: 240px; } #kcnav-drop-lab .drop-stage.is-idle { min-height: 160px; } #kcnav-drop-lab .form-grid, #kcnav-drop-lab .settings-grid { grid-template-columns: 1fr 1fr; } #kcnav-drop-lab .target-list { grid-template-columns: 1fr; } }
-    @media (max-width: 480px) { #kcnav-drop-lab { font-size: 16px; } #kcnav-drop-lab .app { gap: .75rem; } #kcnav-drop-lab .app-heading { grid-template-columns: 1fr; gap: .55rem; } #kcnav-drop-lab .btn, #kcnav-drop-lab .form-control, #kcnav-drop-lab .form-select { min-height: 44px; } #kcnav-drop-lab .hero-row { grid-template-columns: 1fr auto; gap: .45rem; } #kcnav-drop-lab .hero-luck { font-size: .84rem; } #kcnav-drop-lab #edit-targets { min-width: 52px; width: 52px; padding-inline: .4rem; font-size: .82rem; } #kcnav-drop-lab .edit-wide { display: none; } #kcnav-drop-lab .edit-short { display: inline; } #kcnav-drop-lab .drop-stage { min-height: 225px; } #kcnav-drop-lab .drop-stage.is-idle { min-height: 160px; } #kcnav-drop-lab .drop-card { width: min(190px,62vw); min-height: 190px; } #kcnav-drop-lab .drop-card.priority { width: min(210px,68vw); min-height: 210px; } #kcnav-drop-lab .ship-image { width: 125px; height: 150px; } #kcnav-drop-lab .drop-card.priority .ship-image { width: 140px; height: 164px; } #kcnav-drop-lab .drop-content { padding-bottom: 2.5rem; } #kcnav-drop-lab .quick-controls { grid-template-columns: 1.2fr 1fr 1fr; } #kcnav-drop-lab .quick-controls .btn { min-height: 44px; padding-inline: .45rem; } #kcnav-drop-lab .primary-metrics { grid-template-columns: 1fr 1fr; } #kcnav-drop-lab .primary-metrics .metric strong { font-size: 1.05rem; } #kcnav-drop-lab .form-grid, #kcnav-drop-lab .settings-grid, #kcnav-drop-lab .backup-grid { grid-template-columns: 1fr; } #kcnav-drop-lab .target-item { grid-template-columns: minmax(0,1fr) auto auto; gap: .35rem; } #kcnav-drop-lab .target-state span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } #kcnav-drop-lab .log-row { grid-template-columns: minmax(0,1fr) auto auto; } #kcnav-drop-lab .log-row .log-time { grid-column: 1 / -1; font-size: .8rem; } }
+    @media (max-width: 650px) { #kcnav-drop-lab .drop-stage { min-height: 240px; } #kcnav-drop-lab .drop-stage.is-idle { min-height: 96px; } #kcnav-drop-lab .form-grid, #kcnav-drop-lab .settings-grid { grid-template-columns: 1fr 1fr; } #kcnav-drop-lab .target-list { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { #kcnav-drop-lab { font-size: 16px; } #kcnav-drop-lab .app { gap: .75rem; } #kcnav-drop-lab .app-heading { grid-template-columns: 1fr; gap: .55rem; } #kcnav-drop-lab .btn, #kcnav-drop-lab .form-control, #kcnav-drop-lab .form-select { min-height: 44px; } #kcnav-drop-lab .hero-row { grid-template-columns: 1fr auto; gap: .45rem; } #kcnav-drop-lab .hero-luck { font-size: .84rem; } #kcnav-drop-lab #edit-targets { min-width: 52px; width: 52px; padding-inline: .4rem; font-size: .82rem; } #kcnav-drop-lab .edit-wide { display: none; } #kcnav-drop-lab .edit-short { display: inline; } #kcnav-drop-lab .drop-stage { min-height: 225px; } #kcnav-drop-lab .drop-stage.is-idle { min-height: 88px; } #kcnav-drop-lab .drop-card { width: min(190px,62vw); min-height: 190px; } #kcnav-drop-lab .drop-card.priority { width: min(210px,68vw); min-height: 210px; } #kcnav-drop-lab .ship-image { width: 125px; height: 150px; } #kcnav-drop-lab .drop-card.priority .ship-image { width: 140px; height: 164px; } #kcnav-drop-lab .drop-content { padding-bottom: 2.5rem; } #kcnav-drop-lab .quick-controls { grid-template-columns: 1.35fr 1fr auto; } #kcnav-drop-lab .quick-controls .btn { min-height: 44px; padding-inline: .45rem; } #kcnav-drop-lab .primary-metrics { grid-template-columns: 1fr 1fr; } #kcnav-drop-lab .primary-metrics .metric strong { font-size: 1.05rem; } #kcnav-drop-lab .form-grid, #kcnav-drop-lab .settings-grid, #kcnav-drop-lab .backup-grid { grid-template-columns: 1fr; } #kcnav-drop-lab .target-item { grid-template-columns: minmax(0,1fr) auto auto; gap: .35rem; } #kcnav-drop-lab .target-state span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } #kcnav-drop-lab .log-row { grid-template-columns: minmax(0,1fr) auto auto; } #kcnav-drop-lab .log-row .log-time { grid-column: 1 / -1; font-size: .8rem; } }
     @media (prefers-reduced-motion: reduce) { #kcnav-drop-lab .drop-card.drawing, #kcnav-drop-lab .drop-card.reveal, #kcnav-drop-lab .drop-stage, #kcnav-drop-lab .drop-stage::before, #kcnav-drop-lab .effect-flash, #kcnav-drop-lab .effect-ring, #kcnav-drop-lab .spark { animation: none !important; } #kcnav-drop-lab .priority-curtain { transition: none; } }
   </style>
 
@@ -611,13 +786,13 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     </div>
 
     <section class="mode-panel" id="simulation-panel" role="tabpanel" aria-labelledby="simulation-tab">
-      <div class="workspace"><section class="card drop-stage is-idle" id="drop-stage" aria-busy="false"><span class="stage-status" id="stage-status">判定待ち</span><span class="radar-sweep" aria-hidden="true"></span><div class="stage-effects" aria-hidden="true"><span class="effect-flash"></span><span class="effect-ring"></span><span class="effect-ring"></span><span class="effect-ring"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span></div><span class="priority-curtain" aria-hidden="true"></span><div class="drop-card" id="drop-card"><div class="drop-content" id="drop-content"><span class="drop-label">DROP</span></div></div><div class="encounter-message" id="encounter-message"><span class="drop-label" id="message-label">索敵待機</span><span class="drop-name" id="message-name">タップで1周・結果をここに表示</span><span class="drop-note" id="message-note">KCNav実測データ</span></div></section></div>
-
       <div class="quick-controls">
         <button class="btn btn-primary btn-block" id="single-run" type="button">1周</button>
         <button class="btn btn-block" id="ten-run" type="button">10周</button>
         <details class="custom-run"><summary class="btn btn-block">その他…</summary><div class="custom-run-panel"><label class="field" for="rounds"><span>周回数</span><input class="form-control" id="rounds" type="number" min="1" max="9999" value="20" inputmode="numeric" aria-describedby="rounds-error"></label><button class="btn" id="batch-run" type="button">実行</button><p class="input-error" id="rounds-error" hidden>1〜9999の整数を入力してください</p><div class="until-run"><span class="muted">艦娘が出るまで（最大9999周）</span><div class="until-controls"><label class="field" for="until-ship"><span class="sr-only">出るまで回す艦娘</span><select class="form-select" id="until-ship" aria-label="出るまで回す艦娘"></select></label><button class="btn" id="until-run" type="button">出るまで回す</button></div></div></div></details>
       </div>
+
+      <div class="workspace"><section class="card drop-stage is-idle" id="drop-stage" aria-busy="false"><span class="stage-status" id="stage-status">判定待ち</span><span class="radar-sweep" aria-hidden="true"></span><div class="stage-effects" aria-hidden="true"><span class="effect-flash"></span><span class="effect-ring"></span><span class="effect-ring"></span><span class="effect-ring"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span></div><span class="priority-curtain" aria-hidden="true"></span><div class="drop-card" id="drop-card"><div class="drop-content" id="drop-content"><span class="drop-label">DROP</span></div></div><div class="encounter-message" id="encounter-message"><span class="drop-label" id="message-label">索敵待機</span><span class="drop-name" id="message-name">1周すると結果を表示</span><span class="drop-note" id="message-note">KCNav実測データ</span></div></section></div>
 
       <section class="results" id="results" aria-labelledby="results-heading" hidden>
         <div class="results-head"><h2 class="section-heading" id="results-heading">今回の成果</h2><button class="btn btn-ghost" id="clear-session" type="button" hidden>消去</button></div>
@@ -1322,7 +1497,7 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
         clearTimers(); finishRun();
       }
       function finishRun() { animationGeneration++;clearTimers(); const session=currentSession(); session.push(...pendingResults); const total=pendingResults.length; const priority=pendingResults.filter(row=>tierOf(activeProfile(),row.ship)==='priority').length; const rare=pendingResults.filter(row=>tierOf(activeProfile(),row.ship)==='rare').length; lastRunOutcome=pendingRunOutcome; lastRunTarget=pendingRunTarget; const announcement=pendingRunOutcome||`${total}周の抽選完了。最優先${priority}隻、レア${rare}隻`; pendingResults=[]; pendingRunOutcome=''; pendingRunTarget=''; animationQueue=[]; setBusy(false); renderSession(); announce(announcement); }
-      function resetStage() { animationGeneration++;clearTimers(); pendingResults=[]; pendingRunOutcome=''; pendingRunTarget=''; lastRunOutcome=''; lastRunTarget=''; animationQueue=[]; setBusy(false); $('#drop-stage').className='card drop-stage is-idle'; $('#drop-card').className='drop-card'; $('#stage-status').textContent='判定待ち'; $('#drop-content').innerHTML='<span class="drop-label">DROP</span>'; $('#encounter-message').className='encounter-message'; $('#message-label').textContent='索敵待機'; $('#message-name').textContent='タップで1周・結果をここに表示'; $('#message-note').textContent='KCNav実測データ'; }
+      function resetStage() { animationGeneration++;clearTimers(); pendingResults=[]; pendingRunOutcome=''; pendingRunTarget=''; lastRunOutcome=''; lastRunTarget=''; animationQueue=[]; setBusy(false); $('#drop-stage').className='card drop-stage is-idle'; $('#drop-card').className='drop-card'; $('#stage-status').textContent='判定待ち'; $('#drop-content').innerHTML='<span class="drop-label">DROP</span>'; $('#encounter-message').className='encounter-message'; $('#message-label').textContent='索敵待機'; $('#message-name').textContent='1周すると結果を表示'; $('#message-note').textContent='KCNav実測データ'; }
       function renderSession() {
         const profile=activeProfile(); const session=currentSession(); const priorityCount=session.filter(row=>tierOf(profile,row.ship)==='priority').length; const rareCount=session.filter(row=>tierOf(profile,row.ship)==='rare').length; const normalCount=session.length-priorityCount-rareCount;
         $('#results').hidden=!session.length;
@@ -1459,20 +1634,22 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
 <div id="verification-quiz">
   <style>
     #verification-quiz{display:grid;gap:.9rem;max-width:736px;margin:0 auto;color:var(--foreground);font-size:15px}
-    #verification-quiz .quiz-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:.8rem 1rem}
+    #verification-quiz .quiz-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.6rem 1rem}
     #verification-quiz .quiz-hero h2{margin:0;font-size:1.2rem;line-height:1.2;font-weight:650;letter-spacing:.01em}
     #verification-quiz .quiz-hero p{margin:.08rem 0 0;color:var(--muted);font-size:.82rem}
-    #verification-quiz .quiz-score{display:grid;grid-template-columns:repeat(2,minmax(4.5rem,1fr));gap:.5rem;text-align:center}
-    #verification-quiz .quiz-score>div{padding:.45rem .7rem;border:1px solid var(--border);border-radius:4px;background:color-mix(in srgb,var(--secondary) 52%,var(--card))}
-    #verification-quiz .quiz-score b{display:block;color:var(--foreground);font-size:1.15rem;font-weight:650;line-height:1.15}
-    #verification-quiz .quiz-score span{color:var(--muted);font-size:.72rem}
+    #verification-quiz .quiz-overall{color:var(--muted);font-size:.78rem;white-space:nowrap}
     #verification-quiz .quiz-sample-notice{margin:0;padding:.72rem .8rem;border:1px solid var(--border);border-left:3px solid var(--primary);border-radius:4px;background:color-mix(in srgb,var(--primary) 7%,var(--card));color:var(--foreground);font-size:.82rem}
-    #verification-quiz .quiz-filters,#verification-quiz .quiz-progress,#verification-quiz .quiz-card{border:1px solid var(--border);border-radius:4px;background:var(--card);box-shadow:var(--shadow)}
+    #verification-quiz .quiz-tools,#verification-quiz .quiz-card{border:1px solid var(--border);border-radius:4px;background:var(--card);box-shadow:var(--shadow)}
+    #verification-quiz .quiz-tools>summary{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.65rem .8rem;color:var(--foreground);font-size:.82rem;font-weight:650;cursor:pointer;list-style:none}
+    #verification-quiz .quiz-tools>summary::-webkit-details-marker{display:none}
+    #verification-quiz .quiz-tools>summary::after{content:'開く';color:var(--primary);font-size:.72rem;font-weight:650}
+    #verification-quiz .quiz-tools[open]>summary::after{content:'閉じる'}
+    #verification-quiz .quiz-tools-body{border-top:1px solid var(--border)}
     #verification-quiz .quiz-filters{display:flex;align-items:end;gap:.6rem;padding:.75rem .8rem}
     #verification-quiz .quiz-filter{display:grid;gap:.28rem;min-width:170px;color:var(--muted);font-size:.78rem;font-weight:600}
     #verification-quiz select{min-height:38px;padding:.45rem 2rem .45rem .65rem;border:1px solid var(--border);border-radius:3px;background:var(--input);color:var(--foreground)}
-    #verification-quiz .quiz-filter-summary{margin-left:auto;padding-bottom:.55rem;color:var(--muted);font-size:.78rem}
-    #verification-quiz .quiz-progress{padding:.65rem .8rem}
+    #verification-quiz .quiz-filter-summary{margin-left:auto;color:var(--muted);font-size:.78rem}
+    #verification-quiz .quiz-progress{padding:.65rem .8rem;border-top:1px solid var(--border)}
     #verification-quiz .quiz-progress-heading{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;margin-bottom:.55rem}
     #verification-quiz .quiz-progress-heading h3{margin:0;font-size:.86rem;color:var(--foreground)}
     #verification-quiz .quiz-progress-heading span{color:var(--muted);font-size:.75rem}
@@ -1513,6 +1690,7 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     #verification-quiz .quiz-verdict[data-correct="false"]{color:light-dark(#96323c,#ffb2bf)}
     #verification-quiz .quiz-explanation{margin:0;color:var(--foreground);line-height:1.7}
     #verification-quiz .quiz-sources{margin-top:.8rem;padding-top:.75rem;border-top:1px solid var(--border)}
+    #verification-quiz .quiz-sources>summary{width:max-content;color:var(--primary);font-size:.82rem;font-weight:650;cursor:pointer}
     #verification-quiz .quiz-sources h4{margin:0 0 .4rem;font-size:.82rem;color:var(--foreground)}
     #verification-quiz .quiz-source{padding:.5rem 0;border-top:1px solid var(--border);font-size:.78rem}
     #verification-quiz .quiz-source:first-of-type{border-top:0}
@@ -1520,27 +1698,31 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     #verification-quiz .quiz-source-meta{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.2rem;color:var(--muted)}
     #verification-quiz .quiz-source-note{margin:.25rem 0 0;color:var(--foreground)}
     #verification-quiz .quiz-review{margin:.6rem 0 0;color:var(--muted);font-size:.72rem}
-    #verification-quiz .quiz-actions{display:flex;justify-content:flex-end;margin-top:.7rem}
+    #verification-quiz .quiz-actions{display:flex;justify-content:flex-end;margin-top:.8rem}#verification-quiz .quiz-actions .btn{min-width:9rem}
     #verification-quiz .btn.primary{background:var(--primary);border-color:var(--primary);color:var(--primary-foreground)}
     #verification-quiz .btn.primary:hover{background:color-mix(in srgb,var(--primary) 88%,var(--foreground));border-color:color-mix(in srgb,var(--primary) 88%,var(--foreground))}
-    #verification-quiz .quiz-empty{padding:2rem;text-align:center;color:var(--muted)}
-    @media(max-width:620px){#verification-quiz .quiz-hero{grid-template-columns:1fr;align-items:start}#verification-quiz .quiz-score{width:min(100%,12rem)}#verification-quiz .quiz-filters{align-items:stretch;flex-direction:column}#verification-quiz .quiz-filter{min-width:0}#verification-quiz .quiz-filter-summary{margin:0;padding:0}#verification-quiz .quiz-card{padding:.85rem}#verification-quiz .quiz-choice{grid-template-columns:1.75rem minmax(0,1fr);padding-inline:.6rem}#verification-quiz .quiz-choice-state{grid-column:2;justify-self:start}}
+    #verification-quiz .quiz-empty{display:grid;justify-items:center;gap:.9rem;padding:2rem;text-align:center;color:var(--muted)}#verification-quiz .quiz-empty p{margin:0}
+    @media(max-width:620px){#verification-quiz{gap:.7rem}#verification-quiz .quiz-hero{grid-template-columns:1fr auto;align-items:center}#verification-quiz .quiz-hero p{display:none}#verification-quiz .quiz-filters{align-items:stretch;flex-direction:column}#verification-quiz .quiz-filter{min-width:0}#verification-quiz .quiz-filter-summary{margin:0;padding:0}#verification-quiz .quiz-card{padding:.85rem}#verification-quiz .quiz-choice{grid-template-columns:1.75rem minmax(0,1fr);padding-inline:.6rem}#verification-quiz .quiz-choice-state{grid-column:2;justify-self:start}#verification-quiz .quiz-actions .btn{width:100%;min-height:44px}}
   </style>
 
   <section class="quiz-hero">
     <div><h2>Tactics Lab</h2><p>艦これの仕様・計算・装備を読み解く、少しマニアックな四択です。</p></div>
-    <div class="quiz-score" aria-label="成績"><div><b id="quizCorrectCount">0</b><span>正解</span></div><div><b id="quizAnsweredCount">0</b><span>回答</span></div></div>
-  </section>
-  <section class="quiz-filters" aria-label="問題を絞り込み">
-    <label class="quiz-filter"><span>カテゴリー</span><select id="quizGenre"><option value="">すべて</option></select></label>
-    <label class="quiz-filter"><span>難易度</span><select id="quizDifficulty"><option value="">すべて</option></select></label>
-    <span id="quizFilterSummary" class="quiz-filter-summary" aria-live="polite"></span>
-  </section>
-  <section class="quiz-progress" aria-labelledby="quizProgressHeading">
-    <div class="quiz-progress-heading"><h3 id="quizProgressHeading">カテゴリー別の進捗</h3><span id="quizProgressSummary" aria-live="polite"></span></div>
-    <details><summary>カテゴリー別の進捗を見る</summary><div id="quizCategoryProgress" class="quiz-progress-grid"></div></details>
+    <span id="quizProgressSummary" class="quiz-overall" aria-live="polite"></span>
   </section>
   <section id="quizCard" class="quiz-card" aria-live="polite"></section>
+  <details id="quizTools" class="quiz-tools">
+    <summary><span>絞り込み・進捗</span><span id="quizFilterSummary" class="quiz-filter-summary" aria-live="polite"></span></summary>
+    <div class="quiz-tools-body">
+      <section class="quiz-filters" aria-label="問題を絞り込み">
+        <label class="quiz-filter"><span>カテゴリー</span><select id="quizGenre"><option value="">すべて</option></select></label>
+        <label class="quiz-filter"><span>難易度</span><select id="quizDifficulty"><option value="">すべて</option></select></label>
+      </section>
+      <section class="quiz-progress" aria-labelledby="quizProgressHeading">
+        <div class="quiz-progress-heading"><h3 id="quizProgressHeading">カテゴリー別の進捗</h3></div>
+        <details><summary>カテゴリー別の進捗を見る</summary><div id="quizCategoryProgress" class="quiz-progress-grid"></div></details>
+      </section>
+    </div>
+  </details>
 
   <script>
   (()=>{
@@ -1570,15 +1752,14 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
     function renderCategoryProgress(){
       let totalCorrect=0,totalAnswered=0;
       categoryProgress.innerHTML=genres.map(value=>{const progress=categoryProgressFor(value),complete=progress.total>0&&progress.correct===progress.total;totalCorrect+=progress.correct;totalAnswered+=progress.answered;return `<button class="quiz-progress-item" type="button" data-complete="${complete}" data-genre-progress="${escapeHtml(value)}" aria-label="${escapeHtml(value)}を表示"><strong>${escapeHtml(value)}</strong><span>${complete?'制覇！':`${progress.correct}/${progress.total} 正解・${progress.answered}回答`}</span></button>`;}).join('');
-      byId('quizProgressSummary').textContent=`全体 ${totalCorrect}/${allQuestions.length} 正解・${totalAnswered}回答`;
+      byId('quizProgressSummary').textContent=`学習 ${totalAnswered}/${allQuestions.length}・正解 ${totalCorrect}`;
       categoryProgress.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{genre.value=button.dataset.genreProgress;applyFilters();genre.scrollIntoView({block:'nearest',behavior:'smooth'});}));
     }
 
-    function updateScore(){byId('quizCorrectCount').textContent=correctCount;byId('quizAnsweredCount').textContent=answeredCount;}
     function sourceHtml(source){return `<article class="quiz-source"><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.name)}</a><div class="quiz-source-meta"><span>確認日: ${escapeHtml(source.checked_on)}</span><span>根拠: ${escapeHtml(source.evidence_strength)}</span></div>${source.evidence_note?`<p class="quiz-source-note">${escapeHtml(source.evidence_note)}</p>`:''}</article>`;}
     function render(){
       byId('quizFilterSummary').textContent=`${questions.length}問`;
-      if(!questions.length){card.innerHTML='<p class="quiz-empty">Tactics Labには、この条件に合う問題はありません。</p>';return;}
+      if(!questions.length){card.innerHTML='<div class="quiz-empty"><p>この条件に合う問題はありません。</p><button id="quizResetFilters" class="btn primary" type="button">条件をリセット</button></div>';return;}
       const item=questions[index];answered=false;
       card.innerHTML=`<div class="quiz-meta"><span>問題 ${index+1} / ${questions.length}</span><span class="quiz-chip">${escapeHtml(item.genre)}</span><span class="quiz-chip">${escapeHtml(item.difficulty)}</span></div><h3 class="quiz-question">${escapeHtml(item.question)}</h3><div class="quiz-choices">${item.choices.map((choice,choiceIndex)=>`<button class="quiz-choice" type="button" data-choice="${choiceIndex}"><span class="quiz-choice-index">${optionLabel(choiceIndex)}</span><span class="quiz-choice-text">${escapeHtml(choice)}</span></button>`).join('')}</div><div id="quizResult" class="quiz-result" hidden></div>`;
     }
@@ -1588,19 +1769,18 @@ body[data-active-scope="kanmusu"] ::-webkit-scrollbar-thumb{background:#9cc3d8;b
       const item=questions[index],isCorrect=selected===item.correct_index;
       if(isCorrect)correctCount++;
       answerHistory[item.id]=isCorrect;saveProgress();renderCategoryProgress();
-      updateScore();
       root.querySelectorAll('.quiz-choice').forEach(button=>{const choice=Number(button.dataset.choice),isSelected=choice===selected,isAnswer=choice===item.correct_index;button.disabled=true;button.classList.add('answered');if(isSelected)button.classList.add('selected');if(isAnswer)button.classList.add('correct');else if(isSelected)button.classList.add('wrong');if(isAnswer||isSelected){const state=document.createElement('span');state.className='quiz-choice-state';state.textContent=isAnswer?(isSelected?'選択・正解':'正解'):'選択・不正解';button.append(state);}});
       const result=byId('quizResult'),review=item.review||{};
       result.hidden=false;
       result.dataset.correct=String(isCorrect);
       const isPerfectRun=index===questions.length-1&&correctCount===questions.length;
       const perfectHtml=isPerfectRun?'<aside class="quiz-perfect" aria-label="全問正解"><strong>🏅 全問正解！ Tactics Lab制覇</strong><span>この問題セットをすべて正解した。次は別のカテゴリーにも挑戦しよう。</span></aside>':'';
-      result.innerHTML=`<p class="quiz-verdict" data-correct="${isCorrect}">${isCorrect?'正解です':'不正解です'} — 正解は ${optionLabel(item.correct_index)}</p><p class="quiz-explanation">${escapeHtml(item.explanation)}</p>${perfectHtml}<section class="quiz-sources"><h4>出典と根拠</h4>${item.sources.map(sourceHtml).join('')}</section><p class="quiz-review">公開確認: ${escapeHtml(review.reviewed_by)} / ${escapeHtml(review.reviewed_on)}</p><div class="quiz-actions"><button id="quizNext" class="btn primary" type="button">${index===questions.length-1?'もう一度':'次の問題'}</button></div>`;
+      result.innerHTML=`<p class="quiz-verdict" data-correct="${isCorrect}">${isCorrect?'正解です':'不正解です'} — 正解は ${optionLabel(item.correct_index)}</p><p class="quiz-explanation">${escapeHtml(item.explanation)}</p>${perfectHtml}<div class="quiz-actions"><button id="quizNext" class="btn primary" type="button">${index===questions.length-1?'もう一度':'次の問題'}</button></div><details class="quiz-sources"><summary>出典と根拠</summary>${item.sources.map(sourceHtml).join('')}</details><p class="quiz-review">公開確認: ${escapeHtml(review.reviewed_by)} / ${escapeHtml(review.reviewed_on)}</p>`;
       byId('quizNext').focus();
     }
-    function next(){if(index===questions.length-1){index=0;correctCount=0;answeredCount=0;updateScore();}else index++;render();card.focus({preventScroll:true});}
-    function applyFilters(){questions=allQuestions.filter(item=>(!genre.value||item.genre===genre.value)&&(!difficulty.value||item.difficulty===difficulty.value));index=0;correctCount=0;answeredCount=0;renderCategoryProgress();updateScore();render();}
-    card.addEventListener('click',event=>{const choice=event.target.closest('[data-choice]');if(choice){answer(Number(choice.dataset.choice));return;}if(event.target.closest('#quizNext'))next();});
+    function next(){if(index===questions.length-1){index=0;correctCount=0;answeredCount=0;}else index++;render();card.focus({preventScroll:true});}
+    function applyFilters(){questions=allQuestions.filter(item=>(!genre.value||item.genre===genre.value)&&(!difficulty.value||item.difficulty===difficulty.value));index=0;correctCount=0;answeredCount=0;renderCategoryProgress();render();}
+    card.addEventListener('click',event=>{const choice=event.target.closest('[data-choice]');if(choice){answer(Number(choice.dataset.choice));return;}if(event.target.closest('#quizNext')){next();return;}if(event.target.closest('#quizResetFilters')){genre.value='';difficulty.value='';applyFilters();}});
     genre.addEventListener('change',applyFilters);difficulty.addEventListener('change',applyFilters);
     applyFilters();
   })();
@@ -1645,7 +1825,7 @@ const ALL_ROWS=window.KANZEMI_ROWS;
 const CACHED_COUNT=0;
 const ACQUISITION_CATALOG_SHA256='747f66bb295619982b7d66e7dc3c4f2661ed858956a9d116cf898fdabd05494e';
 const typeLabels={full:'現在使用中',full_dmg:'現在使用中・大破状態',limited:'図鑑の別グラ',limited_dmg:'図鑑の別グラ・大破状態',card:'カード',card_dmg:'カード・大破',banner:'バナー',banner_dmg:'バナー・大破',character_full:'図鑑全身',character_full_dmg:'図鑑全身・大破'};
-const el=id=>document.getElementById(id);const q=el('q'),shipTypeFilter=el('shipTypeFilter'),assetType=el('assetType'),assetAvailability=el('assetAvailability'),tbody=el('rows'),gallery=el('assetGallery'),count=el('count'),pageInfo=el('pageInfo'),scopeButtons=[...document.querySelectorAll('[data-scope]')],displayButtons=[...document.querySelectorAll('[data-display]')],groupButtons=[...document.querySelectorAll('[data-grouping]')];
+const el=id=>document.getElementById(id);const q=el('q'),shipTypeFilter=el('shipTypeFilter'),assetAvailability=el('assetAvailability'),tbody=el('rows'),gallery=el('assetGallery'),count=el('count'),pageInfo=el('pageInfo'),scopeButtons=[...document.querySelectorAll('[data-scope]')],displayButtons=[...document.querySelectorAll('[data-display]')],groupButtons=[...document.querySelectorAll('[data-grouping]')];
 const TABLE_PAGE_SIZE=100,GALLERY_PAGE_SIZE=48;
 const DIRECTORY_DB='kantai-seminar-private-assets-v1',DIRECTORY_STORE='directory-settings',DIRECTORY_DB_VERSION=2,DIRECTORY_HANDLE_KEY='directory-handle',DIRECTORY_INDEX_KEY='asset-index-v1',DIRECTORY_INDEX_VERSION=1,catalogAssetKeys=new Set(ALL_ROWS.map(assetKey)),allowedImageNames=/^(full|full_dmg|card|card_dmg|banner|banner_dmg|character_full|character_full_dmg)(?:_[a-f0-9]{16})?\.png$/i;
 const catalogFileAliases=new Map(),fileCatalogAliases=new Map();
@@ -1676,7 +1856,7 @@ function signalAssetBridge(){window.dispatchEvent(new Event('kanzemi-assets-chan
 window.KANZEMI_ASSET_BRIDGE={hasShipImage:ship=>Boolean(dropLabAssetRow(ship)),imageForShip:dropLabImageForShip};
 signalAssetBridge();
 function savedAssetCount(){let total=0;for(const row of ALL_ROWS)if(hasAsset(row))total++;return total;}
-function syncDirectoryUi(){const saved=savedAssetCount(),savedKanmusu=ALL_ROWS.filter(row=>row.category==='kanmusu'&&hasAsset(row)).length,savedAbyssal=ALL_ROWS.filter(row=>row.category==='abyssal'&&hasAsset(row)).length,connected=connectedAssetKeys.size,status=isLocalApp?`ローカル保存 ${saved.toLocaleString()}件`:directoryBusy?el('directoryStatus').textContent:connectionMode==='directory'?`フォルダー接続 ${connected.toLocaleString()}件`:connectionMode==='session'?`一時接続 ${connected.toLocaleString()}件`:directoryHandle?'フォルダーの再接続が必要':CACHED_COUNT?`ローカル画像 ${CACHED_COUNT.toLocaleString()}件`:'画像フォルダー未接続';el('cachedSummary').textContent=saved.toLocaleString();el('kanmusuScopeCount').textContent=`862艦・${savedKanmusu.toLocaleString()}枚`;el('abyssalScopeCount').textContent=`889艦・${savedAbyssal.toLocaleString()}枚`;el('directoryStatus').textContent=status;el('directoryStatus').title=directoryIndexScannedAt?`最終確認: ${new Date(directoryIndexScannedAt).toLocaleString('ja-JP')}`:'';el('directoryConnect').textContent=directoryHandle&&connectionMode==='none'?'画像フォルダーへ再接続':connectionMode==='directory'?'フォルダーを変更':'画像フォルダーを接続';el('directoryConnect').disabled=directoryBusy;el('directoryRefresh').hidden=!directoryHandle||isLocalApp;el('directoryRefresh').disabled=directoryBusy||connectionMode==='none';el('directoryDisconnect').disabled=directoryBusy||(!directoryHandle&&!connected);}
+function syncDirectoryUi(){const saved=savedAssetCount(),savedKanmusu=ALL_ROWS.filter(row=>row.category==='kanmusu'&&hasAsset(row)).length,savedAbyssal=ALL_ROWS.filter(row=>row.category==='abyssal'&&hasAsset(row)).length,connected=connectedAssetKeys.size,libraryReady=isLocalApp||connectionMode!=='none'||saved>0,status=isLocalApp?`ローカル保存 ${saved.toLocaleString()}件`:directoryBusy?el('directoryStatus').textContent:connectionMode==='directory'?`フォルダー接続 ${connected.toLocaleString()}件`:connectionMode==='session'?`一時接続 ${connected.toLocaleString()}件`:directoryHandle?'フォルダーの再接続が必要':CACHED_COUNT?`ローカル画像 ${CACHED_COUNT.toLocaleString()}件`:'画像フォルダー未接続',connectLabel=directoryHandle&&connectionMode==='none'?'画像フォルダーへ再接続':connectionMode==='directory'?'フォルダーを変更':'画像フォルダーを接続';el('archiveOnboarding').hidden=libraryReady;el('archiveLibrary').hidden=!libraryReady;el('cachedSummary').textContent=saved.toLocaleString();el('kanmusuScopeCount').textContent=`862艦・${savedKanmusu.toLocaleString()}枚`;el('abyssalScopeCount').textContent=`889艦・${savedAbyssal.toLocaleString()}枚`;el('directoryStatus').textContent=status;el('directoryStatus').title=directoryIndexScannedAt?`最終確認: ${new Date(directoryIndexScannedAt).toLocaleString('ja-JP')}`:'';el('directoryConnect').textContent=connectLabel;el('archiveConnect').textContent=connectLabel;el('directoryConnect').disabled=directoryBusy;el('archiveConnect').disabled=directoryBusy;el('directoryRefresh').hidden=!directoryHandle||isLocalApp;el('directoryRefresh').disabled=directoryBusy||connectionMode==='none';el('directoryDisconnect').disabled=directoryBusy||(!directoryHandle&&!connected);}
 function openDirectoryDb(){return new Promise((resolve,reject)=>{if(!window.indexedDB){reject(new Error('フォルダー参照を保存できません。'));return;}const request=indexedDB.open(DIRECTORY_DB,DIRECTORY_DB_VERSION);request.onupgradeneeded=()=>{const db=request.result;if(db.objectStoreNames.contains('assets'))db.deleteObjectStore('assets');if(!db.objectStoreNames.contains(DIRECTORY_STORE))db.createObjectStore(DIRECTORY_STORE);};request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error||new Error('フォルダー設定を開けませんでした。'));});}
 function directoryDbRequest(mode,operation){return new Promise((resolve,reject)=>{const transaction=directoryDb.transaction(DIRECTORY_STORE,mode),store=transaction.objectStore(DIRECTORY_STORE),request=operation(store);request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});}
 function validDirectoryIndex(value){return value&&value.version===DIRECTORY_INDEX_VERSION&&value.catalog===ACQUISITION_CATALOG_SHA256&&Array.isArray(value.keys)?{keys:[...new Set(value.keys.filter(key=>typeof key==='string'&&catalogAssetKeys.has(key)))],scannedAt:typeof value.scannedAt==='string'?value.scannedAt:''}:null;}
@@ -1707,14 +1887,14 @@ function compareRecommendedRows(a,b){if(a.category==='kanmusu'||b.category==='ka
 function recommendedGroupRow(group){return group.rows.reduce((best,row)=>compareRecommendedRows(row,best)<0?row:best,group.rows[0]);}
 function applyFilters(resetPage=true){const term=q.value.trim().toLocaleLowerCase('ja'),idOnly=/^\d+$/.test(term)?Number(term):null,availability=assetAvailability.value,shipType=shipTypeFilter.value,pool=ALL_ROWS.filter(row=>row.category===scope&&(!availability||hasAsset(row))&&(!shipType||row.shipTypeName===shipType));if(groupMode==='ship'){const matched=groupRows(pool).filter(group=>idOnly===null?(!term||group.name.toLocaleLowerCase('ja').includes(term)||group.rows.some(row=>`${row.name} ${row.file}`.toLocaleLowerCase('ja').includes(term))):group.rows.some(row=>row.id===idOnly));filtered=matched.flatMap(group=>group.rows);}else filtered=pool.filter(row=>idOnly===null?(!term||`${row.name} ${row.file}`.toLocaleLowerCase('ja').includes(term)):row.id===idOnly);if(resetPage)page=1;sortRows();render();}
 function rebuildShipTypes(){const selected=shipTypeFilter.value,availability=assetAvailability.value,types=new Map();for(const row of ALL_ROWS){if(row.category!==scope||(availability&&!hasAsset(row))||!row.shipTypeName)continue;const current=types.get(row.shipTypeName);if(current===undefined||row.shipTypeSort<current)types.set(row.shipTypeName,row.shipTypeSort);}shipTypeFilter.replaceChildren(new Option('すべての艦種',''),...[...types.entries()].sort((a,b)=>(a[1]-b[1])||a[0].localeCompare(b[0],'ja')).map(([name])=>new Option(name,name)));shipTypeFilter.value=[...shipTypeFilter.options].some(option=>option.value===selected)?selected:'';}
-function rebuildAssetTypes(){assetType.replaceChildren(new Option('全画像種別',''));assetType.value='';rebuildShipTypes();}
+function rebuildAssetTypes(){rebuildShipTypes();}
 function sortRows(){filtered.sort(compareRecommendedRows);displayItems=groupMode==='ship'?groupRows(filtered):filtered;if(groupMode==='ship')displayItems.sort((a,b)=>compareRecommendedRows(recommendedGroupRow(a),recommendedGroupRow(b)));}
 function renderRowCard(row,index){const available=hasAsset(row),url=assetUrl(row),key=assetKey(row),stateLabel=assetStateLabel(row),visual=available?(row.available||url?`<button class="asset-card-visual preview" type="button" aria-label="${esc(row.name||row.id)}を拡大"><img src="${esc(assetThumbUrl(row))}" alt="${esc(row.name||row.id)}" loading="lazy" decoding="async"></button>`:`<button class="asset-card-visual preview" type="button" data-directory-key="${esc(key)}" data-directory-alt="${esc(row.name||row.id)}" aria-label="${esc(row.name||row.id)}を拡大"><span class="asset-placeholder">フォルダー参照</span></button>`):`<div class="asset-card-visual"><span class="asset-placeholder">${stateLabel}</span></div>`,actions=available?(row.available?`<div class="asset-card-actions"><button class="btn preview" type="button">拡大</button><a class="btn" href="${esc(url)}" target="_blank" rel="noopener">開く</a></div>`:`<div class="asset-card-actions"><button class="btn preview" type="button">拡大</button><span class="asset-state ready">フォルダー参照</span></div>`):`<span class="asset-state">${stateLabel}</span>`;return`<article class="asset-card" data-index="${index}" data-change="${esc(row.change)}">${visual}<div class="asset-card-body"><div class="asset-card-title"><span class="asset-card-id">#${row.id}</span><b title="${esc(row.name)}">${esc(row.name)||'名称なし'}</b></div><div class="asset-card-meta"><span>${esc(typeLabels[row.type]||row.type)}</span><span>${esc(row.shipTypeName||(row.category==='abyssal'?'深海棲艦':'艦娘'))}</span></div>${actions}</div></article>`;}
 function renderGroupCard(group,index){const row=preferredGroupRow(group),imageCount=groupArtworkVariants(group.rows).length,available=hasAsset(row),url=assetUrl(row),key=assetKey(row),change=group.rows.some(item=>item.change==='added')?'added':group.rows.some(item=>item.change==='changed')?'changed':'baseline',visual=available?(row.available||url?`<button class="asset-card-visual group-open" type="button" aria-label="${esc(group.name)}の画像一覧"><img src="${esc(assetThumbUrl(row))}" alt="${esc(group.name)}" loading="lazy" decoding="async"></button>`:`<button class="asset-card-visual group-open" type="button" data-directory-key="${esc(key)}" data-directory-alt="${esc(group.name)}" aria-label="${esc(group.name)}の画像一覧"><span class="asset-placeholder">フォルダー参照</span></button>`):`<button class="asset-card-visual group-open" type="button" aria-label="${esc(group.name)}の画像一覧"><span class="asset-placeholder">${imageCount.toLocaleString()}種類</span></button>`,shipTypeText=row.shipTypeName||(group.category==='abyssal'?'深海棲艦':'艦娘');return`<article class="asset-card" data-group-index="${index}" data-change="${change}">${visual}<div class="asset-card-body"><div class="asset-card-title"><b title="${esc(group.name)}">${esc(group.name)}</b></div><div class="asset-card-meta"><span>${esc(shipTypeText)}</span><span>画像${imageCount.toLocaleString()}種類</span></div><div class="asset-card-actions group-actions"><button class="btn primary group-open" type="button">画像を見る</button></div></div></article>`;}
 function renderRowTable(row,index){const available=hasAsset(row),status=row.change==='added'?'<span class="update added">新規</span>':row.change==='changed'?'<span class="update changed">変更</span>':'',actions=available?(row.available?`<a class="btn primary" href="${esc(row.url)}" target="_blank" rel="noopener">開く</a><button class="btn preview" type="button">確認</button><button class="btn copy" type="button">パス</button>`:`<button class="btn preview" type="button">確認</button><span class="asset-state ready">フォルダー参照</span>`):`<span class="asset-state">${assetStateLabel(row)}</span>`;return`<tr data-index="${index}" data-change="${esc(row.change)}"><td class="id">${row.id}</td><td class="name"><strong>${esc(row.name)||'名称なし'}</strong>${status}<small>${esc(row.file)}</small></td><td><span class="type">${esc(typeLabels[row.type]||row.type)}</span></td><td class="actions">${actions}</td></tr>`;}
 function renderGroupTable(group,index){const imageCount=groupArtworkVariants(group.rows).length,row=preferredGroupRow(group),shipType=row.shipTypeName||(group.category==='abyssal'?'深海棲艦':'艦娘');return`<tr data-group-index="${index}"><td class="id">${imageCount.toLocaleString()}種類</td><td class="name"><strong>${esc(group.name)}</strong></td><td><span class="type">${esc(shipType)}</span></td><td class="actions"><button class="btn primary group-open" type="button">画像を見る</button></td></tr>`;}
 function pageItemName(item){return groupMode==='ship'?item.name:(item.name||`ID ${item.id}`);}
-function render(){const generation=++galleryGeneration,pageSize=displayMode==='gallery'?GALLERY_PAGE_SIZE:TABLE_PAGE_SIZE,pages=Math.max(1,Math.ceil(displayItems.length/pageSize));page=Math.min(page,pages);const start=(page-1)*pageSize,shown=displayItems.slice(start,start+pageSize),shownRows=groupMode==='ship'?shown.flatMap(group=>group.rows):shown,saved=savedAssetCount(),emptyText=saved?'この条件で表示できる画像はありません。':'Fleet Archiveに保存済み画像はまだありません。ローカル版で取得するか、画像フォルダーを接続してください。',visibleConnectedKeys=new Set(shownRows.filter(row=>!row.available&&connectedAssetKeys.has(assetKey(row))).map(assetKey));pruneConnectedUrls(visibleConnectedKeys);gallery.hidden=displayMode!=='gallery';el('assetTableWrap').hidden=displayMode!=='table';displayButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.display===displayMode)));gallery.innerHTML=shown.length?shown.map((item,index)=>groupMode==='ship'?renderGroupCard(item,start+index):renderRowCard(item,start+index)).join(''):`<div class="asset-gallery-empty">${emptyText}</div>`;tbody.innerHTML=shown.length?shown.map((item,index)=>groupMode==='ship'?renderGroupTable(item,start+index):renderRowTable(item,start+index)).join(''):`<tr><td colspan="4" class="empty">${emptyText}</td></tr>`;const idCount=new Set(filtered.map(row=>row.id)).size;count.textContent=groupMode==='ship'?`${displayItems.length.toLocaleString()}艦`:`${idCount.toLocaleString()}件`;const pageOptions=[];for(let number=1;number<=pages;number++){const first=displayItems[(number-1)*pageSize],last=displayItems[Math.min(number*pageSize,displayItems.length)-1],range=first&&last?(pageItemName(first)===pageItemName(last)?pageItemName(first):`${pageItemName(first)}〜${pageItemName(last)}`):'結果なし';pageOptions.push(new Option(`${number} / ${pages}　${range}`,String(number)));}const pageSelect=el('pageSelect');pageSelect.replaceChildren(...pageOptions);pageSelect.value=String(page);pageSelect.disabled=pages<=1;pageInfo.textContent=`全${pages}ページ`;el('prev').disabled=page<=1;el('next').disabled=page>=pages;syncDirectoryUi();if(displayMode==='gallery'&&visibleConnectedKeys.size)hydrateConnectedImages(generation);}
+function render(){const generation=++galleryGeneration,pageSize=displayMode==='gallery'?GALLERY_PAGE_SIZE:TABLE_PAGE_SIZE,pages=Math.max(1,Math.ceil(displayItems.length/pageSize));page=Math.min(page,pages);const start=(page-1)*pageSize,shown=displayItems.slice(start,start+pageSize),shownRows=groupMode==='ship'?shown.flatMap(group=>group.rows):shown,hasSearch=Boolean(q.value.trim()||shipTypeFilter.value),emptyText=hasSearch?'この条件で表示できる画像はありません。':'このフォルダーに表示できる画像はありません。',emptyAction=hasSearch?'search':'directory',emptyActionLabel=hasSearch?'検索をクリア':'フォルダーを変更',emptyContent=`<div class="archive-empty-recovery"><p>${emptyText}</p><button class="btn primary" type="button" data-archive-empty-action="${emptyAction}">${emptyActionLabel}</button></div>`,visibleConnectedKeys=new Set(shownRows.filter(row=>!row.available&&connectedAssetKeys.has(assetKey(row))).map(assetKey));pruneConnectedUrls(visibleConnectedKeys);gallery.hidden=displayMode!=='gallery';el('assetTableWrap').hidden=displayMode!=='table';el('reset').hidden=!hasSearch;el('assetPagination').hidden=!shown.length;displayButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.display===displayMode)));gallery.innerHTML=shown.length?shown.map((item,index)=>groupMode==='ship'?renderGroupCard(item,start+index):renderRowCard(item,start+index)).join(''):`<div class="asset-gallery-empty">${emptyContent}</div>`;tbody.innerHTML=shown.length?shown.map((item,index)=>groupMode==='ship'?renderGroupTable(item,start+index):renderRowTable(item,start+index)).join(''):`<tr><td colspan="4" class="empty">${emptyContent}</td></tr>`;const idCount=new Set(filtered.map(row=>row.id)).size;count.textContent=groupMode==='ship'?`${displayItems.length.toLocaleString()}艦`:`${idCount.toLocaleString()}件`;const pageOptions=[];for(let number=1;number<=pages;number++){const first=displayItems[(number-1)*pageSize],last=displayItems[Math.min(number*pageSize,displayItems.length)-1],range=first&&last?(pageItemName(first)===pageItemName(last)?pageItemName(first):`${pageItemName(first)}〜${pageItemName(last)}`):'結果なし';pageOptions.push(new Option(`${number} / ${pages}　${range}`,String(number)));}const pageSelect=el('pageSelect');pageSelect.replaceChildren(...pageOptions);pageSelect.value=String(page);pageSelect.disabled=pages<=1;pageInfo.textContent=`全${pages}ページ`;el('prev').disabled=page<=1;el('next').disabled=page>=pages;syncDirectoryUi();if(displayMode==='gallery'&&visibleConnectedKeys.size)hydrateConnectedImages(generation);}
 function groupArtworkVariants(rows){const displayTypes=new Set(['full','full_dmg','character_full','character_full_dmg','card','card_dmg']),displayRows=rows.filter(row=>displayTypes.has(row.type)),visualRows=displayRows.length?displayRows:rows,groups=new Map(),typeRank={character_full:0,full:1,card:0,banner:0,character_full_dmg:0,full_dmg:1,card_dmg:0,banner_dmg:0},familyOf=row=>row.type.startsWith('card')?'card':row.type.startsWith('banner')?'banner':'full',familyRank={full:0,card:1,banner:2};for(const row of visualRows){const family=familyOf(row),key=`${row.id}|${row.revisionId}|${family}`;if(!groups.has(key))groups.set(key,{key,id:row.id,revisionId:row.revisionId,family,rows:[]});groups.get(key).rows.push(row);}return[...groups.values()].map(variant=>{const normalRows=variant.rows.filter(row=>!row.type.endsWith('_dmg')).sort((a,b)=>(Number(hasAsset(b))-Number(hasAsset(a)))||((typeRank[a.type]??9)-(typeRank[b.type]??9))),damagedRows=variant.rows.filter(row=>row.type.endsWith('_dmg')).sort((a,b)=>(Number(hasAsset(b))-Number(hasAsset(a)))||((typeRank[a.type]??9)-(typeRank[b.type]??9))),normal=normalRows[0]||null,damaged=damagedRows[0]||null,primary=normal||damaged;return{...variant,normal,damaged,primary};}).filter(variant=>variant.primary).sort((a,b)=>variantRank(variantLabel(a.primary))-variantRank(variantLabel(b.primary))||(a.id-b.id)||((familyRank[a.family]??9)-(familyRank[b.family]??9))||a.revisionId.localeCompare(b.revisionId));}
 function renderPairPanel(row,kind,label){if(!row)return`<div class="group-pair-panel"><span class="group-pair-label">${label}</span><div class="group-member-visual"><span class="asset-placeholder">画像なし</span></div></div>`;const available=hasAsset(row),url=assetUrl(row),key=assetKey(row),stateLabel=assetStateLabel(row),visual=available?(row.available||url?`<button class="group-member-visual member-preview" data-preview-kind="${kind}" type="button" aria-label="${esc(row.name)} ${label}を拡大"><img src="${esc(assetThumbUrl(row))}" alt="${esc(row.name||row.id)} ${label}" loading="lazy" decoding="async"></button>`:`<button class="group-member-visual member-preview" data-preview-kind="${kind}" type="button" data-directory-key="${esc(key)}" data-directory-alt="${esc(row.name||row.id)} ${label}" aria-label="${esc(row.name)} ${label}を拡大"><span class="asset-placeholder">フォルダー参照</span></button>`):`<div class="group-member-visual"><span class="asset-placeholder">${stateLabel}</span></div>`;return`<div class="group-pair-panel"><span class="group-pair-label">${label}</span>${visual}</div>`;}
 function renderGroupVariant(variant,index,matchedId){const row=variant.primary,badges=variantBadges(row).map(badge=>`<span class="variant-badge ${badge.className}">${esc(badge.label)}</span>`).join(''),showMatchedId=Number(matchedId)===Number(row.id),card=variant.family==='card',normalLabel=card?'カード':'通常状態',damagedLabel=card?'カード・大破':'大破状態',single=card&&!variant.damaged;return`<article class="group-member${showMatchedId?' is-match':''}" data-variant-index="${index}"><div class="group-pair-visuals${single?' single':''}">${renderPairPanel(variant.normal,'normal',normalLabel)}${single?'':renderPairPanel(variant.damaged,'damaged',damagedLabel)}</div><div class="group-member-body"><div class="variant-badges">${badges}${showMatchedId?`<span class="matched-image-id">画像ID ${row.id}</span>`:''}</div></div></article>`;}
@@ -1731,7 +1911,9 @@ function scrollToGallery(){scrollTo({top:el('assetGallery').offsetTop-90,behavio
 q.addEventListener('input',()=>applyFilters());q.addEventListener('keydown',e=>{if(e.key!=='Enter'||e.isComposing||groupMode!=='ship')return;const term=q.value.normalize('NFKC').trim().toLocaleLowerCase('ja');if(!term)return;const idOnly=/^\d+$/.test(term)?Number(term):null,exact=displayItems.filter(group=>idOnly===null?group.name.normalize('NFKC').trim().toLocaleLowerCase('ja')===term:group.ids.includes(idOnly));if(exact.length===1){e.preventDefault();openGroup(exact[0],q);}});shipTypeFilter.addEventListener('change',()=>applyFilters());assetAvailability.addEventListener('change',()=>{rebuildAssetTypes();applyFilters();})
 try{preferSavedCover=localStorage.getItem('kanzemi-prefer-saved-cover')==='1';}catch(_){}
 const preferSavedCoverToggle=el('preferSavedCover');
-if(preferSavedCoverToggle){preferSavedCoverToggle.checked=preferSavedCover;preferSavedCoverToggle.addEventListener('change',()=>{preferSavedCover=preferSavedCoverToggle.checked;try{localStorage.setItem('kanzemi-prefer-saved-cover',preferSavedCover?'1':'0');}catch(_){}render();});};scopeButtons.forEach(b=>b.addEventListener('click',()=>{scope=b.dataset.scope;storedScope=scope;try{localStorage.setItem('kanzemi-asset-scope',scope);}catch(_){}scopeButtons.forEach(x=>x.setAttribute('aria-selected',String(x===b)));document.body.dataset.activeScope=scope;q.value='';shipTypeFilter.value='';rebuildAssetTypes();applyFilters();}));groupButtons.forEach(button=>button.addEventListener('click',()=>{groupMode=button.dataset.grouping;groupButtons.forEach(peer=>peer.setAttribute('aria-pressed',String(peer===button)));try{localStorage.setItem('kanzemi-group-mode',groupMode);}catch(_){}applyFilters();}));displayButtons.forEach(button=>button.addEventListener('click',()=>{displayMode=button.dataset.display;page=1;render();}));el('directoryConnect').addEventListener('click',connectDirectory);el('directoryRefresh').addEventListener('click',refreshDirectory);el('directoryFallbackInput').addEventListener('change',connectFallback);el('directoryDisconnect').addEventListener('click',disconnectDirectory);el('prev').addEventListener('click',()=>{page--;render();scrollToGallery();});el('next').addEventListener('click',()=>{page++;render();scrollToGallery();});el('pageSelect').addEventListener('change',e=>{page=Number(e.target.value)||1;render();scrollToGallery();});el('reset').addEventListener('click',()=>{q.value='';shipTypeFilter.value='';assetAvailability.value=savedAssetCount()?'available':'';rebuildAssetTypes();applyFilters();q.focus();});el('exportCsv').addEventListener('click',exportFiltered);
+function resetArchiveSearch(){q.value='';shipTypeFilter.value='';assetAvailability.value=savedAssetCount()?'available':'';rebuildAssetTypes();applyFilters();q.focus();}
+function handleArchiveEmptyAction(event){const action=event.target.closest('[data-archive-empty-action]')?.dataset.archiveEmptyAction;if(action==='search')resetArchiveSearch();else if(action==='directory')connectDirectory();}
+if(preferSavedCoverToggle){preferSavedCoverToggle.checked=preferSavedCover;preferSavedCoverToggle.addEventListener('change',()=>{preferSavedCover=preferSavedCoverToggle.checked;try{localStorage.setItem('kanzemi-prefer-saved-cover',preferSavedCover?'1':'0');}catch(_){}render();});};scopeButtons.forEach(b=>b.addEventListener('click',()=>{scope=b.dataset.scope;storedScope=scope;try{localStorage.setItem('kanzemi-asset-scope',scope);}catch(_){}scopeButtons.forEach(x=>x.setAttribute('aria-selected',String(x===b)));document.body.dataset.activeScope=scope;q.value='';shipTypeFilter.value='';rebuildAssetTypes();applyFilters();}));groupButtons.forEach(button=>button.addEventListener('click',()=>{groupMode=button.dataset.grouping;groupButtons.forEach(peer=>peer.setAttribute('aria-pressed',String(peer===button)));try{localStorage.setItem('kanzemi-group-mode',groupMode);}catch(_){}applyFilters();}));displayButtons.forEach(button=>button.addEventListener('click',()=>{displayMode=button.dataset.display;page=1;render();}));el('archiveConnect').addEventListener('click',connectDirectory);el('directoryConnect').addEventListener('click',connectDirectory);el('directoryRefresh').addEventListener('click',refreshDirectory);el('directoryFallbackInput').addEventListener('change',connectFallback);el('directoryDisconnect').addEventListener('click',disconnectDirectory);el('prev').addEventListener('click',()=>{page--;render();scrollToGallery();});el('next').addEventListener('click',()=>{page++;render();scrollToGallery();});el('pageSelect').addEventListener('change',e=>{page=Number(e.target.value)||1;render();scrollToGallery();});el('reset').addEventListener('click',resetArchiveSearch);gallery.addEventListener('click',handleArchiveEmptyAction);tbody.addEventListener('click',handleArchiveEmptyAction);el('exportCsv').addEventListener('click',exportFiltered);
 tbody.addEventListener('click',e=>{const groupRow=e.target.closest('tr[data-group-index]'),groupTrigger=e.target.closest('.group-open');if(groupRow&&groupTrigger){openGroup(displayItems[Number(groupRow.dataset.groupIndex)],groupTrigger);return;}const tr=e.target.closest('tr[data-index]');if(!tr)return;const row=displayItems[Number(tr.dataset.index)];if(e.target.closest('.copy'))copyText(row.url);const preview=e.target.closest('.preview');if(preview)openPreview(row,preview);});gallery.addEventListener('click',e=>{const groupCard=e.target.closest('[data-group-index]'),groupTrigger=e.target.closest('.group-open');if(groupCard&&groupTrigger){openGroup(displayItems[Number(groupCard.dataset.groupIndex)],groupTrigger);return;}const card=e.target.closest('[data-index]');if(!card)return;const row=displayItems[Number(card.dataset.index)],preview=e.target.closest('.preview');if(preview)openPreview(row,preview);});el('groupGrid').addEventListener('click',e=>{const member=e.target.closest('[data-variant-index]');if(!member||!activeGroup)return;const variant=activeGroup.variants[Number(member.dataset.variantIndex)],preview=e.target.closest('.member-preview');if(!preview)return;const previewRow=preview.dataset.previewKind==='damaged'?variant.damaged:variant.normal||variant.damaged;if(previewRow)openPreview(previewRow,preview);});el('groupClose').addEventListener('click',closeGroup);el('groupModal').addEventListener('click',e=>{if(e.target===el('groupModal'))closeGroup();});el('previewPrev').addEventListener('click',()=>navigatePreview(-1));el('previewNext').addEventListener('click',()=>navigatePreview(1));el('previewClose').addEventListener('click',closePreview);el('previewCopy').addEventListener('click',e=>copyText(e.currentTarget.dataset.url));el('previewModal').addEventListener('click',e=>{if(e.target===el('previewModal'))closePreview();});el('previewBody').addEventListener('touchstart',e=>{previewTouchStartX=e.changedTouches[0]?.clientX||0;},{passive:true});el('previewBody').addEventListener('touchend',e=>{const end=e.changedTouches[0]?.clientX||0,difference=end-previewTouchStartX;if(Math.abs(difference)>=50)navigatePreview(difference<0?1:-1);previewTouchStartX=0;},{passive:true});document.addEventListener('keydown',e=>{if(!el('previewModal').hidden){trapModalFocus(e,el('previewModal'));if(e.key==='Escape')closePreview();else if(e.key==='ArrowLeft')navigatePreview(-1);else if(e.key==='ArrowRight')navigatePreview(1);return;}if(!el('groupModal').hidden){trapModalFocus(e,el('groupModal'));if(e.key==='Escape')closeGroup();}});window.addEventListener('beforeunload',()=>{for(const url of connectedUrls.values())URL.revokeObjectURL(url);for(const url of dropLabConnectedUrls.values())URL.revokeObjectURL(url);});
 const viewButtons=[...document.querySelectorAll('[data-view]')],viewTitles={assets:'Fleet Archive','drop-lab':'Drop Lab','verification-quiz':'Tactics Lab',acquire:'画像取得管理'};function showView(view,updateHash=true){if(view==='acquire'&&el('acquireTab').hidden)view='assets';el('assetView').hidden=view!=='assets';el('dropLabView').hidden=view!=='drop-lab';el('verificationQuizView').hidden=view!=='verification-quiz';el('acquireView').hidden=view!=='acquire';viewButtons.forEach(button=>button.setAttribute('aria-selected',String(button.dataset.view===view)));document.title=`${viewTitles[view]||'Fleet Archive'} | Fleet Lab`;if(updateHash&&!location.hash.startsWith('#history=')){try{history.replaceState(null,'',view==='drop-lab'?'#drop-lab':view==='verification-quiz'?'#verification-quiz':view==='acquire'?'#acquire':'#assets');}catch(_){}}scrollTo({top:0,behavior:'instant'});}viewButtons.forEach(button=>button.addEventListener('click',()=>showView(button.dataset.view)));showView(location.hash==='#drop-lab'||location.hash.startsWith('#history=')?'drop-lab':location.hash==='#verification-quiz'?'verification-quiz':'assets',false);
 let localApiToken='',acquisitionPollTimer=0,activeAcquisitionJobId='';
