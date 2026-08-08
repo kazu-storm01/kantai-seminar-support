@@ -44,7 +44,7 @@
 body{
   color-scheme:light;
   --fg:#0a2c40;
-  --muted:#3f6579;
+  --muted:#2a4c5c;
   --accent:#0a76b2;
   --accent-ink:#ffffff;
   --accent-glow:#48b6e8;
@@ -52,10 +52,20 @@ body{
 
   --glass:rgba(255,255,255,.52);          /* 主要な面（下端） */
   --glass-hi:rgba(255,255,255,.78);       /* 主要な面（上端）＝艶 */
+  --glass-base:rgba(255,255,255,.14);     /* 面の下地。環境光の振れ幅を潰す */
   --glass-2:rgba(9,66,102,.07);           /* 面の中の面（入れ子） */
-  --glass-bar:rgba(255,255,255,.66);      /* 固定バー */
+  /* 固定バーとドックは背後を本文がスクロールしていくため、
+     環境光ではなく「任意の艦影」が背後に来る。不透明寄りにして合成結果を確定させる。 */
+  --glass-bar:rgba(255,255,255,.88);
+  --bar-hi:rgba(255,255,255,.90);         /* バーの艶。文字(暗)と逆方向へ */
+  --bar-well:rgba(255,255,255,.30);       /* バー内の入れ子。文字(暗)と逆方向＝明るく */
+  --dock:rgba(255,255,255,.88);           /* 本文の上に浮く面 */
+  --dock-line:rgba(10,66,102,.22);
   --glass-line:rgba(10,66,102,.2);        /* 面の輪郭 */
   --glass-edge:rgba(255,255,255,.95);     /* 上端のハイライト */
+  --spec:rgba(255,255,255,.5);            /* 斜めの艶 */
+  --glass-bloom:rgba(255,255,255,.85);    /* 面の内側へ回り込む光 */
+  --glass-shade:rgba(9,58,92,.16);        /* 下端の陰＝厚み */
   --glass-well:rgba(9,66,102,.06);        /* 画像の下地 */
   --field:rgba(255,255,255,.8);
   --field-line:rgba(10,66,102,.24);
@@ -67,7 +77,9 @@ body{
   --warn:#8a6420;
   --danger:#b23a3a;
 
-  background:var(--bg);
+  /* body に背景を置かないこと。body::before/::after は z-index:-1 なので
+     「負のz-index子 → body自身の背景」の順で塗られ、body背景が環境光を覆う。
+     下地は html 側に置く（オーバースクロール域もそれで足りる）。 */
   color:var(--fg);
 }
 
@@ -75,7 +87,7 @@ body{
 body[data-active-scope="abyssal"]{
   color-scheme:dark;
   --fg:#f5e8ee;
-  --muted:#a4909e;
+  --muted:#c4b2be;
   --accent:#ff8ea0;
   --accent-ink:#2b0710;
   --accent-glow:#ff7d95;
@@ -83,10 +95,20 @@ body[data-active-scope="abyssal"]{
 
   --glass:rgba(255,255,255,.04);
   --glass-hi:rgba(255,255,255,.1);
+  --glass-base:rgba(8,3,12,.40);          /* 環境光の赤を素通しさせない */
   --glass-2:rgba(255,255,255,.05);
-  --glass-bar:rgba(16,7,20,.62);
+  /* 白い艶をバーに載せると、背後を流れる明るい艦影の上で淡色文字が沈む（実測2.97:1）。
+     バーとドックだけは暗い方向へ寄せて合成結果を確定させる。 */
+  --glass-bar:rgba(16,7,20,.88);
+  --bar-hi:rgba(36,16,40,.90);
+  --bar-well:rgba(0,0,0,.28);             /* 入れ子は文字(淡)と逆方向＝暗く */
+  --dock:rgba(20,9,24,.90);
+  --dock-line:rgba(255,255,255,.16);
   --glass-line:rgba(255,255,255,.13);
   --glass-edge:rgba(255,255,255,.16);
+  --spec:rgba(255,255,255,.06);
+  --glass-bloom:rgba(255,255,255,.13);
+  --glass-shade:rgba(0,0,0,.5);
   --glass-well:rgba(255,255,255,.03);
   --field:rgba(255,255,255,.06);
   --field-line:rgba(255,255,255,.16);
@@ -126,8 +148,9 @@ body{
 
 /* --- 5. 下地 -------------------------------------------------------------- */
 *{box-sizing:border-box}
-/* html はトークン（body定義）を参照できないため、行き過ぎスクロール用に実値を置く */
-html{background:#a4d6f1}
+/* html はトークン（body定義）を参照できないため実値を置く。
+   body から背景を外したので、これがページ全体の下地も兼ねる。 */
+html{background:#a4d6f1;transition:background-color .45s cubic-bezier(.22,.68,.36,1)}
 html:has(body[data-active-scope="abyssal"]){background:#08040c}
 body{
   margin:0;min-height:100vh;
@@ -150,11 +173,21 @@ button,input,select,textarea{font:inherit;font-size:16px}
 .archive-toolbar,.table-wrap,.asset-card,.asset-gallery-empty,.asset-library-tools,
 .acquire-panel,.acquire-metric,.acquire-plan,.archive-onboarding-card,
 .modal-card,.toast,.display-switch,.group-member,.asset-options[open],
-.local-app .asset-result-bar{
-  background:linear-gradient(180deg,var(--glass-hi),var(--glass));
+.local-app .asset-result-bar,
+.site-footer,.asset-options>summary{
+  /* --glass-base は最下層の不透明寄りの下地。環境光の明暗差が面を通り抜けて
+     文字コントラストを動かすのを防ぐ。 */
+  background:
+    linear-gradient(152deg,var(--spec) 0 16%,transparent 44%),  /* 斜めの艶 */
+    linear-gradient(180deg,var(--glass-hi),var(--glass)),
+    var(--glass-base);
   border:1px solid var(--glass-line);
   border-radius:var(--r);
-  box-shadow:var(--shadow),inset 0 1px 0 var(--glass-edge);
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 var(--glass-edge),              /* 上端の集光 */
+    inset 0 22px 30px -24px var(--glass-bloom),   /* 光が面の内側へ回り込む */
+    inset 0 -20px 28px -22px var(--glass-shade);  /* 下端に落ちる陰＝厚み */
   -webkit-backdrop-filter:blur(var(--blur)) saturate(150%);
   backdrop-filter:blur(var(--blur)) saturate(150%);
 }
@@ -168,7 +201,7 @@ button,input,select,textarea{font:inherit;font-size:16px}
   position:sticky;top:0;z-index:12;
   display:flex;align-items:center;gap:12px;flex-wrap:wrap;
   padding:9px var(--gutter);
-  background:linear-gradient(180deg,var(--glass-hi),var(--glass-bar));
+  background:linear-gradient(180deg,var(--bar-hi),var(--glass-bar));
   border-bottom:1px solid var(--glass-line);
   box-shadow:0 8px 30px var(--accent-shadow),inset 0 1px 0 var(--glass-edge);
   -webkit-backdrop-filter:blur(var(--blur-bar)) saturate(170%);
@@ -187,7 +220,7 @@ button,input,select,textarea{font:inherit;font-size:16px}
 .site-nav{
   display:flex;gap:3px;margin-left:auto;padding:3px;
   border:1px solid var(--glass-line);border-radius:var(--r-pill);
-  background:var(--glass-2);
+  background:var(--bar-well);
 }
 .site-tab{
   min-height:34px;padding:0 15px;border:0;border-radius:var(--r-pill);
@@ -203,7 +236,7 @@ button,input,select,textarea{font:inherit;font-size:16px}
 .summary{
   display:inline-flex;align-items:baseline;gap:4px;padding:4px 11px;
   border:1px solid var(--glass-line);border-radius:var(--r-pill);
-  background:var(--glass-2);color:var(--muted);font-size:11px;white-space:nowrap;
+  background:var(--bar-well);color:var(--muted);font-size:11px;white-space:nowrap;
 }
 .summary b{color:var(--fg);font-size:13px;font-weight:650;font-variant-numeric:tabular-nums}
 
@@ -211,7 +244,7 @@ button,input,select,textarea{font:inherit;font-size:16px}
 .support-view{position:relative;max-width:var(--shell);margin:auto;padding:18px var(--gutter) 36px}
 .support-view.drop-lab-view{max-width:var(--shell-narrow)}
 .view-intro{margin:0 0 12px;color:var(--muted);font-size:13px}
-.site-footer{max-width:var(--shell);margin:0 auto;padding:0 var(--gutter) 30px;color:var(--muted);font-size:10px;line-height:1.7;text-align:center;opacity:.75}
+.site-footer{width:min(var(--shell),calc(100% - var(--gutter)*2));margin:22px auto 30px;padding:12px 18px;color:var(--muted);font-size:11px;line-height:1.8;text-align:center}
 
 /* --- 9. Fleet Archive 操作バー（区分切替＋検索を1枚のガラスに） ------------ */
 .archive-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px;margin-bottom:14px}
@@ -253,16 +286,22 @@ input:focus,select:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3
 }
 .btn:hover:not(:disabled){border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
 .btn:active:not(:disabled){transform:translateY(1px)}
-.btn:disabled{opacity:.42;cursor:default}
+/* 無効の表現に opacity を使わない。明度しか動かせず文字コントラストを一律に壊すため。
+   面を失わせ・インクを降格させ・ホバーを返さない、の3信号で示す。 */
+.btn:disabled,.btn:disabled:hover{
+  cursor:default;color:var(--muted);background:transparent;
+  border-color:color-mix(in srgb,var(--glass-line) 55%,transparent);
+}
+.page-step:disabled .page-step-glyph{opacity:.45}
 .btn.primary,.btn.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:650;box-shadow:0 6px 18px var(--accent-shadow)}
 .btn.primary:hover:not(:disabled),.btn.btn-primary:hover:not(:disabled){background:color-mix(in srgb,var(--accent) 86%,var(--fg));border-color:transparent}
 .btn.btn-ghost{background:transparent}
 .clear{min-height:var(--tap)}
 
 /* --- 11. 副次操作（「その他」） -------------------------------------------- */
-.asset-options{margin:0 2px 12px;color:var(--muted);font-size:12px}
-.asset-options>summary{width:max-content;margin-left:auto;padding:4px 2px;cursor:pointer;list-style-position:inside}
-.asset-options>summary:hover{color:var(--fg)}
+.asset-options{margin:0 2px 12px;font-size:12px}
+.asset-options>summary{display:flex;align-items:center;gap:6px;width:max-content;margin-left:auto;min-height:32px;padding:4px 14px;border-radius:var(--r-pill);color:var(--muted);cursor:pointer;list-style-position:inside}
+.asset-options>summary:hover{color:var(--fg);border-color:var(--accent)}
 .asset-options[open]{padding:4px}
 .asset-options-body{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;padding:10px}
 .option-toggle{display:inline-flex;align-items:center;gap:7px;min-height:var(--tap);color:var(--muted);font-size:13px;cursor:pointer;user-select:none}
@@ -342,10 +381,28 @@ input:focus,select:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3
 .actions .btn{margin-right:4px;min-height:32px;font-size:11px}
 
 /* --- 15. ページ送り -------------------------------------------------------- */
-.pagination{display:flex;justify-content:center;align-items:center;gap:9px;margin-top:16px;color:var(--muted);font-size:12px}
-.page-jump{display:flex;align-items:center;gap:6px}
-.page-jump select{width:min(410px,58vw)}
-.page-total{white-space:nowrap}
+/* ページ送りは本文の上に浮くドック。背後を艦影が流れるので --glass ではなく
+   不透明寄りの --dock を使い、背後に何が来ても文字が成立するようにする。
+   sticky なので本文末尾では着地し、常時領域を占有しない。 */
+.pagination{
+  position:sticky;bottom:max(10px,env(safe-area-inset-bottom));z-index:11;
+  display:grid;gap:6px;justify-items:center;
+  width:min(560px,100%);margin:18px auto 0;padding:8px 10px 9px;
+  border:1px solid var(--dock-line);border-radius:var(--r);
+  background:linear-gradient(152deg,var(--spec) 0 16%,transparent 44%),var(--dock);
+  box-shadow:var(--shadow-lift),inset 0 1px 0 var(--glass-edge),inset 0 -20px 28px -22px var(--glass-shade);
+  -webkit-backdrop-filter:blur(var(--blur-bar)) saturate(150%);
+  backdrop-filter:blur(var(--blur-bar)) saturate(150%);
+  color:var(--muted);font-size:12px;
+}
+.pagination-bar{display:flex;align-items:center;justify-content:center;gap:8px;width:100%}
+.page-step{flex:0 0 auto;min-height:var(--tap);padding-inline:14px;font-size:14px;font-weight:600}
+.page-step-glyph{font-size:17px;line-height:1}
+.page-jump{flex:1 1 auto;display:flex;min-width:0}
+.page-jump select{width:100%;min-width:0;font-variant-numeric:tabular-nums}
+.page-total{margin:0;width:100%;text-align:center;color:var(--muted);font-size:11px;line-height:1.5;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.page-total b{color:var(--fg);font-weight:650}
+body:has(#assetPagination:not([hidden])) .toast{bottom:calc(16px + 84px)}
 .empty{padding:42px;color:var(--muted);text-align:center}
 
 /* --- 16. モーダル ---------------------------------------------------------- */
@@ -442,7 +499,15 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:var(--r-pill)
 body #kcnav-drop-lab .card,
 body #verification-quiz .quiz-card,
 body #verification-quiz .quiz-tools{
-  background:linear-gradient(180deg,var(--glass-hi),var(--glass));
+  background:
+    linear-gradient(152deg,var(--spec) 0 16%,transparent 44%),
+    linear-gradient(180deg,var(--glass-hi),var(--glass)),
+    var(--glass-base);
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 var(--glass-edge),
+    inset 0 22px 30px -24px var(--glass-bloom),
+    inset 0 -20px 28px -22px var(--glass-shade);
 }
 body #kcnav-drop-lab .card,
 body #kcnav-drop-lab .drop-stage,
@@ -472,6 +537,24 @@ body #kcnav-drop-lab .mode-switch .btn[aria-selected="true"]{background:var(--ac
 body #kcnav-drop-lab .hero-statement{border-radius:var(--r-sm);border-left:3px solid var(--accent);background:var(--glass-2)}
 body #kcnav-drop-lab .drop-card{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 body #verification-quiz .quiz-choice:hover:not(:disabled){box-shadow:inset 3px 0 var(--accent)}
+
+/* --- 19b. 流体ガラス（屈折） -----------------------------------------------
+   背景を「ぼかす」のではなく「歪ませる」。Chromium系でのみ描画される。
+   非対応環境では宣言ごと無効になり、§6 の基本ガラス（blur）がそのまま残るので
+   欠けるのは質感だけで、可読性は変わらない。
+   ・強いぼかしの後に変位させても見えない（背景が均一化するため）。屈折を出す面は
+     ぼかしを下げる。
+   ・scale はXML属性なのでトークンが届かない。明暗で強さを変えず1つで通す。
+   ・不透明寄りの面（.topbar / .pagination）は背景が透けないので対象外。
+   ・.asset-card は1画面に48枚あり描画コストを測れなかったので対象外。 */
+/* 背景を歪ませる方式（backdrop-filter:url(#svg)）はChromiumで実際に描画されるが、
+   このアプリでは採らない。ガラス面の背後がほぼ全て滑らかなグラデーションのため、
+   変位させてもほぼ同じ色に置き換わるだけで効果が出ない。
+   実測 ON/OFF ピクセル平均差: 操作バー 0.04 / モーダル背面 0.31（ぼかし2pxでも0.71）。
+   detail がある面（背後を艦影が流れるバーとドック）で効かせるには不透明度を
+   下げる必要があり、深海タブ 2.97:1 の可読性問題が再発する。
+   代わりに「光を描く」— 面の厚みと集光をグラデーションで作る。背景に依存しない。 */
+/* 艶と厚みは §6 と §19 の既存の面規則に統合してある（規則を二重に書かない）。 */
 
 /* --- 20. 画面幅 ------------------------------------------------------------ */
 @media(max-width:900px){
@@ -554,7 +637,7 @@ body #verification-quiz .quiz-choice:hover:not(:disabled){box-shadow:inset 3px 0
 <details class="asset-options"><summary>その他</summary><div class="asset-options-body"><select id="assetAvailability" aria-label="保存状態"><option value="available">保存済みのみ</option><option value="">すべて</option></select><label class="option-toggle" title="限定グラ配信期間中でも、保存済みの過去版があれば表紙に使います"><input type="checkbox" id="preferSavedCover"> 表紙に過去版を優先</label><div class="asset-result-actions"><span id="directoryStatus" class="asset-library-status">画像フォルダー未接続</span><div class="display-switch" role="group" aria-label="表示形式"><button type="button" data-display="gallery" aria-pressed="true">画像</button><button type="button" data-display="table" aria-pressed="false">一覧</button></div><button id="exportCsv" class="btn" type="button">CSV</button></div><p id="viewSafety" class="connection">「現在使用中」は最新APIが指定する画像です。季節限定期間は限定柄の場合があります。図鑑由来の別グラは、意味を断定せず別に保持します。</p><div class="asset-library-tools"><p><code>private-assets/images</code> を読み取り専用で接続します。初回だけ索引を作り、次回からすぐ表示します。画像本体はブラウザへコピーせず、表示中の分だけ元フォルダーから読みます。</p><button id="directoryConnect" class="btn primary" type="button">画像フォルダーを接続</button><input id="directoryFallbackInput" type="file" accept="image/png,.png" multiple webkitdirectory directory hidden><button id="directoryRefresh" class="btn" type="button" hidden>画像を更新</button><button id="directoryDisconnect" class="btn" type="button" disabled>接続を解除</button><progress id="directoryProgress" class="asset-scan-progress" aria-label="画像フォルダー確認状況" hidden></progress></div></div></details>
 <div id="assetGallery" class="asset-gallery"></div>
 <div id="assetTableWrap" class="table-wrap" hidden><table><thead><tr><th>ID</th><th>艦名・ファイル</th><th>収録画像</th><th>操作</th></tr></thead><tbody id="rows"></tbody></table></div>
-<nav id="assetPagination" class="pagination" aria-label="ページ操作"><button id="prev" class="btn" type="button">前へ</button><label class="page-jump"><span class="sr-only">移動先ページ</span><select id="pageSelect" aria-label="移動先ページ"></select></label><span id="pageInfo" class="page-total"></span><button id="next" class="btn" type="button">次へ</button></nav>
+<nav id="assetPagination" class="pagination" aria-label="ページ操作"><div class="pagination-bar"><button id="prev" class="btn page-step" type="button"><span class="page-step-glyph" aria-hidden="true">‹</span>前へ</button><label class="page-jump"><span class="sr-only">移動先ページ</span><select id="pageSelect" aria-label="移動先ページ"></select></label><button id="next" class="btn page-step" type="button">次へ<span class="page-step-glyph" aria-hidden="true">›</span></button></div><p id="pageInfo" class="page-total" aria-live="polite"></p></nav>
 </div>
 </section>
 <script src="viewer_data.js?v=7cf5d1778695ffc4"></script>
@@ -1894,7 +1977,7 @@ function renderGroupCard(group,index){const row=preferredGroupRow(group),imageCo
 function renderRowTable(row,index){const available=hasAsset(row),status=row.change==='added'?'<span class="update added">新規</span>':row.change==='changed'?'<span class="update changed">変更</span>':'',actions=available?(row.available?`<a class="btn primary" href="${esc(row.url)}" target="_blank" rel="noopener">開く</a><button class="btn preview" type="button">確認</button><button class="btn copy" type="button">パス</button>`:`<button class="btn preview" type="button">確認</button><span class="asset-state ready">フォルダー参照</span>`):`<span class="asset-state">${assetStateLabel(row)}</span>`;return`<tr data-index="${index}" data-change="${esc(row.change)}"><td class="id">${row.id}</td><td class="name"><strong>${esc(row.name)||'名称なし'}</strong>${status}<small>${esc(row.file)}</small></td><td><span class="type">${esc(typeLabels[row.type]||row.type)}</span></td><td class="actions">${actions}</td></tr>`;}
 function renderGroupTable(group,index){const imageCount=groupArtworkVariants(group.rows).length,row=preferredGroupRow(group),shipType=row.shipTypeName||(group.category==='abyssal'?'深海棲艦':'艦娘');return`<tr data-group-index="${index}"><td class="id">${imageCount.toLocaleString()}種類</td><td class="name"><strong>${esc(group.name)}</strong></td><td><span class="type">${esc(shipType)}</span></td><td class="actions"><button class="btn primary group-open" type="button">画像を見る</button></td></tr>`;}
 function pageItemName(item){return groupMode==='ship'?item.name:(item.name||`ID ${item.id}`);}
-function render(){const generation=++galleryGeneration,pageSize=displayMode==='gallery'?GALLERY_PAGE_SIZE:TABLE_PAGE_SIZE,pages=Math.max(1,Math.ceil(displayItems.length/pageSize));page=Math.min(page,pages);const start=(page-1)*pageSize,shown=displayItems.slice(start,start+pageSize),shownRows=groupMode==='ship'?shown.flatMap(group=>group.rows):shown,hasSearch=Boolean(q.value.trim()||shipTypeFilter.value),emptyText=hasSearch?'この条件で表示できる画像はありません。':'このフォルダーに表示できる画像はありません。',emptyAction=hasSearch?'search':'directory',emptyActionLabel=hasSearch?'検索をクリア':'フォルダーを変更',emptyContent=`<div class="archive-empty-recovery"><p>${emptyText}</p><button class="btn primary" type="button" data-archive-empty-action="${emptyAction}">${emptyActionLabel}</button></div>`,visibleConnectedKeys=new Set(shownRows.filter(row=>!row.available&&connectedAssetKeys.has(assetKey(row))).map(assetKey));pruneConnectedUrls(visibleConnectedKeys);gallery.hidden=displayMode!=='gallery';el('assetTableWrap').hidden=displayMode!=='table';el('reset').hidden=!hasSearch;el('assetPagination').hidden=!shown.length;displayButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.display===displayMode)));gallery.innerHTML=shown.length?shown.map((item,index)=>groupMode==='ship'?renderGroupCard(item,start+index):renderRowCard(item,start+index)).join(''):`<div class="asset-gallery-empty">${emptyContent}</div>`;tbody.innerHTML=shown.length?shown.map((item,index)=>groupMode==='ship'?renderGroupTable(item,start+index):renderRowTable(item,start+index)).join(''):`<tr><td colspan="4" class="empty">${emptyContent}</td></tr>`;const idCount=new Set(filtered.map(row=>row.id)).size;count.textContent=groupMode==='ship'?`${displayItems.length.toLocaleString()}艦`:`${idCount.toLocaleString()}件`;const pageOptions=[];for(let number=1;number<=pages;number++){const first=displayItems[(number-1)*pageSize],last=displayItems[Math.min(number*pageSize,displayItems.length)-1],range=first&&last?(pageItemName(first)===pageItemName(last)?pageItemName(first):`${pageItemName(first)}〜${pageItemName(last)}`):'結果なし';pageOptions.push(new Option(`${number} / ${pages}　${range}`,String(number)));}const pageSelect=el('pageSelect');pageSelect.replaceChildren(...pageOptions);pageSelect.value=String(page);pageSelect.disabled=pages<=1;pageInfo.textContent=`全${pages}ページ`;el('prev').disabled=page<=1;el('next').disabled=page>=pages;syncDirectoryUi();if(displayMode==='gallery'&&visibleConnectedKeys.size)hydrateConnectedImages(generation);}
+function render(){const generation=++galleryGeneration,pageSize=displayMode==='gallery'?GALLERY_PAGE_SIZE:TABLE_PAGE_SIZE,pages=Math.max(1,Math.ceil(displayItems.length/pageSize));page=Math.min(page,pages);const start=(page-1)*pageSize,shown=displayItems.slice(start,start+pageSize),shownRows=groupMode==='ship'?shown.flatMap(group=>group.rows):shown,hasSearch=Boolean(q.value.trim()||shipTypeFilter.value),emptyText=hasSearch?'この条件で表示できる画像はありません。':'このフォルダーに表示できる画像はありません。',emptyAction=hasSearch?'search':'directory',emptyActionLabel=hasSearch?'検索をクリア':'フォルダーを変更',emptyContent=`<div class="archive-empty-recovery"><p>${emptyText}</p><button class="btn primary" type="button" data-archive-empty-action="${emptyAction}">${emptyActionLabel}</button></div>`,visibleConnectedKeys=new Set(shownRows.filter(row=>!row.available&&connectedAssetKeys.has(assetKey(row))).map(assetKey));pruneConnectedUrls(visibleConnectedKeys);gallery.hidden=displayMode!=='gallery';el('assetTableWrap').hidden=displayMode!=='table';el('reset').hidden=!hasSearch;el('assetPagination').hidden=!shown.length;displayButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.display===displayMode)));gallery.innerHTML=shown.length?shown.map((item,index)=>groupMode==='ship'?renderGroupCard(item,start+index):renderRowCard(item,start+index)).join(''):`<div class="asset-gallery-empty">${emptyContent}</div>`;tbody.innerHTML=shown.length?shown.map((item,index)=>groupMode==='ship'?renderGroupTable(item,start+index):renderRowTable(item,start+index)).join(''):`<tr><td colspan="4" class="empty">${emptyContent}</td></tr>`;const idCount=new Set(filtered.map(row=>row.id)).size;count.textContent=groupMode==='ship'?`${displayItems.length.toLocaleString()}艦`:`${idCount.toLocaleString()}件`;const pageOptions=[];for(let number=1;number<=pages;number++){const first=displayItems[(number-1)*pageSize],last=displayItems[Math.min(number*pageSize,displayItems.length)-1],range=first&&last?(pageItemName(first)===pageItemName(last)?pageItemName(first):`${pageItemName(first)}〜${pageItemName(last)}`):'結果なし';pageOptions.push(new Option(`${number} / ${pages}　${range}`,String(number)));}const pageSelect=el('pageSelect');pageSelect.replaceChildren(...pageOptions);pageSelect.value=String(page);pageSelect.disabled=pages<=1;const pageFrom=start+1,pageTo=Math.min(start+pageSize,displayItems.length),pageUnit=groupMode==='ship'?'艦':'件',pageEdge=pages<=1?'':page<=1?'　先頭のページです':page>=pages?'　最終ページです':'';pageInfo.textContent=`${pageFrom.toLocaleString()}–${pageTo.toLocaleString()}${pageUnit} / 全${displayItems.length.toLocaleString()}${pageUnit}${pageEdge}`;if(pages<=1)el('assetPagination').hidden=true;el('prev').disabled=page<=1;el('next').disabled=page>=pages;syncDirectoryUi();if(displayMode==='gallery'&&visibleConnectedKeys.size)hydrateConnectedImages(generation);}
 function groupArtworkVariants(rows){const displayTypes=new Set(['full','full_dmg','character_full','character_full_dmg','card','card_dmg']),displayRows=rows.filter(row=>displayTypes.has(row.type)),visualRows=displayRows.length?displayRows:rows,groups=new Map(),typeRank={character_full:0,full:1,card:0,banner:0,character_full_dmg:0,full_dmg:1,card_dmg:0,banner_dmg:0},familyOf=row=>row.type.startsWith('card')?'card':row.type.startsWith('banner')?'banner':'full',familyRank={full:0,card:1,banner:2};for(const row of visualRows){const family=familyOf(row),key=`${row.id}|${row.revisionId}|${family}`;if(!groups.has(key))groups.set(key,{key,id:row.id,revisionId:row.revisionId,family,rows:[]});groups.get(key).rows.push(row);}return[...groups.values()].map(variant=>{const normalRows=variant.rows.filter(row=>!row.type.endsWith('_dmg')).sort((a,b)=>(Number(hasAsset(b))-Number(hasAsset(a)))||((typeRank[a.type]??9)-(typeRank[b.type]??9))),damagedRows=variant.rows.filter(row=>row.type.endsWith('_dmg')).sort((a,b)=>(Number(hasAsset(b))-Number(hasAsset(a)))||((typeRank[a.type]??9)-(typeRank[b.type]??9))),normal=normalRows[0]||null,damaged=damagedRows[0]||null,primary=normal||damaged;return{...variant,normal,damaged,primary};}).filter(variant=>variant.primary).sort((a,b)=>variantRank(variantLabel(a.primary))-variantRank(variantLabel(b.primary))||(a.id-b.id)||((familyRank[a.family]??9)-(familyRank[b.family]??9))||a.revisionId.localeCompare(b.revisionId));}
 function renderPairPanel(row,kind,label){if(!row)return`<div class="group-pair-panel"><span class="group-pair-label">${label}</span><div class="group-member-visual"><span class="asset-placeholder">画像なし</span></div></div>`;const available=hasAsset(row),url=assetUrl(row),key=assetKey(row),stateLabel=assetStateLabel(row),visual=available?(row.available||url?`<button class="group-member-visual member-preview" data-preview-kind="${kind}" type="button" aria-label="${esc(row.name)} ${label}を拡大"><img src="${esc(assetThumbUrl(row))}" alt="${esc(row.name||row.id)} ${label}" loading="lazy" decoding="async"></button>`:`<button class="group-member-visual member-preview" data-preview-kind="${kind}" type="button" data-directory-key="${esc(key)}" data-directory-alt="${esc(row.name||row.id)} ${label}" aria-label="${esc(row.name)} ${label}を拡大"><span class="asset-placeholder">フォルダー参照</span></button>`):`<div class="group-member-visual"><span class="asset-placeholder">${stateLabel}</span></div>`;return`<div class="group-pair-panel"><span class="group-pair-label">${label}</span>${visual}</div>`;}
 function renderGroupVariant(variant,index,matchedId){const row=variant.primary,badges=variantBadges(row).map(badge=>`<span class="variant-badge ${badge.className}">${esc(badge.label)}</span>`).join(''),showMatchedId=Number(matchedId)===Number(row.id),card=variant.family==='card',normalLabel=card?'カード':'通常状態',damagedLabel=card?'カード・大破':'大破状態',single=card&&!variant.damaged;return`<article class="group-member${showMatchedId?' is-match':''}" data-variant-index="${index}"><div class="group-pair-visuals${single?' single':''}">${renderPairPanel(variant.normal,'normal',normalLabel)}${single?'':renderPairPanel(variant.damaged,'damaged',damagedLabel)}</div><div class="group-member-body"><div class="variant-badges">${badges}${showMatchedId?`<span class="matched-image-id">画像ID ${row.id}</span>`:''}</div></div></article>`;}
